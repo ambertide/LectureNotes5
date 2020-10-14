@@ -1,0 +1,215 @@
+\documentclass[11pt,a4paper,twocolumn]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{E. Ambertide}
+\title{\textbf{CENG 323} \\ \large{Project Managment Lecture Notes}}
+\begin{document}
+\maketitle
+
+\chapter{Introduction}
+
+\section{Project}
+
+\begin{description}
+\item[Project] a \textit{temporary} (a defined start and an end date) endeavor undertaken to create a unique product, service or a result.
+\end{description}
+
+A project could be developing a messanger application, a medicine, running a campaign, a CMS, building an house...\\
+
+An \textbf{operational activity} is an ongoing process, the status quo. A \textbf{project} differs from an operational activity as the product is unique and new, it represents a change, it has a start and end date, whereas an operational activity does not have a stated begining or an end.\\
+
+Projects generally have \textbf{cross-functional teams} that are from different field, ie: Software engineers, mechanical engineers, etc.\\
+
+In summary, a project:
+
+\begin{itemize}
+\item has an end date and start date.
+\item introduces a change.
+\item has cross-functional teams.
+\item has uncertainties.
+\end{itemize}
+
+\section{Project Managment}
+
+\begin{description}
+\item[Project Managment] is the application of \textit{knowledge, skills, tools} and \textit{techniques} to \textit{project activities} to meeet the \textit{project requirements}
+\end{description}
+
+Project managment uses previously learned techniques and information to manage a project to make it successful, managing the risk.\\
+
+Projects has constraints and variables:
+
+\begin{itemize}
+\item Scope
+\item Time
+\item Cost
+\item Quality
+\item Benefits
+\item Resources
+\item Risks
+\end{itemize}
+
+\section{Project Life Cycle}
+
+Project life cycle has foru steps.
+
+\subsubsection{Initialise}
+\begin{itemize}
+\item Establish an organization
+\item Project character and definition
+\end{itemize}
+
+\subsubsection{Plan}
+\begin{itemize}
+\item Identify scope, tasks, dependencies and schedule
+\item Plan resources
+\item Clarify trade offs and decision making principles
+\item Develop a risk managment plan
+\end{itemize}
+
+\subsubsection{Execute}
+\begin{itemize}
+\item Monitor your progress
+\item Communicate and report
+\item Correct and control
+\end{itemize}
+
+\subsubsection{Close}
+\begin{itemize}
+\item Sign off: the project sponsor signs off the deliverables.
+\item Conduct a formal post-mortem: learn results from the projects.
+\end{itemize}
+
+\subsection{Software Development Project}
+
+The user needs are used to create a software using the software development process in a predefined time schedule, using cross-functional teams (domain experts, sponsors, developers, etc.)
+
+Software development process phases can be given as:
+
+\begin{itemize}
+\item Requirements engineering: Understanding the problem
+\item Design: How to solve the problem.
+\item Implementation: Actual programming of the solution.
+\item Verification \& Validation: Testing of the program.
+\item Maintanance: Maintain the project after delivery as it is a living entity.
+\end{itemize}
+
+\subsubsection{Requierements Engineering}
+
+Establish the services that the customer requires from the software system. \textbf{Elicitation} of the requirements from the user, \textbf{analysis} of the user, \textbf{specification} of the requirements using different methods: Natural language, UML, etc. And \textbf{validation} of the specification.\\
+
+This process is a process that repeats itself.
+
+\subsubsection{Design}
+
+Describe the internal structure and organization of teh software system to provide the needs and specification (that was done in the previous part) of the stakeholders. \textbf{How} should the solution be.
+
+\begin{itemize}
+\item Software architecture
+\item Component/Object/Function design
+\item Interface specification
+\item Algorithm design
+\item $\vdots$
+\end{itemize}
+
+\subsubsection{Implementation}
+
+Building of the software by following some principles adhering to software design.
+
+\subsubsection{Verification \& Validation}
+
+\begin{description}
+\item[Verification] Did we built the system right? Are there any bugs, is it functioning.
+\item[Validation] If the system is working, are we building the right system? Does it adhere to the specification and customer's wishes? \textit{Does it meet the customer expectations.}
+\end{description}
+
+Verified systems, systems that work, may not be validated.
+
+\begin{itemize}
+\item Unit, system, integration testing
+\item User acceptance testing (UAT)
+\item Regression testing
+\item Performance Testing
+\end{itemize}
+
+\subsubsection{Maintenance}
+
+Software is a living entity that borns, lives and dies. As it lives, it evolves. After the product is in production, after it is delivevered. Maintanence is through:
+
+\begin{description}
+\item[Corrective maintanance] Fixing of bugs and issues in the software.
+\item[Perfective maintanance] Adding new features to the software in accordance to the needs of the customers.
+\item[Adaptive maintance] To maintain the system such that the system runs in updated or changing environments, adapting to chance.
+\end{description}
+
+\subsection{Different Models}
+
+These project managment can be done in many different ways, here are two radically different ways:
+
+\subsubsection{Waterfall Proccess Model}
+
+Goes through all the steps one by one, completing each of them completely before continuing to the next step. (as much as possible)
+
+\subsubsection{Iterative and Incremental Development}
+
+Software grows incrementally, as the steps are completed slowly for different features, rather than completing them all in one go for all features.
+
+In Iterative and Incremental development, the risk is decreased, the users get the software earlier, even if in a smaller scale.
+
+\section{Scope of the Class}
+
+This term adresses Requirements Engieering and Project Managment: As is proccesses, TD-BE processes, Software Requirements Specification (SRS), Project Charter and Software Project Managment Plan (SPMP).
+
+We are pected to understand problem domain, understand processes, understand problems, understand user expectations \textbf{by} reading existing documents, interviewing stakeholders, searching on the iternetnet, etc.
+
+\subsection{the Project Charter}
+
+The project charter is the document issued by the project initiator or sponsor that formally authorizes the eixstence of a project and provides the project manager with the authority to apply organizational resources to project activities.\\
+
+It is the starting point by the end of which everybody is in the same page.\\
+
+The template for this course includes:
+
+\subsubsection{Project Goals}
+
+The justification of the project, gives a direction, puts everyone in the same page, helps identifying the scope. A goal is generally a \textbf{result} that is wanted to achieve.\\
+
+It is \textbf{broad} and \textbf{long-term}. Such as developing a mobile application to give customers the ability to order.
+
+\subsubsection{Deliverables}
+
+High level things to be done in order to reach the project goals. Devilerables do not have to be tangible product, it can just be a process.\\
+
+Producing user training fliers, designing and establish a user support service.\\
+
+\subsubsection{Scope Definition}
+
+The definition of the \textbf{boundaries}. This section includes defining what is inside the scope and what is outside the functions, it is not detailed.
+
+\subsubsection{Project Milestones}
+
+In medium and large scale projects, there are important intermediate stages that are necessary to be passed in order to achieve goals.\\
+
+Milestones can be used to monitor and check the progress of the overall project to realise problems earlier in development.\\
+
+Each milestone has a deadline.
+
+
+\subsubsection{Assumptions, Constraints and Dependencies}
+
+Some of these assumptions may become invalid during the project. One may assume that the team will not change during the project, but this may change invalidating the assumption and one may need to adjust scope, time etc.\\
+
+Constraints are potential factors that may affect the delivery of the project, or make its delivary harder. These may be deadlines, a limit on the member count, or limits on funding.\\
+
+Dependencies are factors that we depend on for our project. For instance, during the development of the software product, one may say that some parts of it will be outsourced, in this case, one is dependant on that company.\\
+
+One has to follow up on constrains, assumptions and dependencies continously throughout the project.
+
+\subsubsection{Project Organizational Structure}
+
+Who is responsible for what, who is responsible for what.
+
+\end{document}
