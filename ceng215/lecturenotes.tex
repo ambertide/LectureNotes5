@@ -1,0 +1,173 @@
+\documentclass[11pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{siunitx}
+\usepackage[siunitx]{circuitikz}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Ege Özkan}
+\title{CENG 215 \\ \large{Circuits and Electronics Lecture Notes}}
+\begin{document}
+\maketitle
+
+\chapter{Introduction - October 15, 2020}
+
+
+\section{Abstractions}
+
+Recall the Newton's formula $F=ma$, which defines the relationship between force, mass and acceleration. This formula modals acceleration using force and mass. However, according to this model, there is no connection between mass and speed. Consider now, the Einstein's equation:
+
+\begin{equation}
+m = \frac{m_0}{\sqrt{1 - \frac{v^2}{c^2}}}
+\end{equation}
+
+As this equation shows, speed affects mass. The abstractions ignore certain connections for the sake of simplicity. Likewise, electrical engineering, based on Maxwell's Equations, create abstractions, notably, this lecture deals with the \textit{Lumped Circuit Abstraction}.
+
+Consider a statement in a high level programming language \texttt{int n = 3;}, this basic statment goes through many abstractions eventually reaching circuitery.
+
+\section{Circuits}
+
+\begin{figure}[httb]
+\begin{circuitikz} \draw
+(0,0) to [V] ++ (2, 0) -- (2,2) to [R] (0, 2) -- (0, 0)
+;
+\end{circuitikz}
+\caption{A simple cirucit abstraction}
+\end{figure}
+
+
+From this abstraction, arises the \textbf{Ohm's Law}
+
+\begin{equation}
+v = iR
+\end{equation}
+
+
+\subsection{Two Terminal Element}
+
+\begin{center}
+\begin{circuitikz}[american voltages]
+\draw
+  (0,0) to [short, *-,i_ = $i$] (2,0) 
+  to [generic] (2,2) -- (0,2)
+  (0, 0)to [open, v^>=$v$, *-] (0,2)
+  to [short, *-] (0,2)
+;
+\end{circuitikz}
+\end{center}
+
+Two terminal elements include batteries, resistors, capacitors, etc...
+
+\subsubsection{Battery}
+
+Batteries provide voltage and can be bind into serial or paralel.
+
+\begin{center}
+\begin{circuitikz}[american voltages]
+\draw
+  (0,0) to [short, *-] (2,0)
+  to [V, l_=$v$] (2,2) -- (0,2)
+  to [short, *-] (0,2)
+;
+\end{circuitikz}
+\end{center}
+
+Below are power (in watts) and energy (in Jouless or watt-seconds) for batteries.
+
+\begin{equation}
+P = vi
+\label{Power in watt}
+\end{equation}
+
+\begin{equation}
+w = Pt
+\label{Energy formula in joules or watt-seconds}
+\end{equation}
+
+Enery formula can also be represented as:
+
+\begin{equation}
+w = \int_{t_1}^{t_2} v(t) i(t) \text{d}t
+\end{equation}
+
+\subsubsection{Resistance}
+
+\begin{center}
+\begin{circuitikz}[american voltages]
+\draw
+  (0,0) to [short, *-, i_=$i$] (1,0)
+  to [tline, l_=$R$] (3,0) to [short, -*] (4,0)
+;
+\end{circuitikz}
+\end{center}
+
+Imagine a generic tube with length $l$, resistivity $\rho$ and cross sectional area $a$, in this case, the Resistance of the element $R$ is
+
+\begin{equation}
+R = \rho \frac{l}{a}
+\end{equation}
+
+The resistance can be showed as:
+
+\begin{center}
+\begin{circuitikz}[american voltages]
+\draw
+  (0,0) to [short, *-, i_=$i$] (1,0)
+  to [R, l_=\text{$R$, $V$}] (3,0) to [short, -*] (4,0)
+;
+\end{circuitikz}
+\end{center}
+
+Where the Ohm's Law state:
+
+\begin{equation}
+v = Ri
+\end{equation}
+
+or alternativelly
+
+\begin{equation}
+i = Gv
+\end{equation}
+
+Where $G$ is conductance, whose SI unit is siemens and defined as $\frac{1}{R}$
+
+\subsubsection{Ideal Voltage Source}
+
+Ideal Voltage source can be represnted by:
+
+\begin{center}
+\begin{circuitikz}[american voltages]
+\draw
+  (0,0) to [short, *-] (1,0)
+  to [battery1, v<=$v(t)$, i_=$i$] (3,0) to [short, -*] (4,0)
+;
+\end{circuitikz}
+\end{center}
+
+\begin{center}
+\begin{circuitikz}[american voltages]
+\draw
+  (0,0) to [short, *-] (1,0)
+  to [V, v<=$v(t)$, i_=$i$] (3,0) to [short, -*] (4,0)
+;
+\end{circuitikz}
+\end{center}
+
+In general, any voltage soucre can be drawn as
+
+\begin{center}
+\begin{circuitikz}[american voltages]
+\draw
+  (0,0) to [short, *-] (2,0)
+  to [R, l_ = $r$] (2,2)
+  to [V, l_=$v$, i_=$i$] (0,2) 
+  to [short, *-] (0,2)
+;
+\end{circuitikz}
+\end{center}
+
+Where $r$ is the internal resistence that arise from the material itself. An ideal voltage source would be able to provide the same current no matter what the voltage is, however this is not possible in real life, where any voltage source has a $r$
+\end{document}

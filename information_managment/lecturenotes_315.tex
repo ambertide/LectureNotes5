@@ -1,0 +1,157 @@
+\documentclass[11pt,a4paper,twocolumn]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{graphicx}
+\author{Ege Özkan}
+\title{CENG315 \\ \large{Information Managment Lecture Notes}}
+\begin{document}
+\lstset{language=SQL}
+\newcommand{\missing}{\textit{(?)}}
+\newcommand{\code}[1]{\texttt{#1}}
+\maketitle
+\chapter{Introduction - October 15, 2020}
+
+\section{Databases and Database Systems}
+
+Databases hold data. Database systems are software systems that manages the records in a database. There are five fundemental requirements for a database system.
+
+\begin{itemize}
+\item Database systems must be persistent, data must be storable and remain for the future.
+\item Databases must be able to handle getting large.
+\item Databases should be sharable, multiple users should be able to reach it at the same time.
+\item Databases must be kept accurate.
+\item Databases must be usable.
+\end{itemize}
+
+\subsection{Record Storage}
+
+Databases can be made persistent in different ways.
+
+\subsubsection{Storing database records in text files}
+
+\begin{itemize}
+\item Simplest approach.
+\item One file per record type.
+\item Each record could be a line of text, with its values seperated by tabs.
+\end{itemize}
+
+\begin{lstlisting}
+1	joe	2020
+2	amy	2013
+3	lee	2000
+\end{lstlisting}
+
+Its advantages are the database system has to do very little, and a use could easily examine and modify the files with a text, but it is slow. \missing
+
+\subsection{Data Models and Schema}
+
+Data models are different ways to express connections between records while Schemas are the implementations of these methdos for a specific database.
+
+\subsubsection{File-system v. Relational}
+
+In the file system modal, each record type has a file, with one record per line, programs that read and write to the file is responsible for understanding this. In the relational data model, each record type has its \textbf{table} and each record has \textbf{fields} for each value. User access to the database happens via this record and field model and records that fit certain conditions can be quarried.\\
+
+These models are at different levels of abstraction, relational model is a \textbf{conceptual model}, since there is no need to know \textbf{how} schemas are specified and implemented, the conceptual schema describes what the data \textit{is}. Whereas the file-system is called a \textbf{physical model}, physical schemas say how the data is \textit{implemented}.
+
+\subsubsection{Physical Data Independence}
+
+A conceptial schema is certainly nicer to use than a physical scheme. Operations on a conceptual schema is implemented by the database schema. Database system has a \textbf{database catalog} that contains descriptions of the physical and conceptual schemas. Givven an SQL querry, the database system translates the conceptual abstraction to the physical one and interract with it on the users behalf. If the user does not have to deal with the physical level, this is called the Physical Data Independence.
+
+It is easy to use, quaries are optimized automatically and it is isolated from changes to the physical schema.
+
+\subsubsection{Logical Data Independence}
+
+The set of tables personalized for a particular user is called the user's \textbf{external schema}. If users can be given their own external schema in a database system, it is told that this Database System supports Logical Data Independence.\\
+
+It has three benefits:
+
+\begin{itemize}
+\item Each users gets a customized external schema, they see only the information they need.
+\item The user is isolated from changes to conceptual schema.
+\item It is safer.
+\end{itemize}
+
+\section{Relational Databases}
+
+The relational modal is a conceptual model since its schemas do not depend on the pyhsical level.
+
+\subsection{Tables}
+
+The database is organized into \textbf{tables}, which contain zero or more \textbf{records} (ie: table rows), and at least one \textbf{fields} (ie: the columns of the table.) Each record has a value for each field, and all fields has a specific \textbf{type}. Often, when discussing tables, the type information ignored.
+
+\begin{figure}
+\begin{lstlisting}
+STUDENT(SId, SName, GradYear, MajorId)
+DEPT(DId, DName)
+COURSE(CId, Title, DeptID)
+SECTION(SectId, CourseId, Prof, Year)
+DEPARTMENT(DId, Name)
+\end{lstlisting}
+\caption{An example schema}
+\label{schema:univesity}
+\end{figure}
+
+\subsubsection{Null Values}
+
+A \texttt{null} value denotes a value that \textit{does not exist} or is \textit{unknown}. It occur if the data collection is incomplete or if data has not arrived yet.
+
+\subsection{Superkeys and Keys}
+
+In the relational model, the access to data is not handled by indices. Instead, a record must be referenced by specifying field values. Since not all values are guranteed to be unique for all users, a unique identifier field is called a \textbf{superkey} to distinguish it. Adding a field to a superkey, will generate another superket. A \textbf{key} is a superkey with the property that no subset of its fields is a super key.\\
+
+\subsubsection{Primary Keys}
+
+In the Schema at Figure \ref{schema:univesity}'s, \texttt{STUDENT} table \texttt{SId} is a key. Whereas in \texttt{SECTION} there may be multiple keys if each professor teaches only one class. Therefore, since a table may have multiple keys, a key is chosen as a \textbf{Primary Key}, whose  values \textit{should never be null}, and who is used to refeer to each record.\\
+
+For instance, in Figure \ref{schema:univesity}, \texttt{STUDENT} table, \texttt{SId} can be the primary key. This is no coincidance, IDs are most times fit to be primary keys.
+
+\subsubsection{Foreign Keys}
+
+The information in a database is split among tables, these are not isolated from each other, a \textbf{foreign key} is a field (or fields) of one table which corresponds to the primary key of another table. For instance, in Schema at Figure \ref{schema:univesity}, \texttt{CourseId} of the \texttt{SECTION} table is a foreign key.\\
+
+Foreign Keys can be used to create logical connections between different types of records. In the Schema at Figure \ref{schema:univesity}, \code{CourseId} of the \code{SECTION} table creates a logical connection between the \code{SECTION} table and \code{COURSE} table, since the objects these represent in real life, Sections and Courses are bound by a logical connection as well. (Each section is a section of a course).
+
+\subsubsection{Foreign Keys and Referential Integrity}
+
+The specification of a foreign key asserts \textbf{referential integrity}. Which requires each non-null foreign key value to be the key value of some record. Database system must ensure that if the primary keys of a table is modified in some ways, the foreign keys in other tables refeering to primary keys must also be updated accordingly, or set to \code{null} in worst case scenerio.
+
+\subsection{Constraints}
+
+A \textbf{constraint} describes the allowable states that fields can have in a table. There are four important kinds of constraints. \textbf{Null Value Constraints} limit fields to not have \code{null} values. \textbf{Key constraints} specify that two records cannot have the same value. \textbf{Referential integrity constraints} specify referential integrity, finally \textbf{integrity constraints}.
+
+\subsubsection{Integrity constraints}
+
+These constraints encodes \textit{business rules}. They can detect bad data entry and can enfore the \textit{rules} of the organization. They may apply to tables, individual records or the entire database.
+
+\subsection{Tavle Specification in SQL}
+
+\begin{lstlisting}[caption={the SQL specification of the STUDENT table},label={lst:student}]
+create table STUDENT (
+	SId int not null,
+	SName varchar(10) not null,
+	MajorId int,
+	GradYear int,
+	
+	primary key (SId),
+	foreign key (MajorId) references DEPT
+		on update cascade
+		on delete set null,
+	check (SId > 0),
+	check (GradYear >= 1863)
+)
+\end{lstlisting}
+
+In Listing \ref{lst:student} we can see constraints and fields. The action specified with the \code{on delete} and \code{on update} keywords can be one of the following:
+
+\begin{description}
+\item[Cascade] causes the same query to apply to each foreign key record.
+\item[Set null] causes the foreign key values to be set to null.
+\item[Set default] causes the foreign key values to be set to their default value.
+\item[No action] causes query to be rejectd if there exists and effected value with the foreign key.
+\end{description}
+
+\end{document}
