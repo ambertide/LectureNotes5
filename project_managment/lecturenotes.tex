@@ -3,13 +3,14 @@
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{tikz}
 \usepackage{amssymb}
 \author{E. Ambertide}
 \title{\textbf{CENG 323} \\ \large{Project Managment Lecture Notes}}
 \begin{document}
 \maketitle
 
-\chapter{Introduction}
+\chapter{Introduction - October 14, 2020}
 
 \section{Project}
 
@@ -211,5 +212,96 @@ One has to follow up on constrains, assumptions and dependencies continously thr
 \subsubsection{Project Organizational Structure}
 
 Who is responsible for what, who is responsible for what.
+
+\chapter{Problem Analysis - October 21, 2020}
+
+\section{Product Space}
+
+A space with dimensions representing development organization (profits, market share, consumer satisfaction etc), Users and costumer and technology laws and standards, where the origin of the space is the acceptable product.\\
+
+\section{Problem Analysis}
+
+Problem analysis is used to generate problem definition and requiremens definition, which is used to create the requiremennts defintion.
+
+Primary goal is to understand. Learning about the problem domains, finding the users, understanding their needs and understanding the constraints on the solution.\\
+
+\subsection{Problem Context}
+
+If you are an engineer planing to build a bridge across a river. You must exame the problem context by visiting the site first. What is built by the engineer directly interact with the part of the world your customer is intrested.
+
+\subsection{Problem Domain}
+
+To understand the problem, one has to understand the problem domains.
+
+\begin{itemize}
+\item What parts of the world are they in.
+\item How are they interconnected.
+\item What are theiir significant properties.
+\item What processes exists.
+\item What properties can you exploit.
+\item What interactions can they have with machine.
+\end{itemize}
+
+\subsubsection{Solution Domain}
+
+Solution domain encompasses the programming languages, database managment, module decomposition, etc. Whereas the problem domain encompasses the AS-IS processes, properties the problem has right now, the properties customer wants to solve. One has to understand the problem domain first so that the solution will satisfy the customer.
+
+\subsection{Context Diagrams in SADT}
+
+\subsubsection{the level dataflow diagram}
+
+Sometimes there are domains that don't interact with the problem directly but are significant, this dataflow diagram does not show them.
+
+\subsubsection{Jackson's Context Diagram}
+
+Show all the domains relevant to the problem requirement. The connections are just a line and machine is just one of the domains.\\
+
+Thick lines denote direct connections, whereas thin lines denote indirect connections that are still significant.
+
+\paragraph{In problem domains, the principle of domain relevance state that anything related to the problem must appear in the requirements paper.}
+
+\subsection{Describing Domain Characteristic}
+
+Staticness of the domain describes if anything changes. Domain can be described by bein one-dimensional or multi-dimensional. If it is tangible or intagile, if it is inert (external change), reactive (self changing in response) and active.
+
+\section{AS-IS and TO-BE Proccesses}
+
+\begin{description}
+\item[AS-IS] How is the current proccesses, how does they system work \textit{now}.
+\item[TO-BE] How \textit{will} the system work, what \textit{will} be the proccesses after the product is in working condition.
+\end{description}
+
+These proccesses can be described in different ways, from natural language (informal) to diagrams (formal/semi-formal).
+
+\subsection{Event Based Analysis}
+
+An event is something that happens for a moment, that are related to the states but are not states. They represent a significant change in a state. Easier for the domain expert to identify events of the problem domain.\\
+
+EPC, Event-Driven Proccess Chain is a semi-formal, behavioral notation. The probecess is described with a sequence of functions, that trigger and result from functions. A function is a technical task or an activity performed on an object to support one or more business objectives. An event represents a state of an object that is relevent in terms of business conext. Eevents trigger activities and are the result of activities. An activity is a time consuming occcurance while an event is related to one point in time. Logical operators, $\lor$ (Logical or), $\land$ (Logical and) or $\times$ (XOR, Decision points). The arrow represents the flow of time. EPCs always begin with a \textit{start event} and are termined by one or more \textit{end event(s)}. Some events are called \textit{trivial events}, for instance, an activity named "Check x" will have a trivial event called "x is checked" that is trivial, and it may be ommitied.\\
+
+\subsubsection{Naming Conventions}
+
+\begin{itemize}
+\item Functions are named in imperative.
+\item Events are named to indicate state.
+\item Objects are named in singular.
+\end{itemize}
+
+Due to the nature of logical operators, a process may have more than one start event, or condition, usually, connectors are precedeed by a function for the \textit{decision}.\\
+
+Processes can be modularised to allow reuse and simplification of complexity.
+
+\subsection{eEPC - Extended Event Driven Proccess Chain}
+
+EPCs are extended in this format to include:
+
+\begin{itemize}
+\item Roles, organizational units, positions that perform activities.
+\item Information that denote input and output on activites.
+\item Application systems, tools that supports the activities.
+\item Objectives of performing activities.
+\end{itemize}
+
+A function must always have an orginizational element connected (if it is not a subdiagram), that determine who is performing it. For each function, analyze if there are any inputs, outputs or both. For each function, analyze if there are any business rules applicable, any applications used etc.
 
 \end{document}
