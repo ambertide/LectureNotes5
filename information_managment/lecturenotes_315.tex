@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{listings}
+\usepackage{booktabs}
 \usepackage{graphicx}
 \author{Ege Özkan}
 \title{CENG315 \\ \large{Information Managment Lecture Notes}}
@@ -12,6 +13,8 @@
 \lstset{language=SQL}
 \newcommand{\missing}{\textit{(?)}}
 \newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\join}{\ensuremath{\bowtie}}
+\newcommand{\assign}{\ensuremath{\leftarrow}}
 \maketitle
 \chapter{Introduction - October 15, 2020}
 
@@ -153,5 +156,136 @@ In Listing \ref{lst:student} we can see constraints and fields. The action speci
 \item[Set default] causes the foreign key values to be set to their default value.
 \item[No action] causes query to be rejectd if there exists and effected value with the foreign key.
 \end{description}
+
+\chapter{Relational Algebra - October 22, 2020}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{llll}
+		ID & Name & Dept. Name & Salary\\
+        \toprule
+        22222 & Einstein & Physics & 95000\\
+        12212 & Tesla & Physics & 4354\\
+        \bottomrule
+    \end{tabular}
+    \caption{Instructors.}
+    \label{tab:inst}
+\end{table}
+
+\section{Structure of Relational Databases}
+
+Databases are structured with atrributes and values as tuples corresponding to those attributes.
+
+\subsection{Attributes}
+The domain of teh attribute is a set of allowed values. Attribute values are normally required to be \textbf{atomic}.
+
+The \textbf{null} value is a special value that signifes that the value is unknown, or does not exist, it is a member of every domain. However, it causes complications.
+
+\subsection{Schema vs Instance}
+
+A database schema is the logical structure of the database. \texttt{instructor(ID, name, dept\_name, salary)}. A database instance is the snapshot of the database in a given time.
+
+Using common attributes in relation schemas is one of \missing. There is also need for a \missing.
+
+\subsection{Keys}
+
+A \textbf{superkey} is a set of one or more attributes that allow us to identify uniquely a tuple in relation. Let $L \subset R$, superkey  $K$ is a \textbf{candidate key} if $K$ is minimal. One of the candidate keys is selected to be \textbf{primary key}, they should be chosen such that its attribute values are never or very rarely changed.\\
+
+\textbf{Foreign key constraint} states that value in one relation must appear in another. \textbf{Referencing relation} is the relation that refeers to another and \textbf{Referenced relation} is the reference that is being referenced.
+
+\section{Relational Query Languages}
+
+A \textbf{query language} is a language in which a user requests infromation from the database. \textbf{Relational algebra} provides a set of operations that take one or more relations as input and return a relation as an output.
+
+\section{Operations of Relational Algebra}
+
+Relational algebra provides operations that take relations as input and returns relations as output.
+
+\subsection{Select Operation}
+
+Select operator selects $\sigma_p (r)$ (or \texttt{select(r, p)} to denote the selection of rows (horizontal selection) to denote selection on relation $r$ with respect to predicate $p$.\\
+
+For instance, $\sigma_{A=B \land D>5}(r)$ would select tuples of relation $r$, such that its $A$ and $B$ attributes are equal and values of $D$ attribute is greater than 5\\
+
+On the Table \ref{tab:inst}, $\sigma_{\text{dept\_name}=\text{"Physics"}(\text{instructor})}$ would return a tuple of instructors whose department is Physics.\\
+
+Selection predicate can take comparasions using $=, \neq, >, \geq, <, \leq$ and multiple predicates can be combined using \textbf{connectives.} $\land, \lor$ and $\lnot$.\\
+
+For instance on the department table with schema \texttt{department(dept\_name, building, budget)}, $\sigma_{\text{dept\_name}=\texttt{building}}(\text{department})$ would return departments whose names equal to their building's name.\\
+
+\subsection{Project Operation}
+
+An unary operation that returns its argument relation with certain attributes left out. $\Pi_{A_1, A_2, A_3, \dots, A_k}(r)$ or \texttt{project(r, {$A_1, A_2, A_3, \dots, A_k$})} where $A_n$ are attribute names and $r$ is a relation.\\
+
+In essance project operation returns tuples with only the values whose attributes are listed in the operation.\\
+
+\subsection{Composition of Relational Operations}
+
+Since the result of a relational operation are itself a relations, operations can be given as input to other operations, ie: they can be composed together into a \textbf{relational-algebra expression}, finding the names ofa ll instructors in the physics department can be done by:
+
+\begin{equation}
+\Pi_{\texttt{name}}(\sigma_{\texttt{dept\_name} = \texttt{"Physics"}}(\texttt{instructor}))
+\end{equation}
+
+\subsection{Cartesian Product Operation}
+
+Composes two relations together to a single product, $\texttt{instructor} \times \texttt{teaches}$ relation, where \texttt{instructor(id, name, dept\_name, salary)} and \texttt{teaches(id, course\_id, year} results in the relation \texttt{instructor$\times$teaches(instructor.id name, teaches.id, course\_id, year)}\\
+
+However, as one can see, common attributes are not joined, therefore the cartessian product may not (and most likely will not) result in logical results.\\
+
+When to attribute names are the same, they can be distinguished by attaching the name of the relation prior to the attribute name.\\
+
+\subsection{Join Operation}
+
+To avoid the mistake of illogical results, one can write:
+
+\begin{equation}
+\sigma_{\texttt{instructor.id}=\texttt{teaches.id}}(\texttt{instructor}\times\texttt{teaches}).
+\end{equation}
+
+The join operator is the equivalent of this expression. \textbf{Natural join} operation is denoted by $\join$ Outputs of the rows from the two input relations that have the same value on all atributes that have the same name is joined.\\
+
+Consider relations $r$ and $s$, let $\theta$ be a predicate on attributes in the schema $r \cup s$. The join operation $r \join_\theta s$ is defined as $r \join_\theta s = \sigma_\theta (r \times s)$
+
+Such as $\code{teaches} \join_{\code{teaches.id} = \code{instructor.id}}( \code{instructor})$ is equivalent to $\sigma_{\texttt{instructor.id}=\texttt{teaches.id}}(\texttt{instructor} \times \texttt{teaches})$
+
+\subsection{Union Operation}
+
+The union operation $r \cup s$ combines two relations as long as they have the same \textbf{arity} (number of attributes) and the attribute domains are compatible. (Same indexed attributes have the same domain.)\\
+
+The expression $\pi_{\code{course\_id}}(\sigma_{\code{semester}=\code{"Fall"} \land \code{year} = 2017}(section) \cup \pi_{\code{course\_id}}(\sigma_{\code{semester} = \code{"Spring"} \land \code{year} = 2018}(section)$ on the relation \code{section} with schema \code{section(course\_id, sec\_id, semester, year, building, room, number, time\_slot\_id)} wil select \code{course\_id} row of the course that are though on Fall 2017 \textbf{or} Fall 2018.
+
+\subsection{Set Intersection Operation}
+
+Set intersection $s \cap r$ works exactly the same (and have the same assumptions.), but instead of working like \textit{or}, it works like \textbf{and}.
+
+\subsection{Set Difference Operation} 
+
+Set differnce $s - r$ works similar to intersection and union, but it selects those tuples that are on the first relation and \textbf{not} on the second relation.
+
+\subsection{Rename Operation}
+
+Given the relational algebra expression $E$, the expression $\rho_x(E)$ returns the expression $E$ under the name $X$.\\
+
+It can also return an output whose attribute names are changed when they are listed $\rho_{x\{A_1, A_2, \dots, A_n\}}(r)$.
+
+\subsection{Assignment Operation}
+
+The assignment operation $\assign$ works like assignment in a programming language, relation algebra expressions can be assigned to temporary relation variables.
+
+\begin{align*}
+\code{Physics} \assign \sigma_{\code{dept\_name} = \code{"Physics"}}(\code{instructor})\\
+\code{Musics} \assign \sigma_{\code{dept\_name} = \code{"Musics"}}(\code{instructor})\\
+\code{Musics} \cup \code{Physics}
+\end{align*}
+
+\subsection{Equivalent Queries}
+
+Since there is more than one way to write a query in relational algebra, queries that are not identical may be \textbf{equivalent}, they give the same result on any database.
+
+\subsubsection{Alternative Notation}
+
+On a related note, queries can be written with the alternative notation shown. For instance, \code{select(p, r)} instead of $\sigma_p (r)$
+
 
 \end{document}
