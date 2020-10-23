@@ -4,11 +4,19 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{listings}
 \usepackage{graphicx}
+\usepackage{booktabs}
 \author{Ege Özkan}
 \title{CENG 311 \\ \large{Computer Architecture Lecture Notes}}
 \begin{document}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\cputime}{\ensuremath{\text{CPU Time}}}
+\newcommand{\cyclecount}{\text{Cycle Count}}
+\newcommand{\cycletime}{\text{Cycle Time}}
+\newcommand{\clockrate}{\text{Clock Rate}}
 \maketitle
+\newcommand{\inscount}{\text{IC}}
 
 \chapter{Introduction - October 16, 2020}
 
@@ -41,5 +49,174 @@ Studying computer architecutre allows one to understand why computers work the w
 
 The present day industry has entered a paradigm shift to novel architectures, as many difficult problems motivate and cause a demand for novel architectures.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% CHAPTER II %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Computer Abstractions - October 23, 2020}
+
+
+Computer architecture is the science and art of selecting and interconnecting hardware components to create a computer that meets functional, performance and cost goals. Computer systems come in many  forms, from general purpose personal computers to supercomputers.\\
+
+A system must be \textit{Functional} (correct), \textit{Reliable} (continue to perform correctly.), High performance, low cost, low power/energy consumption and it must be secure. Keep in mind that the word \textit{correct} may mean different things in different accuracy levels.\\
+
+\section{Abstractions}
+
+The computer system structure consists of the Application software at the top, the system software in the middle and the hardware in the bottom. \textbf{Hardware-software interface} handles the translation.\\
+
+The compiler takes a high level compiled language (such as C), converts it into an Assembly language, and the assembler takes the Assembler code and converts it into the machine code.\\
+
+A Microarchitecture is an impleentation of an ISA, there may be multiple implementations from the same ISA.\\
+
+Levels of transmformation create abstractions. High-level language programmer does not really need to know what the ISA is and how a computer executes instructions. Abstractions also improve productivity, decisions made in the underlaying level does not need to be considered.\\
+
+Knowledge of the lower level may improve higher level design choices of a person. [For instance, consider the fact that modulo operator is \textit{slower} in the hardware level, when writing C code, modulo operations can be transformed into bit-shift operations, which are \textit{faster}, improving speed.]
+
+\section{the Von Neumann Architecture}
+
+the Von Neumann Architecture consists of a main memory, a CPU and the interconnection between them. Within the CPU, there is a control unit, and an arithmatic/logic unit. the Von Neumann Architecture is the \textit{traditional} structure of computers.\\
+
+\section{Main Memory}
+
+Collection of locations, each of which is capable of storing both instructions and data. Every location consists of an adress, which is used to access the location, and the contents of the location. It is similar in structure to a programming array. [Intresting to note, many emulators actually use arrays to emulate the memory of simpler machines.]
+
+\section{Central Processing Unit}
+
+CPU consists of multiple parts, \textbf{control unit}, \textbf{arithmatic logic unit} and \textbf{registers}. Memory is \textit{fetched/read} to the CPU, as CPU sizes tend to be significantly smaller then Memory sizes, that is why despite CPU being much faster, memory is used to read/fetch from and \textit{write/store} to.
+
+\subsection{Program Compilation as Execution}
+
+C is a compiled language, which means C code such as \code{float value = x[i];} would get translated to assembly instructions such as \code{ld r0 addr[1]}. [Many C compilers also optimize your code, so there are changes made to it. (Some even causing bugs.)]\\
+
+The resulting assembly code is stored in the memory as binary machine code. These instructions are fetched from the memory to the CPU (ALU). A specialised register called \textbf{program counter} (PC), \textit{points} to the instruction to be executed. When ALU executes an instruction, program counter is incremented.\\
+
+\subsection{Metrics}
+
+Performance is generally valued in the CPU architecture, this is not as straightforward as one assumes, however. Consider an airplane, airplane performance can be defined as passsanger capacity, cruising speed, crusining range or passangers per mph. As such, there are different \textit{metrics} to optimize for.\\
+
+For computers, \textbf{Latency} is the elapsed time to do a task, how long it takes to do a task while \textbf{Throughput} is total work done per unit time. Although they may \textit{look} similar, they are not the same.\\
+
+In this course, while discussing processor performance, the focus will primarilly be on the execution time for a single job (latency). It can be measured in different ways, \textbf{Execution time} includes all aspects, the total response time while \textbf{CPU time} is the direct time spent on processing a given job, this discounts IO time and other jobs' shares.
+
+\begin{equation}
+\text{Performance} = \frac{1}{\text{Execution Time}}
+\end{equation}
+
+Relative performance is the performance comperasion between two computers. Saying X is $n$ time faster than Y is the same as dividing their performances or the inverse of their execution times.\\
+
+If Computer A runs a program in 10 seconds, and B in 15 seconds, A is told to be 1.5 times faster than B.
+
+\subsection{CPU Clock}
+
+CPU clock determines when events take place in the hardware. [a clock cycle is similar to a Minecraft Tick.] a clock period is the duration of a clock cycle. Clock period has the unit of time and Clock frequency, which is the cycles per second, has the unit of Hz.\\
+
+This has the effect that the CPU Time is the:
+
+\begin{equation}
+\cputime = \cyclecount \times \cycletime 
+\end{equation}
+
+Where $\cyclecount$ count of cycles needed for program to run, $\cputime$ is the CPU time of the program, $\cycletime$ is the time it takes for a single CPU cycle.
+
+\begin{equation}
+\cputime = \frac{\cyclecount}{\clockrate}
+\end{equation}
+
+Where $\clockrate$ is the clock rate. Therefore, increasing the clock rate, or decreasing the cycle time will improve performance.\\
+
+For isntance, if a program runs in 10 seconds on a computer A, which has a 2GHz clock rate, whihc means the clock cycles needed for this program in computer A is $2 \times 10^9\text{Hz} \times 10\text{s} $ Clock cycles.\\
+
+If computer B runs this program in 6 seconds, but 1.2x more clock cycles, to calculate its clock rate, one just has to multiply the Clock rate above with $\frac{1.2}{6\text{s}}$, which results in the calculation $\clockrate = 4$GHz\\
+
+Different instructions take different amounts of time on different machines, division generally takes more time than addtion, floating point operations take longer than itneger ones, accessing memory takes more time than accessing registers. So one can assume that the number of cycles will equal the number of instructions for simplicity, but it would be incorrect.\\
+
+Instruction count for a program is determined by a program, ISA and compiler, but the avarage cycles per instruction is determined by CPU hardware, if different instructions have different CPI, avarage CPI is affected by instruction mix.\\
+
+Clock Cycles equal Instruction count $\times$ Cycles per instruction, whereas the CPU time depends on the product of Instruction count, CPI and Clock Cycle time, keep in mind Clock Cycle Time can be changed with $\frac{1}{\clockrate}$.\\
+
+Imagine an example where:
+\begin{table}[ht]
+\begin{tabular}{lll}
+Computer & Cycle Time & CPI\\
+\toprule
+A & 250ps & 2.0\\
+B & 500ps & 1.2\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Here, $t_a = \text{CC} \times \text{CCT} = I \times 2 \times 250$ and $t_b = I \times 1.2 \times 500$ where $I$ is the instruction count, comparing them, $\frac{t_a}{t_b} = \frac{500I}{600I}$, shows that computer a is $\frac{6}{5}$ times faster for a program.\\
+
+Another example, this time with compilers:
+
+\begin{table}[ht]
+\begin{tabular}{lccc}
+ & A & B & C\\
+\toprule
+CPI for class & 1 & 2 & 3\\
+IC in sequence 1 & 2 & 1 & 2\\
+IC in sequence 2 & 4 & 1 & 1\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Here the compiler writer can chose between different code generation sequences for three classes A, B and C. But which code sequence is faster, and what is the CPI for each sequence?\\
+
+For the first sequence, there is a total of $1 \times 2 + 2 \times 1 + 3 \times 2 = 10$ Clock Cycles spent, for the second sequence, there is a total of $1 \times 4 + 2 \times 1 + 3 \times 1 = 9$. Since the compiler will execute them in the same computer, the clock rate is equal, and hence, the time being spent is directly related to the number of clock cycles, therefore, the second sequence is much more beneficial.\\
+
+One could also calulcate the avarage CPI, this is calculated using:
+
+\begin{align}
+\text{CPI}_A &= \frac{\text{Clock Cycles}}{\text{Instruction Count}}\\
+&= \sum_{i = 1}^n \left( \text{CPI}_i \times \frac{\text{Instruction Count}_i}{\text{Instruction Count}}\right)\\
+\text{Clock Cycles} &= \sum_{i =1}^n \left( \text{CPI}_i \times \text{Instruction Count}_i \right)
+\end{align}
+
+Where $\text{CPI}_A$ is the weighted avarage CPI.
+
+Overall:
+
+\begin{equation}
+\text{CPU Time} = \frac{\text{Instructions}}{\text{Program}} \times \frac{\text{Clock cycles}}{\text{Instruction}} \times \frac{\text{Seconds}}{\text{Clock Cycle}}
+\end{equation}
+
+\subsubsection{Determining the Values}
+
+\begin{description}
+\item[CPU Execution Time] can be determined by running the program.
+\item[Clock cycle time] is usually published with documentation.
+\item[Instruction Count] via the software tools that profile execution or by simulators.
+\item[CPI] however, depends on a wide variety of design details including the memory system and the processor structure, therefore it is much harder to determine.
+\end{description}
+
+\textbf{Computer Benchmarks} are programs or set of programs used to evaluate computer performance, benchmarks allow us to make performance comparisions based on eexecution times, they can vary greatly in terms of their complexity and their usefulness, benchmarks should:
+
+\begin{itemize}
+\item Be representitive of the type of applications that run on the computer.
+\item Not be overly dependent on one or two features of a computer.
+\end{itemize}
+
+\subsubsection{Amdahl's Law}
+
+Improving an aspect of a computr and expecting a proportional improvement in overall performance. Where $n$ is the improvement factor:
+
+\begin{equation}
+T_{\text{improved}} = \frac{T_{affected}}{n} + T_{\text{unaffected}}
+\end{equation}
+
+For instance if multiply accounts for 80 seconds of 100, how much improvement in multiply perfromance to get 2 times overall improvement. [ie to make 100 seconds to fall to 50 seconds]
+
+\begin{equation}
+50 = \frac{80}{n} + 20
+\end{equation}
+
+Must imrpove by 2.6 times.
+
+However if multiply accounts for 80 seconds of 100 seconds and we want five times overall improvement. This is impossible, since the unaffected part also takes 20 seconds.
+
+\subsubsection{Summary of Performance Evaluation}
+
+Good benchmarks, such as SPEC can provide an accurate method for evaluating and comparing computer performance. Ahmdal's law provides an efficent method for determining speedup due to an enhancment, and one must make the common case fast.
 
 \end{document}

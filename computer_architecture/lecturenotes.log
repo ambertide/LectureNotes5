@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  16 OCT 2020 14:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  23 OCT 2020 16:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -121,13 +121,38 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
-
+(/usr/local/texlive/2020/texmf-dist/tex/latex/listings/listings.sty
 (/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks22
 )
+\lst@mode=\count191
+\lst@gtempboxa=\box47
+\lst@token=\toks23
+\lst@length=\count192
+\lst@currlwidth=\dimen145
+\lst@column=\count193
+\lst@pos=\count194
+\lst@lostspace=\dimen146
+\lst@width=\dimen147
+\lst@newlines=\count195
+\lst@lineno=\count196
+\lst@maxwidth=\dimen148
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count197
+\lst@skipnumbers=\count198
+\lst@framebox=\box48
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
 (/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 
@@ -142,45 +167,66 @@ Package graphics Info: Driver file: pdftex.def on input line 105.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen145
-\Gin@req@width=\dimen146
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen151
+\lightrulewidth=\dimen152
+\cmidrulewidth=\dimen153
+\belowrulesep=\dimen154
+\belowbottomsep=\dimen155
+\aboverulesep=\dimen156
+\abovetopsep=\dimen157
+\cmidrulesep=\dimen158
+\cmidrulekern=\dimen159
+\defaultaddspace=\dimen160
+\@cmidla=\count199
+\@cmidlb=\count266
+\@aboverulesep=\dimen161
+\@belowrulesep=\dimen162
+\@thisruleclass=\count267
+\@lastruleclass=\count268
+\@thisrulewidth=\dimen163
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count191
-\l__pdf_internal_box=\box47
+\l__kernel_color_stack_int=\count269
+\l__pdf_internal_box=\box49
 )
 (./lecturenotes.aux)
 \openout1 = `lecturenotes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+\c@lstlisting=\count270
 
 (/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count192
-\scratchdimen=\dimen147
-\scratchbox=\box48
-\nofMPsegments=\count193
-\nofMParguments=\count194
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count195
-\MPscratchDim=\dimen148
-\MPnumerator=\count196
-\makeMPintoPDFobject=\count197
-\everyMPtoPDFconversion=\toks24
+\scratchcounter=\count271
+\scratchdimen=\dimen164
+\scratchbox=\box50
+\nofMPsegments=\count272
+\nofMParguments=\count273
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count274
+\MPscratchDim=\dimen165
+\MPnumerator=\count275
+\makeMPintoPDFobject=\count276
+\everyMPtoPDFconversion=\toks25
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -190,13 +236,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 11.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
 
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 11.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
 
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -211,28 +257,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ]
 Chapter 1.
 
-Underfull \hbox (badness 4913) in paragraph at lines 20--21
+Underfull \hbox (badness 4913) in paragraph at lines 28--29
 []\OT1/cmr/m/n/10.95 Fundementally low la-tency and pre-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
 []\OT1/cmr/m/n/10.95 Architectures for AI/ML, Ge-nomics,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 26--27
-
- []
-
-
-Underfull \hbox (badness 3168) in paragraph at lines 28--29
-[]\OT1/cmr/m/n/10.95 Computer ar-chi-tec-ture was tra-di-tion-ally
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 28--29
-
  []
 
 
@@ -241,13 +272,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
  []
 
 
-Underfull \hbox (badness 1199) in paragraph at lines 36--37
-[]\OT1/cmr/m/n/10.95 The com-puter ar-chi-tec-ture al-lows bet-ter
- []
-
-
-Underfull \hbox (badness 1502) in paragraph at lines 36--37
-\OT1/cmr/m/n/10.95 sys-tems to be built by mak-ing com-puter
+Underfull \hbox (badness 3168) in paragraph at lines 36--37
+[]\OT1/cmr/m/n/10.95 Computer ar-chi-tec-ture was tra-di-tion-ally
  []
 
 
@@ -256,28 +282,247 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--37
  []
 
 
-Underfull \hbox (badness 2600) in paragraph at lines 42--43
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
+
+ []
+
+
+Underfull \hbox (badness 1199) in paragraph at lines 44--45
+[]\OT1/cmr/m/n/10.95 The com-puter ar-chi-tec-ture al-lows bet-ter
+ []
+
+
+Underfull \hbox (badness 1502) in paragraph at lines 44--45
+\OT1/cmr/m/n/10.95 sys-tems to be built by mak-ing com-puter
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+
+ []
+
+
+Underfull \hbox (badness 2600) in paragraph at lines 50--51
 \OT1/cmr/m/n/10.95 The present day in-dus-try has en-tered a
  []
 
-[3] (./lecturenotes.aux) ) 
+[3] [4
+
+]
+Chapter 2.
+
+Underfull \hbox (badness 1502) in paragraph at lines 60--61
+\OT1/cmr/m/n/10.95 art of se-lect-ing and in-ter-con-nect-ing hard-
+ []
+
+
+Underfull \hbox (badness 3029) in paragraph at lines 60--61
+\OT1/cmr/m/n/10.95 Com-puter sys-tems come in many forms,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
+
+ []
+
+
+Underfull \hbox (badness 1062) in paragraph at lines 62--63
+[]\OT1/cmr/m/n/10.95 A sys-tem must be \OT1/cmr/m/it/10.95 Func-tional \OT1/cmr
+/m/n/10.95 (cor-rect),
+ []
+
+
+Underfull \hbox (badness 2790) in paragraph at lines 62--63
+\OT1/cmr/m/n/10.95 per-for-mance, low cost, low pow-er/en-ergy
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
+
+ []
+
+
+Underfull \hbox (badness 1365) in paragraph at lines 92--93
+\OT1/cmr/m/n/10.95 in-struc-tions are fetched from the mem-ory
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 92--93
+\OT1/cmr/m/n/10.95 called \OT1/cmr/bx/n/10.95 pro-gram counter \OT1/cmr/m/n/10.
+95 (PC), \OT1/cmr/m/it/10.95 points \OT1/cmr/m/n/10.95 to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
+
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 132--133
+\OT1/cmr/m/n/10.95 point op-er-a-tions take longer than it-neger
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
+
+ []
+
+
+Underfull \hbox (badness 1708) in paragraph at lines 134--135
+[]\OT1/cmr/m/n/10.95 Instruction count for a pro-gram is de-
+ []
+
+
+Underfull \hbox (badness 1874) in paragraph at lines 134--135
+\OT1/cmr/m/n/10.95 but the avarage cy-cles per in-struc-tion is
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 134--135
+\OT1/cmr/m/n/10.95 de-ter-mined by CPU hard-ware, if dif-fer-ent
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
+
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 136--137
+[]\OT1/cmr/m/n/10.95 Clock Cy-cles equal In-struc-tion count $\OMS/cmsy/m/n/10.
+95 ^^B$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--165
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
+
+ []
+
+[7]
+Overfull \hbox (16.61713pt too wide) detected at line 174
+[]
+ []
+
+
+Overfull \hbox (42.67352pt too wide) detected at line 182
+[] \OT1/cmr/m/n/10.95 = [] \OMS/cmsy/m/n/10.95 ^^B [] ^^B []
+ []
+
+
+Underfull \hbox (badness 1540) in paragraph at lines 189--190
+[]\OT1/cmr/m/n/10.95 via the soft-ware tools
+ []
+
+[8] (./lecturenotes.aux) ) 
 Here is how much of TeX's memory you used:
- 3042 strings out of 480906
- 40364 string characters out of 5908268
- 295053 words of memory out of 5000000
- 18623 multiletter control sequences out of 15000+600000
- 542510 words of font info for 56 fonts, out of 8000000 for 9000
+ 4465 strings out of 480906
+ 60582 string characters out of 5908268
+ 320694 words of memory out of 5000000
+ 20026 multiletter control sequences out of 15000+600000
+ 544921 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,6n,33p,347b,194s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2020/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr17.pfb>
-Output written on lecturenotes.pdf (3 pages, 55720 bytes).
+ 36i,12n,36p,440b,217s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/c
+m-super/cm-super-ts1.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr17.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl
+10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10
+.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.
+pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pf
+b>
+Output written on lecturenotes.pdf (8 pages, 186792 bytes).
 PDF statistics:
- 30 PDF objects out of 1000 (max. 8388607)
- 20 compressed objects within 1 object stream
+ 92 PDF objects out of 1000 (max. 8388607)
+ 66 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
