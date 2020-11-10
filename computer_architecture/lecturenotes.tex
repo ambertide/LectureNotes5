@@ -18,6 +18,19 @@
 \maketitle
 \newcommand{\inscount}{\text{IC}}
 
+\lstdefinelanguage
+   [MISP]{Assembler}     % add a "x64" dialect of Assembler
+   [x86masm]{Assembler} % based on the "x86masm" dialect
+   % with these extra keywords:
+   {morekeywords={lw, sw, \$t0, \$t1,
+   \$t2, \$t3, \$t4, \$t5, \$t6, \$t7,
+   \$t8, \$t9, \$s0, \$s1, \$s2, \$s3,
+   \$s4, \$s5, \$s6, \$s7, \$s8, \$s9,
+   add, mul, sub, div}} % etc.
+
+
+\lstset{language=[MISP]Assembler}
+
 \chapter{Introduction - October 16, 2020}
 
 \section{Four Key Current Directions}
@@ -218,5 +231,92 @@ However if multiply accounts for 80 seconds of 100 seconds and we want five time
 \subsubsection{Summary of Performance Evaluation}
 
 Good benchmarks, such as SPEC can provide an accurate method for evaluating and comparing computer performance. Ahmdal's law provides an efficent method for determining speedup due to an enhancment, and one must make the common case fast.
+
+\chapter{Instructions: Language of the Computer - October 30, 2020}
+
+It was allready established that the Compilers and Assemblers bring high-level languages to binary machine language program. The Instruction Set Architecture (ISA) consists of Instructions and Memory.\\
+
+ISA's instructions are controlled by Opcodes, Addressing Modes, Data Types, Instruction Types and Fromats, Registers and Condition codes. An ISA interracts with the memory's address space, it has to deal with its addressability, alignment and virtual memory managment.\\
+
+A microarchitecture is a specific implementation of an ISA under specific design constraints and goals. It is the things done in hardware without exposure to the software. These range from pipelining to voltage/frequency scaling.
+
+\section{MIPS Instruction Set}
+
+MIPS is a simple ISA.
+
+\subsection{Arithmatic Operations}
+
+\subsubsection{Add and Substract}
+
+Takes two sources and has one destination.
+
+\begin{lstlisting}
+add a, b, c
+\end{lstlisting}
+
+Where \code{a} gets \code{b + c}, arithmatic operations occur \textbf{only on registers} in MIPS. \code{sub}, \code{mult} and \code{div} take the same form.\\
+
+This is an important lesson on design, as a design principle, \textit{simplicity favours regularity}.
+
+Consider the code
+
+\begin{lstlisting}[language=C]
+f = (g + h) - (i + j)
+\end{lstlisting}
+
+Compiles to the following MIPS Assembly
+
+\begin{lstlisting}
+add t0, g, h
+add t1, i, j
+sub f, t0, t1
+\end{lstlisting}
+
+\subsubsection{Register Operands}
+
+Observe that the arithmetic instructions use register operands. MIPS has a 32x32-bit register file, that is, 32 register with 32-bit register size. Used for frequently accessed data, numbered 0 to 31. In Assembly, they are named \code{\$t0} to \code{\$t9} for temporary values and \code{\$s0} to \code{\$s7} for saved variables.\\
+
+Smaller is faster.\\
+
+In the same C code, consider that all variables are stored in \code{\$s0} to \code{\$s4}. 
+
+(keep in mind that above MISP codes were not assemble-able).
+\begin{lstlisting}
+add $t0, $s1, $s2
+add $t1, $s3, $s4
+sub $s0, $t0, $t1
+\end{lstlisting}
+
+\subsubsection{Memory Operands}
+
+Main memory is used for composite data (arrays, structures, dynamic data) to apply arithmatic operations (loading and storing values), it is byte-addressed. Words are alligned in memory (its address must be a multiple of 4.) [This design decision is shared with x86, this is why sometimes stuff is padded in C in weird ways.]\\
+
+A \textbf{word} is a 4-byte construct, (32-bits) that correspond to an integer. Do consider that big-endianness or little-endianness of an architecture will impact in which order a word, or an integer, will be stored in the memory in which order.\\
+
+MIPS is a big-endian architecture.[Meanwhile x86 is a little-endian architecture] \\
+
+\begin{lstlisting}
+lw d, off(b)
+sw s, off(b)
+\end{lstlisting}
+
+\code{d} is the destination register, \code{b} is the base register \code{off} is offset  value, \code{b + off} forms the memory address to be accessed. \code{lw} is the \textbf{load word} instruction, while \code{sw} is the \textbf{store word} instruction.
+
+Consider the C code \code{g = h + A[8];}, \code{g} is in \code{\$s1}, \code{h} in \code{\$s2} and the base address of the \code{A} array is in \code{\$s3}.
+
+\begin{lstlisting}
+lw $t0, 32($s3)
+add $s1, $s2, $t0
+\end{lstlisting}
+
+Observe that the $8 \times 4 = 32$ since $4i$ is the offset value for a specific index value in C. This is due to the fact words occupy 4 bytes, and they align by four too.
+
+Consider the similar C code \code{A[12] = h + A[8];} which also stores the result, this assembles into:
+
+\begin{lstlisting}
+lw $t0, 32($s3)
+add $s1, $s2, $t0
+sw $t0, 48($s3)
+\end{lstlisting}
 
 \end{document}

@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{pgfplots}
+\usepackage{booktabs}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \author{Ege Özkan}
@@ -149,5 +150,197 @@ Maximum data rate of a channel for a noisless channel is the Nyquist formula $L\
 
 The bandwith can be calculated in hertz or in bits per second. \textbf{Bandwith delay} is the number of bits that can fit into a channel.
 \missed
+
+\chapter{Transmission Media \& Ethernet - October 27, 2020}
+
+Different media was used in history to transfer data. From telegraph to telephone.\\
+
+The media itself can be divided to \textit{Guided} and \textit{Unguided} transmission media. Where guided is the wired and unguided is the wireless.
+
+\section{Guided Media}
+
+\subsection{Twisted-pair Wire}
+
+Consists of two cables twisted around each other. Twisted-pair cables are more resiliant against noises. As a twisted-pair of $P^+$ and $P^-$ cables are affected by the noise the same amount, hence the reciever can understand the actual signal by $(P^+ + N) - (P^- - N) = P^+ - P^-$. Cancelling noise.\\
+
+Twisted pairs come in two variants, UTP (the unshielded pair.) and STP (the shielded pair.), UTP tends to be more widespread due to its cheapness.\\
+
+Attenuation, the amount of information lose, tends get worse \textit{faster} the thinner it is, therefore, the loss of information is worse for thinner cables.
+
+\subsection{Coaxial Cable}
+
+The coaxial cable carries the ground connection as a shield, and the main signal as  the cable.
+
+\subsection{Optical Fiber}
+
+Optical fiber is used to refract light in its core between two cladding between a sender and a reciever. This method uses the critical angle reflection of the light. When a light is sent at a critical angle to a less dense environment from a more dense environment, it reflects.
+
+\subsubsection{Propoagation Modes}
+
+Light propagates in different ways inside a optical fiber, different fibers use different modes. Fiber optic cables are divided into \textbf{Multimode} and \textbf{Single mode} cables. Multi-mode cables are then divided to \textbf{Step index} and \textbf{Graded index} fiber optic cables.\\
+
+Optical fibrer cables has a zone in its wavelength, around $1400$nm where there is high loss.\\
+
+IN general fiber provides higher bandwith, less signal attenuation, immune to electromagnatic interference, resistance to corrosion, lightweight, greater immunity to tapping howeever, it tends to be more difficult to install and maintain, has unidirectional light propagation and it costs more.
+
+\section{Unguided media}
+
+Wireless communication can use between 3kHz and 900THz. Different propagation methods can be used to send data. Ground propagation, where signals below 2MHz travels paralel to the ground, following curvature. Sky propagation, where signals between 2 and 30MHz can reflect off the Ionosphere and reach. And finally, line-of-sight propagation, where, above 30MHz, signals need to have a direct line-of-sight, as they tend to pass through the ionosphere.\\
+
+Wireless transmission can be done using radiowave, microwave and infrared.\\
+
+Antenna's also come in two variations, \textbf{omnidirectional}, where signal travels in all directions, as well as \textbf{unidirectional}, which comes in dish and horn antenna, where waves travel in single directions.
+
+\section{Ethernet}
+
+Ethernet was the culmination of IEEE project 802 in 1985, to set standards to enable intercommunication between different equipment\\
+
+Divided into two sublayers, logical link control (LLC) and Media access control (MAC).\\
+
+Most upper layer protocols (such as IP), do not use LLC.
+
+the standard ethernet A connectionless, unreliable service. Each frame was sent independently, when a frame is lost or corrupted, reciever drops it.
+
+\begin{table}
+\begin{tabular}{ll}
+\toprule
+Version & Speed \\
+\midrule
+Standard Ethernet & 10Mbps \\
+Fast Ethernet & 100Mbps \\ 
+Gigabit Ethernet & 1Gbps \\
+Ten-gigabit Ethernet & 10Gpbs \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Ethernet consists of a preamble, 56 bits of alternating 1s and 0s. SFD, the start frame delimiter (10101011), destination adress, source adress, length or type and data and padding, following that, a CRC.\\
+
+Ethernet used to use Carrier sense multiple access with collision detection, called CSMA/CD. That is, the sender listens to the cable to detect collusion, in which case it waits for a while and resends the frame.\\
+
+Data and padding portion of the data must be at least 46 bytes, and at most 1500 bytes. The existence of the minimum length arose from the fact that at least 46 bytes was necessary for CSMA/CD to work.\\
+
+An example ethernet adress in hexademical looks like $7a:79:19:92:d8:98$. The adresses are divdied into unicast and multicast adresses, where the lest significant bit of the first byte is 0 for unicast adresses, and 1 for multicast addresses.\\
+
+The broadcast destination address is a special case of the multicast adress in which all bits are 1s. This adress are used to send to the DHCP server to retrieve information.\\
+
+Standadr ethernet has different implementations, 10Base5, 10Base2, 10Base-T and 10Base-F.
+
+In the standard ethernet, Manchester Encoding/Manchester Decoding was used. Where the transformations between 0 and 1 signals in data was themselves encoded using 1s and 0s.
+
+The second revision of the ethernet removed the CSMA/CD, data transfer became bidriectional, moved all computers to their own domain, and introduced Fast Ethernet, which did not support bus topology. It was implemented into three forms. Manchester was also discarded due to it needing too much bandwith.\\
+
+The third revision introduced the Gigabit ethernet, MAC layer was changed to the full-duplex version. It had four implementations.\\
+
+The tenth gigabit ethernet is possible only with fiber-optic technology. Supporting LAN PHTY and WAN PHY, working in full-duplex.
+
+\chapter{Bandwith Utilization - November 10, 2020}
+
+Bandwith utilization is different method of manuplating bandwith in order to decrease cost, increase privacy, or add noise tolarance.
+
+\section{Multiplexing}
+
+Whenever the bandwith of a medium linking two devices is greater than bandwith needed by both, the link can be shared by multiple connections \unsure. This process is called \textit{Multiplexing} with Multiplexers used to multiplex multiple signals and Demultiplexers (Demux) being used to convert them back to single signals.
+
+\subsection{Frequency Divison Multiplexing}
+
+An \textit{analog} method of multiplexing is used when different baseband analog signals are recieved. They are moudlated with different modulator signals, and are summed together, being sent through the medium.\\
+
+In the demultiplexing step, filters are used to distinguish signals, and then each signal is put through a demodulator, recieving the original signals.\\
+
+In FDM, guard bands might be used as buffer zones between different channels to avoid channels from generating parasite.\\
+
+Different ways of encoding signals may also be used in FDM, such as QAM, which uses phase shifting.\\
+
+Multiple FDM multiplexers may be bound in chains, generating groups, supergroups, master groups and jumpgroups and so on. This methods are [or were] conventionally used in telephone systems. This is called an \textit{analog hierarchy}.
+
+\subsection{Wavelength Division Multiplexing}
+
+Another \textit{analog} system, used in finer cables which use light; WDM may use prism as multiplexers and demultiplexers.
+
+\subsection{Time Division Multiplexing}
+
+A \textit{digal} method, TDM allocates time slots to each device, and uses buffers to accumalate data in between sending.
+
+\subsection{Synchronous TDM}
+
+Synchronous TDM sends frames, each frame subdivided to its own subdivisions. \unsure.
+
+Synchronization must be achieved to make sure data being sent is recieved correctly. Sometimes, this issue is resolved via the introduction of a \textbf{framing bits}, additional bits added to the start of frames, adhering to a agreed upon synchronization pattern.\\
+
+In sTDM, empty slots may occur, since data of each device is sent at the same time, sometimes a device may not send data at that time, its slots is left empty.\\
+
+Likewise with analog methods, TDMs may also be chained together. creating a \textit{digital hierarchy}.
+
+Since analog signals can be converted to digital signals, telephone lines and other analog systems can also be used with TDM after conversion. [And, in fact, nowadays, most telephone systems have become digital.]
+
+\subsection{Statistical TDM}
+
+By introducing additonal information before data, the occurance of empty slots may be removed.
+
+\section{Spread Spectrum}
+
+In spread spectrum, signals from different sources are combined to fit into larger bandwith, this may be to prevent eavesdropping, jamming, or to increase noice tolarance.\\
+\begin{description}
+\item[Frequency Hopping Spread Spectrum (FHSS)] The original signal is spread using a frequency table, that generates frequencies using a synthezier depending on the data origniating from a pseudo-random code generator, this frequency is combined with the original signal using a modulator. FHSS results data \textit{hopping} between frequiencies, increasing noise tolarance and also making eavesdropping harder.
+\item[Direct-Sequence Spread Spectrum (DSSS)] adds predefined data to the original data, making it harder for the signal to be understood by anyone who does not know about the predefined data.
+\end{description}
+
+\chapter{Wireless LANs: WiFi \& Bluetooth - November 10, 2020}
+
+\section{WiFi}
+
+Defined by IEEE 802.11 specification as a Basic Service Set (BSS) or an Extended Service Set (ESS).
+
+\subsection{Service Sets}
+
+A BSS without an Access Point (AP), a dedicated device like a router,  is called an \textit{ad hoc network}. A BSS with an AP is called an \textit{infrastructure network}.\\
+
+
+An Extended Service Set occurs when multiple Access Points are connected thorugh a distribution system, and is controlled by a server or a gateway. It should be noted that a device might be connected to multiple BSSs simultaniously in an ESS.\\
+
+\subsection{Physical Layer}
+
+IEEE 802.11 consists of a physical layer which support many different protocols, and a data link layer consisting of a MAC sublayer and \missed.\\
+
+Different protocols may use different modulations.
+
+\subsection{Data Layer}
+
+A variation of CSMA/CA (\S 2.3) that uses signals such as CTS (Continue to Send), RTS (Request to Send), ACK (Acknowledgment), as this process continues between a source and destination; at the same time, all other stations not partaking in this data transfer, stop transferring data, this is called NAV, since signals carry with them the time it will take for data transfer, they do not even listen to the conversation, avoiding noise. This entire process is called \textbf{DCF} [Distributed Coordination Function].\\
+
+An alternative to DCF is called \textbf{PCF} (Point coordination Function). Here, the Access Point asks each station if it has any data to send (called \textbf{polling}), this occurs one-by-one. This process occurs in a round-robbin style, and this time is called a \textbf{contention-free}. Since PCF must be backwards compatible, there is also a contention zone following each contention-free zone, where stations that do not support PCF can contact the AP in a DCF fashion.\\
+
+[I just want to say the term robbin is also used when describing some chess tournaments.]\\
+
+\subsection{Frame Format}
+
+Frame format of WiFi contains four different addresses to define a data transfer. Depending on the value of the To DS and From DS flags, different addresses contain different data, for instance, if both flags are set to 1, addresses are used for sending AP, recieving AP, source station and destination station respectivelly.\\
+
+\subsection{Frequencies}
+
+WiFi uses three frequency bands chiefly, around 900MHz, around 2.4GHz and around 5.8 GHz. Different frequency bands are also subdivided into different channels. The
+
+\subsection{Problems}
+Wifi has its unique problems due to its wireless nature, where ranges of devices may cause significant issues.
+
+\subsubsection{Hidden Station Problem}
+
+Station A is inside the range of both C and B, but C and B cannot see each other, this causes CSMA/CA to function incorrectly, introducing problems.\\
+
+This is solved by the fact that the RTS signal of the WiFi contains the time it will take for data to transfer, since CTS signal from A also contains this time data, this functions as a form of \textit{handshaking}, where when a station realises a CTS signal isn't sent to itself, it goes into NAV.\\
+
+\subsubsection{Exposed Station Problem}
+
+Occurs when A-B and C-D pairs are trying to send data to each other, but A and C can hear each other, when D and B cannot, causing either A or B to go into NAV unnecasserily.
+
+\section{Bluetooth}
+
+A bluetooth network is called a \textbf{Piconet}, the device the bluetooth originates from is called a \textbf{primary}, whereas devices connected to it is called a \textbf{secondary}. A secondary on a piconet may become a primary for another piconet, creating a \textbf{scatternet}.\\
+
+\textbf{Logical Link Control and Adaption Protocol (L2CAP)} is used for data exchange on an ACL link. It is equivalent to an LLC layer of ethernet, whereas the \textbf{Baseband Layer} corresponds to the MAC layer of LAN, it uses Time Division Multiplexing.\\
+
+Communication in a piconet is handled in a round robin fashion, whereas a time slot is used to send data, another to recieve data, and repeat until all secondaries have been given permission recieve and asked to send data.
+
 
 \end{document}
