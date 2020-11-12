@@ -13,6 +13,8 @@
 \author{Ege Özkan}
 \title{CENG 215 \\ \large{Circuits and Electronics Lecture Notes}}
 \begin{document}
+\newcommand{\vin}{\ensuremath{V_\text{in}}}
+\newcommand{\vout}{\ensuremath{V_\text{out}}}
 \maketitle
 
 \chapter{Introduction - October 15, 2020}
@@ -373,5 +375,37 @@ i_3 = \text{ 3A}\\
 	to [R=1<\kilo\ohm>] (4, 0)
 	to [short] (0, 0);
 \end{circuitikz}
+
+\chapter{Resistive Networks (Cont`d) - November 12, 2020}
+
+\section{Voltage Divider}
+\begin{circuitikz}[american voltages]
+\draw (0,4)
+	to [short, i_=$i$] (2.5, 4)
+	to [R = $R_1$] (2.5, 2)
+	to [R = $R_2$] (2.5, 0);
+\draw (0,4)
+	to [V, v=$\vin$] (0, 0)
+	to [short] (2.5, 0)
+	to [short, -o] (4, 0);
+\draw (2.5, 2)
+	to [short, -o] (4, 2)
+	to [open, v=$\vout$] (4, 0);
+\end{circuitikz}
+
+The above circuit is refeered to as a Voltage divider cricuit, taking into account that $\vout$ is the voltage accross the $R_2$ resister, using the Ohm's law, we can find:
+
+\begin{align*}
+i &= \frac{\vin}{R_1 + R_2}\\
+\vout &= i R_2\\
+\vout &= R_2 \frac{\vin}{R_1 + R_2}
+\end{align*}
+
+And hence:
+
+\begin{equation}
+\vout = \vin  \times \frac{R_2}{R_1 + R_2}
+\end{equation}
+
 
 \end{document}

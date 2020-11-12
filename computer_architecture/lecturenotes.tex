@@ -17,7 +17,7 @@
 \newcommand{\clockrate}{\text{Clock Rate}}
 \maketitle
 \newcommand{\inscount}{\text{IC}}
-
+\newcommand{\missed}{\textit{!*}}
 \lstdefinelanguage
    [MISP]{Assembler}     % add a "x64" dialect of Assembler
    [x86masm]{Assembler} % based on the "x86masm" dialect
@@ -26,7 +26,8 @@
    \$t2, \$t3, \$t4, \$t5, \$t6, \$t7,
    \$t8, \$t9, \$s0, \$s1, \$s2, \$s3,
    \$s4, \$s5, \$s6, \$s7, \$s8, \$s9,
-   add, mul, sub, div}} % etc.
+   add, mul, sub, div,
+   li, addi, muli}} % etc.
 
 
 \lstset{language=[MISP]Assembler}
@@ -244,7 +245,7 @@ A microarchitecture is a specific implementation of an ISA under specific design
 
 MIPS is a simple ISA.
 
-\subsection{Arithmatic Operations}
+\subsection{Assembler Instructions}
 
 \subsubsection{Add and Substract}
 
@@ -319,4 +320,117 @@ add $s1, $s2, $t0
 sw $t0, 48($s3)
 \end{lstlisting}
 
+\missed \missed \missed
+
+Since registers are significantly faster to access than memory, compiler should try to use registers for variables as much as possible. This would be correct even if register access time and memory access time was the same, [Which they aren't], since memory access requires more instructions.
+
+\subsubsection{Immediate Operands}
+
+Immediate instructions negate the need for using load instructions by using scalars. Consider, \code{addi} which is the immediate addition instruction, compared to \code{add}, it does not need the usage of a load. For instance, this snippet:
+
+\begin{lstlisting}
+li $t0, 32
+add $s1, $s1, $t0
+\end{lstlisting}
+
+Can easilly be rewritten as
+
+\begin{lstlisting}
+add $s1, $s1, 32
+\end{lstlisting}
+
+Without using \code{li}. Which itself is an immediate operand that immediatelly loads a value to a register. This corresponds to the third design principle of MIPS, making the common case fast. Here, small constants are common, immediate operand avoids a load instruction.\\
+
+Related to this, \code{\$zero} read-only register (it cannot be overwritten) holds the value zero, adding with the zero register can be used to move values between registers for instance.
+
+\subsubsection{Logical Operations}
+
+Logical operations are bitwise operations used to perform boolean logic on values. These are \code{and}, \code{or}, \code{nor}, and their immediate equivalents \code{andi} and \code{ori}.\\
+
+And is useful for masking bits. For instance, \code{and}ing bits in a word with a word whose certain parts are zero would mask out these parts. Likewise, \code{or} is useful for swapping certain bits to 1 in a word.\\
+
+MIPS does not have a not instruction, instead, one can \code{nor} (not or) with the special \code{\$zero} register. Since $\lnot p = \lnot (p \lor 0)$
+
+ 
+\subsubsection{Shift Operations}
+
+Another bitwise manipulation operations. \code{sll} and \code{srl} is used for left logical and right logical shifts respectivelly. Both of them fill the shifted parts with zero.\\
+
+Shifting a number left $i$ times is same as multiplying it by $2^i$, and shifting a number $i$ times right would mean dividing it by $2^i$.
+
+\subsection{Instruction Representation}
+
+Instructions are kept as a series of high and low electronic signals. MIPS instructions are 32 bits long.\\
+
+MIPS Instructions are classified into different types of instructions.
+
+\subsubsection{R-Type Instructions}
+
+\begin{table}[httb]
+\begin{tabular}{@{}lll@{}}
+Part & Length & Explanation\\
+\toprule
+\code{op} & 6 Bits & OP-Code\\
+\code{rs} & 5 Bits & Source register\\
+\code{rt} & 5 Bits & Source register\\
+\code{rd} & 5 Bits & Destination register\\
+\code{shamt} & 5 Bits & Shift Amount\\
+\code{funct} & 6 Bits & Function Code\\
+\bottomrule
+\end{tabular}
+\caption{The structure of R-Type Instructions}
+\label{tab:rtype}
+\end{table}
+
+Most well-known of these R-Types are aritmathic instructions. Shift amount refeers to the amount of shift that will be applied to the number (For \code{sll} and \code{srl}.) Function code is used to further distinguish between instructions as an extension of the OP Code.\\
+
+Register numbers in the machine codes differ from their assembler ccounterparts a bit. Registers between \code{\$t0} and \code{\$t7} are translated to numbers 8 to 15, Registers \code{\$t8} and \code{\$t9} gets translated to 24 and 25 and registers between \code{\$s0} and \code{\$s7} are translated to 16 to 23.\\
+
+[I should probably point out the instructor at this point said we should now the general instruction structure but not the register translations.]\\
+
+Function field may look redundant, it exists due to the fact that all arithmatic operations are encoded with OP-Code 0, hence they are differentiated via their Function codes. [This whole deal occurs to keep the OP-Code length the same between R, I and J type operations. There are many more R type operations, instead of giving OP-Code more space OP-Code field is used to group them to certain categories, and Function field specifies the exact instruction. This also greatly simplifies the processor design, all instructions with OP-Code 0 gets sent to ALU, for instance.]
+
+[You may point out, but Amber, doesn't all of the R type instructions go to ALU anyway? What is the point? Well, padawan, MIPS is designed to be extended, Sony PSP for instance has an VFPU in it as well, and R Type instructions on VFPU use a different OP-Code]
+
+Assembler instructions like \code{add}, \code{sub}, \code{div}, \code{srl} and \code{sll} are translated to R-Type instructions.
+
+\subsubsection{I-Type Instructions}
+
+\begin{table}[httb]
+\begin{tabular}{@{}lll@{}}
+Part & Length & Explanation\\
+\toprule
+\code{op} & 6 Bits & OP-Code\\
+\code{rs} & 5 Bits & Register 1\\
+\code{rt} & 5 Bits & Register 2\\
+constant/address & 16 Bits & 16 Bit Number.\\
+\bottomrule
+\end{tabular}
+\caption{The structure of I-Type Instructions}
+\label{tab:itype}
+\end{table}
+
+Instructions in the I-Type are imediate arithmatic instructions, load/store instructions and branch instructions.\\
+
+Meaning of registers change from instruction to instruction. The address is used to offset one of the registers.\\
+
+Assembler Instructions like \code{addi}, \code{lw}, \code{sw} are translated to I-Type instructions.
+
+\subsubsection{J-Type Instructions}
+
+\begin{table}[httb]
+\begin{tabular}{@{}lll@{}}
+Part & Length & Explanation\\
+\toprule
+\code{op} & 6 Bits & OP-Code\\
+\code{pseudo-address} & 26 Bits & Shortened address\\
+\bottomrule
+\end{tabular}
+\caption{The structure of J-Type Instructions}
+\label{tab:jtype}
+\end{table}
+
+[These were not mentioned, but I am still putting this here for the sake of completeness, although I believe we will return to these in the future.] \\
+
+J-Type instructions are reserved for Jump instructions, hence they have a large amount of space left for an address. This value, stored at the \code{pseudo-address} field is the shortened address of the destibation, its two least significant and four most significant bits are removed and are assumed to be the same as the current instruction's address. (Wikibooks - MIPS Assembly)
 \end{document}
