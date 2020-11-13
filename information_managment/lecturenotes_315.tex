@@ -1,5 +1,7 @@
 \documentclass[11pt,a4paper,twocolumn]{book}
 \usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{er,positioning}
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -11,7 +13,8 @@
 \title{CENG315 \\ \large{Information Managment Lecture Notes}}
 \begin{document}
 \lstset{language=SQL}
-\newcommand{\missing}{\textit{(?)}}
+\newcommand{\missing}{\textit{(!*)}}
+\newcommand{\unsure}{\textit{?*}}
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\join}{\ensuremath{\bowtie}}
 \newcommand{\assign}{\ensuremath{\leftarrow}}
@@ -287,5 +290,154 @@ Since there is more than one way to write a query in relational algebra, queries
 
 On a related note, queries can be written with the alternative notation shown. For instance, \code{select(p, r)} instead of $\sigma_p (r)$
 
+\chapter{Database Design - November 12, 2020}
+
+\section{Design Phases}
+
+\missing, First the database needs must be understood, after the database is designed conceptually. The final design is done in two phases, logical and phusical design, logical design is deciding on the schema, and phiscal design is choosing the implementation.
+
+\section{Entity Relationship Model}
+\scalebox{0.65}{
+\begin{tikzpicture}[auto,node distance=1.5cm]
+  % Create an entity with ID node1, label "Fancy Node 1".
+  % Default for children (ie. attributes) is to be a tree "growing up"
+  % and having a distance of 3cm.
+  %
+  % 2 of these attributes do so, the 3rd's positioning is overridden.
+  \node[entity] (node1) {Entity Set 1}
+    [grow=up,sibling distance=3cm]
+    child {node[attribute] {Attribute 1}}
+    child {node[attribute] {Attribute 2}}
+    child[grow=left,level distance=3cm] {node[attribute] {Attribute 3}};
+  % Now place a relation (ID=rel1)
+  \node[relationship] (rel1) [below right = of node1] {Relation 1};
+  % Now the 2nd entity (ID=rel2)
+  \node[entity] (node2) [above right = of rel1]	{Entity Set 2};
+  % Draw an edge between rel1 and node1; rel1 and node2
+  \path (rel1) edge node {1-\(m\)} (node1)
+    edge	 node {\(n\)-\(m\)}	(node2);
+\end{tikzpicture}
+}
+
+Models and enterprise as a collection of \textbf{entities} and \textbf{relationships}. It is also called the ER diagram. It consists of three basic structures, \textbf{entity sets}, \textbf{relationship sets} and 
+
+\begin{description}
+\item[Entity] a thing or an object in the enterprise that is distinguishable from other objects, described by a set of \textit{attributes}.
+\item[Relationship] An association among several entities.
+\end{description}
+
+Since entities are represented by a set of attributes, a subset of the attributes form a \textbf{primary key} of the entity set, uniquelly identifying each member of the sets.\\
+
+Entity sets are represented in a similar fashion to UML class diagrams, with its attributes being the variables of the class. In the alternative notation, they are represented as rectangles, with its attributes (shown with elipses) tied to them. This alternative notation is shown in the picture at the start of subsection 3.2 (From https://texample.net/tikz/examples/er-diagram/)
+
+\subsubsection{Complex Attributes}
+
+Attributes can be grouped as simple and composite attributes, composite attributes can be divided into subparts. They may also be grouped as single-valued and multi-valued attributes, multivalued attributes may take more than one value at one time. Finally, a \textbf{derived} attribute is an attribute that can be derived from other attributes.\\
+
+Composite attributes are shown as nested values in the UML-like notation. In the alternative notation, they are arguments bound to other arguments.
+
+\subsubsection{Relationship Sets}
+
+A relationship set is a mathametical relationship between two entity sets. Relationship sets are represented using diamonds between two entity sets. \textbf{Roles} are used to differ between two occurances of the same entity set in different rules, for instance, a course may be a prerequisette and the course name itself.\\
+
+Relationship sets have \textbf{Degree}s, binary relationships involve two entity sets, which are most of them. But their degree may be higher.\\
+
+\textbf{Cardinality} of a relationship refeers to the  number of entities connected in each entity set by a relationship,  a one-to-one relationship cocurs when the cardinality of a relationship is \textbf{contrainted} to at most one. The side(s) that is constrainted to at most one of themselves has a arrow head pointed at them in their connection to the relationship.\\
+
+Cardinality constraints of relationships may be one-to-one, many-to-one, one-to-many or many-to-many.
+
+The \textbf{Participation} is denoted with a double line or a single line, the \textbf{total participation}, indicated by a dobule line, means that every entity in the entity set participates in at least one relationship in the relationship setü while \textbf{partial participation} means that some entities may not participate in a relationship in the relationship set.\\
+
+A line may have a text on it, of the form \textit{l..h}, where \textit{l} is the minimum and \textit{h} is the maximum cardinality. If an asterix (\textit{*}) is given for the maximum, that implies that there is no limit. A minimum value of 1 implies maximum cardinality.\\
+
+In Ternary and above relationship sets, only one arrow is allowed to denote cardinality.
+
+\subsubsection{Primary Key for Entity Sets}
+
+By definition, individual entites are distinct, no entities in an entity set can have all their attributes the same, at least one attribute must differ, the primary key is the one attribute that distinguishes between all entities.
+
+\subsubsection{Primary Key for Relationship Sets}
+
+To distinguish among the various relationships of a relationship set, individual priamry keys of the entities in the relationship set denote the primary key for a relationship set is denoted by the union of primary keys of its entity sets.\\
+
+The implication here is that, depending on the cardinality, for one-to-many relationships, the many side's keys are the minimal superkey and therefore , for many-to-many, the union of the keys take this role and for one-to-one, any one of the attributes may be chosen. \unsure \\
+
+In conclusion, the idea is to chose the primary key from the side that repeats the least. The idea is \textit{how we can represent a connection using the least amount of keys?} We choose the many side, because, in one-to-many or many-to-one, because each many item will have \textbf{at most} one corresponding one item. On the other side, the choice literally does not matter for one-to-one, and on the other side of this, we have many-to-many where we need both sides to adequitelly identify a relationship, since everyone can have multiple onnections.
+
+\subsubsection{Weak Entity Sets}
+
+A weak entity is an entity that cannot be uniquely identified by its attributes alone.
+
+\scalebox{0.65}{
+\begin{tikzpicture}[auto,node distance=1.5cm]
+  % Create an entity with ID node1, label "Fancy Node 1".
+  % Default for children (ie. attributes) is to be a tree "growing up"
+  % and having a distance of 3cm.
+  %
+  % 2 of these attributes do so, the 3rd's positioning is overridden.
+  \node[entity] (node1) {section}
+    [grow=up,sibling distance=3cm]
+    child {node[attribute] {\code{sec\_id}}}
+    child {node[attribute] {\code{course\_id}}}
+    child {node[attribute] {\code{semester}}}
+    child {node[attribute]{\code{year}}};
+\end{tikzpicture}
+}
+
+A \textbf{weak entity set} is one whose existence is dependent on another entity, called its \textbf{identifying entity}, the part of the primary key of this entity set is the primary key of the entity set it depends on as a \textbf{discriminator}. An entity set that is not a weak entity set is termed a \textbf{strong entity set}. Every weak entity must have a entity set it \textbf{existently depends} on.\\
+
+In ER diagrams, a weak entity set is depicted via a double rectangle. Its discrimanotrs are underlined.\\
+
+[Weak entity sets are simply entity sets that are dependant on other entity sets to exist.]
+
+\section{Reducing ER Diagrams to Relational Schemas}
+
+As a first approximation:
+
+\begin{enumerate}
+\item Turn each entity set into a relation with the same set of attributes.
+\item Replace a relationship set by a relation whose attributes are the keys for the connected entity sets (and any descriptive attributes of the relationship sets).
+\end{enumerate}
+
+Weak entity sets change this somewhat.
+
+\subsection{Representing entity sets}.
+
+A strong entity set reduces to a schema with the same attributed, ie: A student entity set with attributes ID, name, and tot\_cred becomes \textit{student(\underline{ID}, name, tot\_cred)} A weak entity set becomes a table that includes a column for the rpimary key of the identifying strong entity set.\\
+
+Composite Attributes are represented by dividing each composite part to normal attributes. [Composite attributes reduce to their subattributes.] Derived attributes are omitted completely.
+
+Multivalued attributes map to brand new schemas, whose members are multiple values these attributes take. For instance, a student with a multivalued key phone number, maps to a phone number schema, whose members are all student's phone numbers, where a student may have multiple of them.\\
+
+
+Many-to-one and one-to-many relationship sets that are total on the many-side can be represented by adding an extra attribute to the many side, containing the priamry of the one side. In one-to-one relationships, any side can be chosen as the many, albait, if the participation is not total, \code{NULL} values will occur.\\
+
+Relations between weak entity sets and their corresponding strong entity sets are omitted as well, since they become redundant.
+
+\subsection{Specialization}
+
+Specialization is special entity set structure where a (weak) entity set is used as a subclass-like structure of another entity set. It can be overlapping (entity may occur in multiple specializations) or it may be disjoint, where this cannot occur.\\
+
+Specializations are represented in schemas by creating a schema for the higher level entity, and then forming another schema for each lower-level entity set, include the primary key of the higher level entity set. Another method is to form a sechema for each entity set and include all local and inherited values. The drawback in the first is more queries being spent to look for a single entities records, and the for the second method more space being taken redunantly.\\
+
+\subsubsection{Completeness Constraint}
+
+Completeness constraint state wheter or not each entity in the higher level set must belong to a lower level entity set. Total Completeness means that it must, and Partial means it is not a must. The partial generalization is the default, when denoting a total generalization, a dashed line is drawn from the arrow, and on it the word \textit{total} is written.
+
+\section{Design Problems}
+
+There are certain design problems that may occur while designing a database system.
+
+\subsubsection{Entities vs Attributes}
+
+Certain attributes may be converted to entities on their own right if one wishes to store additional information about a specific attribute.
+
+\subsubsection{Entities vs Relationship}
+
+A guidline in deciding wheter or not something is an entity or a relationship is by asking if it is an \textit{actions}. Actions that occur between two of entities are relationships. Arguments directly related to relationships must become relationship attributes.
+
+\subsubsection{Redunantant Atttributes}
+
+Avoid repeating information. ER Diagrams \textit{are not} schemas, foreign keys are not needed to be shown if there is a relationship between them instead.
 
 \end{document}

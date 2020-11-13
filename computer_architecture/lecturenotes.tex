@@ -15,6 +15,17 @@
 \newcommand{\cyclecount}{\text{Cycle Count}}
 \newcommand{\cycletime}{\text{Cycle Time}}
 \newcommand{\clockrate}{\text{Clock Rate}}
+
+\newcommand{\C}[1]{\code{#1}}
+
+\newcommand{\rs}[1]{\code{\$s#1}} % an s register.
+\newcommand{\rt}[1]{\code{\$t#1}} % a t register
+\newcommand{\Rs}[1]{\code{\$s#1}}
+\newcommand{\Rt}[1]{\code{\$t#1}}
+\newcommand{\Ra}[1]{\code{\$a#1}}
+\newcommand{\Rv}[1]{\code{\$v#1}}
+\newcommand{\Rra}{\code{\$ra}}
+\newcommand{\Rsp}{\code{\$sp}}
 \maketitle
 \newcommand{\inscount}{\text{IC}}
 \newcommand{\missed}{\textit{!*}}
@@ -27,7 +38,9 @@
    \$t8, \$t9, \$s0, \$s1, \$s2, \$s3,
    \$s4, \$s5, \$s6, \$s7, \$s8, \$s9,
    add, mul, sub, div,
-   li, addi, muli}} % etc.
+   li, addi, muli, bne, beq, j,
+   \$a0, \$a1, \$a2, \$a3, \$v0, \$v1,
+   \$sp, \$ra}} % etc.
 
 
 \lstset{language=[MISP]Assembler}
@@ -388,9 +401,9 @@ Register numbers in the machine codes differ from their assembler ccounterparts 
 
 [I should probably point out the instructor at this point said we should now the general instruction structure but not the register translations.]\\
 
-Function field may look redundant, it exists due to the fact that all arithmatic operations are encoded with OP-Code 0, hence they are differentiated via their Function codes. [This whole deal occurs to keep the OP-Code length the same between R, I and J type operations. There are many more R type operations, instead of giving OP-Code more space OP-Code field is used to group them to certain categories, and Function field specifies the exact instruction. This also greatly simplifies the processor design, all instructions with OP-Code 0 gets sent to ALU, for instance.]
+Function field may look redundant, it exists due to the fact that all arithmatic operations are encoded with OP-Code 0, hence they are differentiated via their Function codes. [This whole deal occurs to keep the OP-Code length the same between R, I and J type operations. There are many more R type operations, instead of giving OP-Code more space OP-Code field is used to group them to certain categories, and Function field specifies the exact instruction. This also greatly simplifies the processor design, all instructions with OP-Code 0 gets sent to ALU, for instance.]\\
 
-[You may point out, but Amber, doesn't all of the R type instructions go to ALU anyway? What is the point? Well, padawan, MIPS is designed to be extended, Sony PSP for instance has an VFPU in it as well, and R Type instructions on VFPU use a different OP-Code]
+[You may point out, but Amber, doesn't all of the R type instructions go to ALU anyway? What is the point? Well, padawan, MIPS is designed to be extended, Sony PSP for instance has an VFPU in it as well, and R Type instructions on VFPU use a different OP-Code]\\
 
 Assembler instructions like \code{add}, \code{sub}, \code{div}, \code{srl} and \code{sll} are translated to R-Type instructions.
 
@@ -433,4 +446,225 @@ Part & Length & Explanation\\
 [These were not mentioned, but I am still putting this here for the sake of completeness, although I believe we will return to these in the future.] \\
 
 J-Type instructions are reserved for Jump instructions, hence they have a large amount of space left for an address. This value, stored at the \code{pseudo-address} field is the shortened address of the destibation, its two least significant and four most significant bits are removed and are assumed to be the same as the current instruction's address. (Wikibooks - MIPS Assembly)
+
+\chapter{Instructions: Language of the Computer (Cont`d) - November 13, 2020}
+
+This chapter directly continues the previous chapter.
+
+\section{Instructions for Making Decisions}
+
+\begin{lstlisting}
+beq rs, rt, L1
+bne rs, rt, L1
+j L1
+\end{lstlisting}
+
+These instructions \textit{jump} to the label, labelled as \code{L1}. \code{beq} does this when two register values are equal, \code{bne} jumps when they are \textbf{not} equal, and \code{j} \textbf{unconditionally jumps} to the label \code{L1}.\\
+
+\code{bne} is preffered over \code{beq}, this is because \textit{not branching} is preffered over branching for performance reasons.\\
+
+\code{j} insrtuction is represented via J-Type instructions, while other branches are represented via I-Type.\\
+
+\subsection{Basic Branching}
+
+Branching instructions can be used to represent conditionals and loops easilly.
+
+\subsubsection{Representing If-Else Conditionals Using Branching}
+
+
+Consider the C code below:
+
+\begin{lstlisting}[language=C]
+if (i==j) f = g+h;
+else f = g - h;
+\end{lstlisting}
+
+Assuming \code{f}, \code{g}, \code{h}, \C{i}, \C{j} is stored in \code{\$s0}, \code{\$s1}, \rs{2}, \rs{3} and \rs{4} respectivelly, this can be translated to:
+
+\begin{lstlisting}
+bne $s3, $s4, Else
+add $s0, $s1, $s2
+j Exit
+Else: sub $s0, $s1, $s2
+Exit: ...
+\end{lstlisting}
+
+Where under the label \C{Exit} will exit the program properly. This same program can also be written as:
+
+\begin{lstlisting}
+beq $s3, $s4, If
+sub $s0, $s1, $s2
+j Exit
+If: add $s0, $s1, $s2
+Exit: ...
+\end{lstlisting}
+
+\subsubsection{Representing Loops Using Branching}
+
+A while loop of the form
+
+\begin{lstlisting}[language=C]
+while (save[i] == k)
+	i += 1;
+\end{lstlisting}
+
+If \C{i}, \C{k} and the base address of save is stored in \rs{3}, \rs{5} and \rs{6} respectivelly, this is compiled to the following series of MIPS instructions:
+
+\begin{lstlisting}
+Loop: sll $t1, $s3, 2
+	add $t1, $t1, $s6
+	lw $t0, 0($t1)
+	bne $t0, $s5, Exit
+	addi $s3, $s3, 1
+	j Loop
+Exit: ...
+\end{lstlisting}
+
+Where shift left by two is used to multiply the index by four, the idea behind this decision is of course the elements are words, so we need to multiply the index by four to find the offset.
+
+\subsubsection{Conditional Set}
+
+\begin{lstlisting}
+slt rd, rs, rt
+slti rt, rs, constant
+sltu rd, rs, rt
+sltui rt, rs, constant
+\end{lstlisting}
+
+The \C{slt} instructions sets \C{rd} to 1 if the value in \C{rs} is less than \C{rt}, while \C{slti} does the same if the value in \C{rs} is less than the constant.\\
+
+The \C{sltu} and \C{sltui} work the same, however they assume the numbers being hold at the registers are \textit{unsigned}. This could [or rather, \textit{will}] be problematic, given that signed integers work with two's complement.
+
+\subsection{Procedure Calls}
+
+Procedure calling works thusly:
+
+\begin{enumerate}
+\item Place parameters in registers.
+\item Transfer control to procedure.
+\item Acquire storage for procedure.
+\item Perform procedure's operations.
+\item Place result in register for caller.
+\item Return to place of call. [Return control]
+\end{enumerate}
+
+\subsubsection{Register Structure}
+
+\begin{table}[httb]
+\begin{tabular}{@{}ll@{}}
+Registers & Explanation\\
+\toprule
+\C{\$a0} - \C{\$a3} & To pass arguments\\
+\C{\$v0}, \C{\$v1} & To store return values\\
+\C{\$ra} & Return address\\
+\C{\$sp} & Call stack pointer\\
+\bottomrule
+\end{tabular}
+\caption{Registers used in procedure calls}
+\label{tab:specialregisters}
+\end{table}
+
+\subsubsection{Procedure Call Instructions}
+
+
+\begin{lstlisting}
+jal ProcedureLabel
+jr $ra
+\end{lstlisting}
+
+To call a procedure, we use the jump and link instruction, \C{jal}, the jump and link instruction stores the address of the next instruction (the adress the program will return to this address) [the return address] to the \Rra and jumps to the target address.\\
+
+To return from a procedure, we use jump register instruction, \C{jr}, which copies the \Rra to the program counter, which means the next instruction to be executed will be the return address, that is, we jump back to where came. (Address of the last \C{jal} call + 1)
+
+\subsubsection{Procedure Call}
+
+\textbf{The caller} puts the parameter values in \Ra{0} - \Ra{3}, then uses \C{jal X} to cump to the procedure \C{X}, \C{jal} stores \C{PC+4} (Instructions are four bytes apart) in \Rra.\\
+
+\textbf{The calee} performs the calculations (executes any instructions it has) places the results in \Rv{0} and \Rv{1}, it then returns the control to the caller using \C{jr \Rra}.\\
+
+The PC (Program counter) is the specialised register containing the address of the instruction in the program being executed.\\
+
+\subsubsection{Call Stack}
+
+Any registers needed by the caller must be restored to the values that they contained before the procedure was invoked, for this reason, a stack is used, the special stack pointer \Rsp denotes the most recently allocated address in a stack that shows where registers should be spilled or where old register values can be found.
+
+Consider the C code
+
+\begin{lstlisting}[language=C]
+int leaf_example (int g, int h,
+  int i, int j) {
+	int f;
+	f = (g + h) - (i + j);
+	return f;
+}
+\end{lstlisting}
+
+Assume that arguments are stored in \Ra{0} - \Ra{3} and consider \C{f} in \Rs{0} (hence, \Rs{0} must be saved on stack). The C code \C{f = (g + h) - (i + j);} is translated to MIPS assembly:
+
+\begin{lstlisting}
+add $t0, $a0, $a1
+add $t1, $a2, $a3
+sub $s0, $t0, $t1
+\end{lstlisting}
+
+Since the callee will modify \Rt{0}, \Rt{1} and \Rs{0}. Their previous values (if they had any) must be stored in the call stack using \Rsp This is done by starting to add values to \Rsp by subtracting four times three from it, ie, allocating space for three registers.
+
+\begin{lstlisting}
+leaf_example:
+	addi $sp, $sp, -12 # Allocate space.
+	sw $t1, 8($sp) # Save stack.
+	sw $t0, 4($sp)
+	sw $s0, 0($sp)
+	add $t0, $a0, $a1
+	add $t1, $a2, $a3
+	sub $s0, $t0, $t1
+	add $v0, $s0, $zero # Store result.
+	lw $t1, 8($sp) # Restore values
+	lw $t0, 4($sp)
+	lw $s0, 0($sp)
+	addi $sp, $sp, 12
+	jr $ra # Return
+\end{lstlisting}
+
+The above examples shows the complete MIPS translation of the \C{leaf\_example} function in C as a MIPS procedure.\\
+
+[Stack pointer does not run out of space, because it is located in the top of the memory. It \textit{grows} and shrinks usable memory more calls you made to a function like this.]
+
+\subsubsection{Convention}
+
+This is not actually how most of the time MIPS programmers do things, instead, we assume that, across a procedure call, the following registers are preserved:
+
+\begin{enumerate}
+\item Saved registers, \Rs{0}-\Rs{7}
+\item The stack pointer register \Rsp
+\item The return address \Rra
+\item Stack above the stack pointer, [ie, previous call].
+\end{enumerate}
+
+And the following isn't preserved:
+
+\begin{enumerate}
+\item Temporary, \Rt{0}-\Rt{7}
+\item The argument registers \Ra{0}-\Ra{3}
+\item The return registers \Rv{0}, \Rv{2}
+\item Stack below the stack pointer, [ie, next calls, procedure calls made inside the procedure call].
+\end{enumerate}
+
+Using the convention, above code simplifies to:
+
+\begin{lstlisting}
+leaf_example:
+	addi $sp, $sp, -4 # Allocate space.
+	sw $s0, 0($sp) # Store saved.
+	add $t0, $a0, $a1
+	add $t1, $a2, $a3
+	sub $s0, $t0, $t1
+	add $v0, $s0, $zero # Store result.
+	lw $s0, 0($sp)
+	addi $sp, $sp, 2
+	jr $ra # Return
+\end{lstlisting}
+
+If we haven't used the saved register \Rs{0}, then we didn't needed to save and restore it at all.\\
+
 \end{document}

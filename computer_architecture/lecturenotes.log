@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  12 NOV 2020 09:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  13 NOV 2020 16:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -236,13 +236,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
 
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
 
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -266,52 +266,52 @@ File: lstlang3.sty 2020/03/24 1.8d listings language file
 ]
 Chapter 1.
 
-Underfull \hbox (badness 4913) in paragraph at lines 42--43
+Underfull \hbox (badness 4913) in paragraph at lines 55--56
 []\OT1/cmr/m/n/10.95 Fundementally low la-tency and pre-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--44
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
 []\OT1/cmr/m/n/10.95 Architectures for AI/ML, Ge-nomics,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--49
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
 
  []
 
 
-Underfull \hbox (badness 3168) in paragraph at lines 50--51
+Underfull \hbox (badness 3168) in paragraph at lines 63--64
 []\OT1/cmr/m/n/10.95 Computer ar-chi-tec-ture was tra-di-tion-ally
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--51
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--57
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
 
-Underfull \hbox (badness 1199) in paragraph at lines 58--59
+Underfull \hbox (badness 1199) in paragraph at lines 71--72
 []\OT1/cmr/m/n/10.95 The com-puter ar-chi-tec-ture al-lows bet-ter
  []
 
 
-Underfull \hbox (badness 1502) in paragraph at lines 58--59
+Underfull \hbox (badness 1502) in paragraph at lines 71--72
 \OT1/cmr/m/n/10.95 sys-tems to be built by mak-ing com-puter
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--59
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
 
-Underfull \hbox (badness 2600) in paragraph at lines 64--65
+Underfull \hbox (badness 2600) in paragraph at lines 77--78
 \OT1/cmr/m/n/10.95 The present day in-dus-try has en-tered a
  []
 
@@ -320,156 +320,151 @@ Underfull \hbox (badness 2600) in paragraph at lines 64--65
 ]
 Chapter 2.
 
-Underfull \hbox (badness 1502) in paragraph at lines 74--75
+Underfull \hbox (badness 1502) in paragraph at lines 87--88
 \OT1/cmr/m/n/10.95 art of se-lect-ing and in-ter-con-nect-ing hard-
  []
 
 
-Underfull \hbox (badness 3029) in paragraph at lines 74--75
+Underfull \hbox (badness 3029) in paragraph at lines 87--88
 \OT1/cmr/m/n/10.95 Com-puter sys-tems come in many forms,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
 
  []
 
 
-Underfull \hbox (badness 1062) in paragraph at lines 76--77
+Underfull \hbox (badness 1062) in paragraph at lines 89--90
 []\OT1/cmr/m/n/10.95 A sys-tem must be \OT1/cmr/m/it/10.95 Func-tional \OT1/cmr
 /m/n/10.95 (cor-rect),
  []
 
 
-Underfull \hbox (badness 2790) in paragraph at lines 76--77
+Underfull \hbox (badness 2790) in paragraph at lines 89--90
 \OT1/cmr/m/n/10.95 per-for-mance, low cost, low pow-er/en-ergy
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--85
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--93
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 104--105
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
 
  []
 
 
-Underfull \hbox (badness 1365) in paragraph at lines 106--107
+Underfull \hbox (badness 1365) in paragraph at lines 119--120
 \OT1/cmr/m/n/10.95 in-struc-tions are fetched from the mem-ory
  []
 
 
-Underfull \hbox (badness 1122) in paragraph at lines 106--107
+Underfull \hbox (badness 1122) in paragraph at lines 119--120
 \OT1/cmr/m/n/10.95 called \OT1/cmr/bx/n/10.95 pro-gram counter \OT1/cmr/m/n/10.
 95 (PC), \OT1/cmr/m/it/10.95 points \OT1/cmr/m/n/10.95 to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--113
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--121
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
 
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 146--147
+Underfull \hbox (badness 1824) in paragraph at lines 159--160
 \OT1/cmr/m/n/10.95 point op-er-a-tions take longer than it-neger
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--147
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
 
  []
 
 
-Underfull \hbox (badness 1708) in paragraph at lines 148--149
+Underfull \hbox (badness 1708) in paragraph at lines 161--162
 []\OT1/cmr/m/n/10.95 Instruction count for a pro-gram is de-
  []
 
 
-Underfull \hbox (badness 1874) in paragraph at lines 148--149
+Underfull \hbox (badness 1874) in paragraph at lines 161--162
 \OT1/cmr/m/n/10.95 but the avarage cy-cles per in-struc-tion is
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 148--149
+Underfull \hbox (badness 1033) in paragraph at lines 161--162
 \OT1/cmr/m/n/10.95 de-ter-mined by CPU hard-ware, if dif-fer-ent
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+Underfull \hbox (badness 10000) in paragraph at lines 161--162
 
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 150--151
+Underfull \hbox (badness 1215) in paragraph at lines 163--164
 []\OT1/cmr/m/n/10.95 Clock Cy-cles equal In-struc-tion count $\OMS/cmsy/m/n/10.
 95 ^^B$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
-
  []
 
 
@@ -478,49 +473,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--164
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 191--192
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
 
  []
 
 [7]
-Overfull \hbox (16.61713pt too wide) detected at line 188
+Overfull \hbox (16.61713pt too wide) detected at line 201
 []
  []
 
 
-Overfull \hbox (42.67352pt too wide) detected at line 196
+Overfull \hbox (42.67352pt too wide) detected at line 209
 [] \OT1/cmr/m/n/10.95 = [] \OMS/cmsy/m/n/10.95 ^^B [] ^^B []
  []
 
 
-Underfull \hbox (badness 1540) in paragraph at lines 203--204
+Underfull \hbox (badness 1540) in paragraph at lines 216--217
 []\OT1/cmr/m/n/10.95 via the soft-ware tools
  []
 
 [8]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 238--239
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
 
  []
 
 
-Underfull \hbox (badness 7704) in paragraph at lines 240--241
+Underfull \hbox (badness 7704) in paragraph at lines 253--254
 \OT1/cmr/m/n/10.95 codes, Ad-dress-ing Modes, Data Types,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 240--241
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--259
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
 
  []
 
@@ -531,25 +531,13 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 )
 LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
-278.
+291.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 278--279
+Underfull \hbox (badness 10000) in paragraph at lines 291--292
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
-
- []
-
-[9
-
-]
-Underfull \hbox (badness 1168) in paragraph at lines 293--294
-\OT1/cmr/m/n/10.95 Main mem-ory is used for com-pos-ite data
  []
 
 
@@ -557,44 +545,56 @@ Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
+[9
 
-Underfull \hbox (badness 2334) in paragraph at lines 295--296
+]
+Underfull \hbox (badness 1168) in paragraph at lines 306--307
+\OT1/cmr/m/n/10.95 Main mem-ory is used for com-pos-ite data
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
+
+ []
+
+
+Underfull \hbox (badness 2334) in paragraph at lines 308--309
 \OT1/cmr/m/n/10.95 that big-endianness or little-endianness of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--296
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--298
+Underfull \hbox (badness 10000) in paragraph at lines 310--311
 []\OT1/cmr/m/n/10.95 MIPS is a big-endian ar-chi-tec-
  []
 
 
-Underfull \hbox (badness 2126) in paragraph at lines 297--298
+Underfull \hbox (badness 2126) in paragraph at lines 310--311
 \OT1/cmr/m/n/10.95 ture.[Meanwhile x86 is a little-endian ar-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--298
+Underfull \hbox (badness 10000) in paragraph at lines 310--311
 
  []
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 342--343
+Underfull \hbox (badness 1253) in paragraph at lines 355--356
 []\OT1/cmr/m/n/10.95 Without us-ing \OT1/cmtt/m/n/10.95 li\OT1/cmr/m/n/10.95 . 
 Which it-self is an
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--343
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--349
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
 
  []
 
@@ -605,77 +605,97 @@ Overfull \hbox (3.93019pt too wide) has occurred while \output is active
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
-
- []
-
-
-Underfull \hbox (badness 6125) in paragraph at lines 357--358
-\OT1/cmr/m/n/10.95 Another bit-wise ma-nip-u-la-tion op-er-a-tions.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 363--364
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--386
+Underfull \hbox (badness 6125) in paragraph at lines 370--371
+\OT1/cmr/m/n/10.95 Another bit-wise ma-nip-u-la-tion op-er-a-tions.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
 
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 387--388
+Underfull \hbox (badness 10000) in paragraph at lines 376--377
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--399
+
+ []
+
+
+Underfull \hbox (badness 1515) in paragraph at lines 400--401
 []\OT1/cmr/m/n/10.95 Register num-bers in the ma-chine codes
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 387--388
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
 
  []
 
 
-Underfull \hbox (badness 1997) in paragraph at lines 389--390
+Underfull \hbox (badness 1997) in paragraph at lines 402--403
 \OT1/cmr/m/n/10.95 in-struc-tion struc-ture but not the reg-is-ter
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 389--390
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
+
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 404--405
+\OT1/cmr/m/n/10.95 There are many more R type op-er-a-tions,
+ []
+
+
+Underfull \hbox (badness 1107) in paragraph at lines 404--405
+\OT1/cmr/m/n/10.95 the pro-ces-sor de-sign, all in-struc-tions with
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 404--405
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 406--407
 
  []
 
 [11]
-Underfull \hbox (badness 1558) in paragraph at lines 413--414
+Underfull \hbox (badness 1558) in paragraph at lines 426--427
 []\OT1/cmr/m/n/10.95 Instructions in the I-Type are ime-di-ate
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 413--414
+Underfull \hbox (badness 1824) in paragraph at lines 426--427
 \OT1/cmr/m/n/10.95 arith-matic in-struc-tions, load-/-s-tore in-struc-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--414
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 415--416
+Underfull \hbox (badness 10000) in paragraph at lines 428--429
 
  []
 
 
-Overfull \hbox (4.63141pt too wide) in paragraph at lines 422--429
+Overfull \hbox (4.63141pt too wide) in paragraph at lines 435--442
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 433--434
+Underfull \hbox (badness 10000) in paragraph at lines 446--447
 
  []
 
@@ -685,37 +705,183 @@ Overfull \hbox (3.93019pt too wide) has occurred while \output is active
  THE COMPUTER - OCTOBER 30, 2020
  []
 
-[12] (./lecturenotes.aux) ) 
+[12]
+Chapter 4.
+
+Underfull \hbox (badness 2318) in paragraph at lines 454--454
+[]\OT1/cmr/bx/n/14.4 Instructions for Mak-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 462--463
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 464--465
+
+ []
+
+
+Underfull \hbox (badness 1838) in paragraph at lines 466--467
+[]\OT1/cmtt/m/n/10.95 j \OT1/cmr/m/n/10.95 in-sr-tuc-tion is rep-re-sented via 
+J-Type
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 466--467
+
+ []
+
+
+Underfull \vbox (badness 4967) has occurred while \output is active []
+
+ [13
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 534--535
+
+ []
+
+
+Underfull \hbox (badness 1448) in paragraph at lines 575--576
+[]\OT1/cmr/m/n/10.95 To call a pro-ce-dure, we use the jump
+ []
+
+
+Underfull \hbox (badness 1762) in paragraph at lines 575--576
+\OT1/cmr/m/n/10.95 and link in-struc-tion, \OT1/cmtt/m/n/10.95 jal\OT1/cmr/m/n/
+10.95 , the jump and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 575--576
+
+ []
+
+
+Underfull \hbox (badness 1048) in paragraph at lines 581--582
+\OT1/cmr/bx/n/10.95 The caller \OT1/cmr/m/n/10.95 puts the pa-ram-e-ter val-ues
+ in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 581--582
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 583--584
+
+ []
+
+
+Overfull \hbox (68.10823pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 14 \OT1/cmr/m/sl/10.95 CHAPTER 4.  INSTRUCTIONS: LANGUAGE OF
+ THE COMPUTER (CONT`D) - NOVEMBER 13, 2020
+ []
+
+[14]
+Underfull \hbox (badness 1400) in paragraph at lines 585--586
+[]\OT1/cmr/m/n/10.95 The PC (Pro-gram counter) is the spe-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 585--586
+
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 5
+95.
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 595.
+
+Overfull \hbox (68.08301pt too wide) in paragraph at lines 614--615
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (15.52246pt too wide) in paragraph at lines 615--616
+[][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (61.51294pt too wide) in paragraph at lines 621--622
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (35.23267pt too wide) in paragraph at lines 622--623
+[][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 629--630
+
+ []
+
+[15]
+Overfull \hbox (61.51294pt too wide) in paragraph at lines 657--658
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (22.09253pt too wide) in paragraph at lines 658--659
+[][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (61.51294pt too wide) in paragraph at lines 662--663
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 668--669
+
+ []
+
+
+Overfull \hbox (68.10823pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 16 \OT1/cmr/m/sl/10.95 CHAPTER 4.  INSTRUCTIONS: LANGUAGE OF
+ THE COMPUTER (CONT`D) - NOVEMBER 13, 2020
+ []
+
+[16
+
+] (./lecturenotes.aux) ) 
 Here is how much of TeX's memory you used:
- 5362 strings out of 480906
- 69502 string characters out of 5908268
- 518823 words of memory out of 5000000
- 20904 multiletter control sequences out of 15000+600000
+ 5479 strings out of 480906
+ 70738 string characters out of 5908268
+ 525112 words of memory out of 5000000
+ 21018 multiletter control sequences out of 15000+600000
  545564 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,12n,53p,593b,1465s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/
-cm-super/cm-super-ts1.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr17.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-l10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
-0.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10
-.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1095.p
-fb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb
-></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on lecturenotes.pdf (12 pages, 220201 bytes).
+ 36i,12n,53p,595b,1476s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-
+super/cm-super-ts1.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr17.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10
+.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
+fb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
+b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb>
+</usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></
+usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on lecturenotes.pdf (16 pages, 236307 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
+ 125 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  12 NOV 2020 10:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  13 NOV 2020 10:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -836,7 +836,7 @@ Chapter 2.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
 
  []
 
@@ -853,7 +853,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 232--233
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
-Underfull \hbox (badness 10000) in paragraph at lines 279--280
+Underfull \hbox (badness 10000) in paragraph at lines 283--284
 
  []
 
@@ -868,12 +868,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 279--280
 \realshift=\dimen336
 \realshift=\dimen337
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--345
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 353--354
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
 
  []
 
@@ -888,15 +888,131 @@ Chapter 3.
 \realshift=\dimen341
 \realshift=\dimen342
 \absvshift=\dimen343
-[13] (./lecturenotes.aux) ) 
+[13]
+Overfull \hbox (21.1063pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 14 \OT1/cmr/m/sl/10.95 CHAPTER 3.  RESISTIVE NETWORKS (CONT`
+D) - NOVEMBER 12, 2020
+ []
+
+[14
+
+]
+Chapter 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--422
+
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 472--473
+
+ []
+
+
+Overfull \hbox (7.41875pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 16 \OT1/cmr/m/sl/10.95 CHAPTER 4.  ENERGY STORAGE ELEMENTS -
+ NOVEMBER 12, 2020
+ []
+
+[16]
+\realshift=\dimen344
+\absvshift=\dimen345
+\realshift=\dimen346
+\absvshift=\dimen347
+ [17]
+Overfull \hbox (7.41875pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 18 \OT1/cmr/m/sl/10.95 CHAPTER 4.  ENERGY STORAGE ELEMENTS -
+ NOVEMBER 12, 2020
+ []
+
+[18
+
+]
+Chapter 5.
+\realshift=\dimen348
+\realshift=\dimen349
+\realshift=\dimen350
+\realshift=\dimen351
+\realshift=\dimen352
+\realshift=\dimen353
+\realshift=\dimen354
+\realshift=\dimen355
+\absvshift=\dimen356
+
+Underfull \vbox (badness 5578) has occurred while \output is active []
+
+ [19]
+Underfull \hbox (badness 10000) in paragraph at lines 609--610
+
+ []
+
+\realshift=\dimen357
+\realshift=\dimen358
+\realshift=\dimen359
+
+Underfull \hbox (badness 10000) in paragraph at lines 639--640
+
+ []
+
+[20]
+\realshift=\dimen360
+\realshift=\dimen361
+\realshift=\dimen362
+\absvshift=\dimen363
+
+Underfull \hbox (badness 10000) in paragraph at lines 664--665
+
+ []
+
+\realshift=\dimen364
+\realshift=\dimen365
+\realshift=\dimen366
+\absvshift=\dimen367
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21]
+Underfull \hbox (badness 10000) in paragraph at lines 688--689
+
+ []
+
+\realshift=\dimen368
+\realshift=\dimen369
+\realshift=\dimen370
+\realshift=\dimen371
+\realshift=\dimen372
+\absvshift=\dimen373
+
+Underfull \hbox (badness 10000) in paragraph at lines 715--716
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 717--718
+
+ []
+
+\realshift=\dimen374
+\realshift=\dimen375
+\realshift=\dimen376
+
+Underfull \vbox (badness 2435) has occurred while \output is active []
+
+ [22]
+Underfull \hbox (badness 10000) in paragraph at lines 728--729
+
+ []
+
+\realshift=\dimen377
+[23] (./lecturenotes.aux) ) 
 Here is how much of TeX's memory you used:
- 42532 strings out of 480906
- 1166115 string characters out of 5908268
- 1631941 words of memory out of 5000000
- 57643 multiletter control sequences out of 15000+600000
+ 44710 strings out of 480906
+ 1237372 string characters out of 5908268
+ 1653367 words of memory out of 5000000
+ 59821 multiletter control sequences out of 15000+600000
  547410 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,17n,98p,729b,2099s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,18n,98p,729b,2099s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public
@@ -910,13 +1026,14 @@ cm/cmr17.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmr6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 r8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
 0.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
-pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
-fb>
-Output written on lecturenotes.pdf (13 pages, 194287 bytes).
+.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
+b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
+>
+Output written on lecturenotes.pdf (23 pages, 233962 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
+ 148 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  19 words of extra memory for PDF output out of 10000 (max. 10000000)
 
