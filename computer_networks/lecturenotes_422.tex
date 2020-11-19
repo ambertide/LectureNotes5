@@ -343,4 +343,156 @@ A bluetooth network is called a \textbf{Piconet}, the device the bluetooth origi
 Communication in a piconet is handled in a round robin fashion, whereas a time slot is used to send data, another to recieve data, and repeat until all secondaries have been given permission recieve and asked to send data.
 
 
+\chapter{Frame Relay \& ATM - November 17, 2020}
+
+Frame Relay is a virtual-circuit wide-area network that was designed in response to demands for a new type of WAN in the late 1980s and early 1990s.
+
+\section{Point to Point Circuit}
+
+Dedication of a physical line between two routers. This method, although straightforward and simple, is high-cost, and not suitable for burst data. (Tranmission of large amounts of data).
+
+\section{Frame Relay}
+
+The frame relay was created as a response to these complaints, where multiple routers are connected to a single source, the Frame Relay, and the frame relay directs the packages to their destinations.\\
+
+Frame Relays consists of virtual circuits called DLCIs, Data Link Connection Identifier. They consists of two layers, Phyiscal and Data Link layers, Physical layers support ANSI standards, and the Data Link layer consists of simplified core functions.\\
+
+A frame layer frame consists of a flag, an adress, information, FCS and a flag. The address section consists of 6 bits of DLCI, 1 bit for Command response, 1 bit for extended adress flag, 4 bits of DLCI, 1 bit FECN, 1 bit of BECN, 1 bit DE, 1 bit of Extended Adress flag. FECN and BECN holds information about congestion in the network. the DE Flag notifies if the package is eligible for discarding if congestion occurs.\\
+
+Frame Relay does not contain error control. These must be provided in upper layers.\\
+
+DLCI addresses may be two, three or four bits lengths.\\
+
+FRADs can bridge between Frame Relays and diffferent types of networks.
+
+Frame Relay has a problem with Multiplexing, simce the frames are big, small packages are congested by a channel sending big packages.
+
+\section{ATM}
+
+Asynchronous Transfer Mode is the cell relay protocol designed by the ATM forum and adopted by the ITU-T.\\
+
+ATM was designed to make sure hardware handles as much of the communication as possible.\\
+
+ATM solves the problem with multiplexing frames using \textbf{cell}s, cells are small units of information, keeping congestion to a minimum.\\
+
+ATM multiplexing also do not use the round robin system that causes empty package slots, instead the ATMs header has enough information on it that the switches know where the packages are going.\\
+
+Much like the Frame Relay, ATM uses virtual connections, going through Virtual paths, going through virtual transmission paths.\\
+
+A virtual connection is defined by a pair of numbers, the VPI (Virtual Path Identifier) and the VCI (Virtual Circuit Identifier).\\
+
+UNI connections that occur between users and the switches has less space for VPI (16 bits VCI to 8 bits VPI) compared to NNI connections, which occur between netowrks (16 bits VCI to 12 bits VPI).\\
+
+ATM consists of three layers, a Physical an ATM and finally a AAL (Application Adaptation Layer). Originally, the physical layer for ATM was SONET, a fiber-optic network standard designed to transfer large amount of data.\\
+
+ATM provides routing, traffic managment and multiplexing.\\
+
+In the UNI cells, there is an extra ATM header for GFC (Generic Flow Control) stealing space from VPI. otherwise, both cell structures consists of PT, CLP and HEC fields in the header.
+
+\subsubsection{AAL connections}
+
+\begin{description}
+\item[AAL1] Supports continous data transmission.
+\item[AAL2] Packages of changing data size.
+\item[AAL3/4] Connection orianted services.
+\item[AAL5] Simple but large volumes of data. (Simple but Effective Layer)
+\end{description}
+
+In today's world, AAL1 (for Streaming Audio and Video) and AAL5 (for data communications) is used.\\
+
+\subsubsection{ATM LANs}
+
+ATM is mainly a Wide-Area network protocole (WAN ATM) but it is also possible to use ATM in LAN.
+
+\begin{figure}[httb]
+\centering
+\includegraphics{atmcard.jpeg}
+\caption{FORE Systems ForeRunnerLE 25 ATM Lan Card by Wikipedia user Barcex}
+\end{figure}
+
+Computers that will connect to the ATM LANs (without converters) will need a dedicated network card, just like an Ethernet Card. ATM LANs are not used widespread.
+
+\chapter{Logical Addressing - November 17, 2020}
+
+A logical address is an adress that stays the same. Physical adresses, in the meantime, changes while going from network to network.
+
+\section{IPv4 Adresses}
+
+An IPv4 address is a \textbf{32-bit} address that uniquely and universally defines the connection of a device (a computer, a computer, or a router) to the internet.
+
+\begin{enumerate}
+\item They are unique and universal.
+\item They are 32-bits long.
+\item The address space of IPv4 is $2^{32}$.
+\end{enumerate}
+
+It can be written in Dotted-decimal notation, such as 128.11.3.31 With each part being between 0 and 255.\\
+
+\subsection{Classful Adressing}
+
+In classful addresing, there are five classes of IP addresses. Each IP address consists of two parts, Network ID (netid) and Host ID. netid stays the same for an organization :(is the ID of the entire organization) Hostid, in the meanwhile, is a single machine at that organization.\\
+
+Depending on the class (A, B, C) the size of the netid/hostid changes.
+
+\begin{table}
+\begin{tabular}{lll}
+\toprule
+& Network ID & Host ID \\
+\midrule
+Class A & 1 &  2, 3, 4\\
+Class B & 1, 2 & 3, 4 \\ 
+Class C & 1, 2, 3 & 4 \\
+Class D/E & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+In Class A the first, the class B the second, and in the class C first three bits are specific.
+
+\begin{table}
+\begin{tabular}{llll}
+\toprule
+& Block Count & Block Size & Application \\
+\midrule
+Class A & 128 &  16,777,216\\
+Class B & 16,384 &  65,536 \\ 
+Class C & 2,097,152 & 256 \\
+Class D & 1 &  2,147,483,648 & Multicast\\
+Class E & 1 & 2,147,483,648 & Reserved\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Mask}
+
+\begin{table}
+\begin{tabular}{lll}
+\toprule
+& Dotted-Decimal & CIDR \\
+\midrule
+Class A & 255.0.0.0  & /8\\
+Class B & 255.255.0.0 & /16 \\ 
+Class C & 255.255.255.0& /24 \\
+\bottomrule
+\end{tabular}
+\caption{The default masks for classful addressing}
+\end{table}
+
+The mask is a special bit sequence that, when logical anded with an IP address, returns the netid, this way, we can determine where to send the packages.
+
+\subsection{Classless Addressing}
+
+Classful addressing has become obsolete, due to many problems in its, namely, too many adresses going to waste. Nowadays, ISPs tend to grant a \textbf{block} of addresses is given to a user.\\
+
+Here the mask is written in CIDR to the end of the address, for instance \texttt{x.x.x.x/n} where \texttt{n} is the address mask. A block of this calibre starts with \texttt{x.x.x.x}s last \texttt{n} bits zeroed and continues to \texttt{x.x.x.x} with its last bits oned. Moreover, this block containts $2^{32 - n}$ adresses. Routers do this by ANDing with the mask for finding the first address and ORing with the mask's complement for finding the last, they add one to the Mask's complement to find the number of addresses.\\
+
+Adress blocks are granted containing addresses of powers of two.\\
+
+\subsection{The Network Adress}
+
+The first address in a block is normally not assigned to any device. It is used as the network adress. It represents the network as a whole.
+
+\subsection{Subnets}
+
+Subnets are used to divide up the IP to different sized ranges. For instance, an IP network of 17.12.14.0/26 can be divided into a range of /27 and two ranges of /28.
 \end{document}

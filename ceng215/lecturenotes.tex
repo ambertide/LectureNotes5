@@ -18,6 +18,7 @@
 \newcommand{\diffd}{\ensuremath{\text{d}}}
 \newcommand{\diff}[2]{\ensuremath{\frac{\diffd}{\diffd #1} \left( #2 \right)}}
 \newcommand{\sdif}[2]{\ensuremath{\frac{\diffd #1}{\diffd #2}}}
+\newcommand{\vard}{\ensuremath{\text{d}}}
 
 \maketitle
 
@@ -736,7 +737,150 @@ Norton theorem states that any linear circuit can be represented using a single 
 	to [R=$R_N$] (-2, 3);
 \end{circuitikz}
 
+\chapter{First Order Systems - November 19, 2020}
+
+In an RC circuit, if we were to solve the circuit using KVL and differential equations, we will find:
+
+\begin{equation}
+i(t) = Ae^{-\frac{1}{RC}t}
+\end{equation}
+
+Since $V_c = V_0$ at time $t = 0$, we say that:
+
+\begin{equation}
+i(t) = \frac{V_0}{R}e^{-\frac{t}{RC}}
+\end{equation}
+
+\section{Time Constant}
+
+Here, the term $s + \frac{1}{RC} = 0$ is called the characteristic equation of the function, with larger $RC$ resulting in the current discharging slower and lower $RC$ causing it to discharge faster, therefore $RC$ is called the \textit{time constant}, and is sometimes written as $\tau$.\\
+
+For any system of type $x = Ae^{-\frac{t}{\tau}}$, $x(0) = A$ and $x(\tau) = \frac{A}{e}$, where $e$ is the natural number. (More formally, $f(x) = e^x$ is the function with the characteristic $f'(x) = f(x)$ and $f(x) \neq 0$).\\
+
+Theoratically, the current never reaches zero. However, it is accepted in engineering that once $t = 5\tau$, the current is zero. This divides the states of the RC circuit into two, where $t \leq 5\tau$, the system is said to be in the \textbf{transient state}, where meaningful change still occurs, where $t > 5\tau$, the system is said to be in the \textbf{steady state}, or the \textbf{final state}.\\
+
+\section{Step Response}
+
+In a circuit of the type:
+
+\begin{circuitikz}[american]
+\draw (0,0)
+	to [short, *-] (1, 0)
+	to [R=$R$] (3,0)
+	to [short, -o](5,0);
+\draw (3, 0)
+	to [C=$C$] (3, -2);
+\draw (0, -2)
+	to [short, *-](3, -2)
+	to [short, -o](5, -2)
+	to [open, v=$V_c$] (5, 0);
+\draw (0, -2)
+	to [open, v=$V_i$](0,0);
+\end{circuitikz}
+
+If we were to apply a \textbf{step voltage} to the input terminal of the system, such that:
+
+\begin{align*}
+V_i &= V \cdot u(t)\\
+u(t) &= \begin{cases} 1 & t \geq 0 \\
+0&  t < 0 \end{cases} 
+\end{align*}
+
+After solving this circuit, we will end up with an equation of the form
+
+\begin{equation*}
+V_c = v + Ae^{-\frac{t}{RC}}
+\end{equation*}
+
+And after plugging in $A$
+
+\begin{equation}
+V_c = Vt(V_0 - V)e^{-\frac{t}{RC}}
+\end{equation}
+
+And, the current of the system shall be:
+
+\begin{equation}
+i_c = C \sdif{V_c}{t}
+\end{equation}
 
 
+\section{State}
 
+Consider a circuit of type
+
+\begin{circuitikz}[american]
+\draw (0,0)
+	to [I=$i(t)$] (0,3)
+	to [short] (3,3)
+	to [C=$C$, v=$V_c$] (3,0)
+	to [short] (0,0);
+\end{circuitikz}
+
+Here, $q(t)$ is dependant on the values of the previous currents:
+
+\begin{equation}
+q(t) = \int_{- \infty}^t i(t) \vard t
+\end{equation}
+
+Hence:
+
+\begin{equation}
+q(t_2) = \int_{-\infty}^{t_1} i(t) \vard t + \int_{t_1}^{t_2}i(t) \vard t
+= q(t_1) + \int_{t_1}^{t_2} i(t) \vard t
+\end{equation}
+
+\subsection{State Equation}
+
+A state equation is an equation of the type:
+
+\begin{equation}
+\diff{t}{S} = K_1 + K_2
+\end{equation}
+
+Where $S$ is the state variable, $K_1$ is the present value of the state variable and $K_2$ is the input variable. 
+
+\subsection{Computer Simulation}
+
+For example, consider a circuit of the type:\\
+
+\begin{circuitikz}[american]
+\draw (0,0)
+	to [I=$i(t)$] (0,3)
+	to [short] (3,3)
+	to [R=$R$] (3,0)
+	to [short] (0,0);
+\draw (3,3)
+	to [short] (6, 3)
+	to [C=$C$, v=$V_c$] (6, 0)
+	to [short] (3,0);
+\node[circ] at (3,3) {$a$};
+\end{circuitikz}
+
+Now we can say that, using the $a$ node and KCL:
+
+\begin{align*}
+i(t) &= \frac{V_c}{R} + C \sdif{V_c}{t}\\
+\sdif{V_c}{t} &= - \frac{V_c}{RC} + \frac{i(t)}{C}
+\end{align*}
+
+Now using the eulers method to get rid of the derviative:
+
+\begin{align*}
+\sdif{V_c(t)}{t} \approx \frac{V_c(t + \Delta t) - V_c(t)}{\Delta t}
+\end{align*}
+
+And hence:
+
+\begin{align*}
+V_c(t_0 + \Delta t) = V_c(t_0) - \frac{V_c(t_0)}{RC}\Delta t + \frac{i(t_0)}{C} \Delta t
+\end{align*}
+
+Now, if we defined $t_0$ as the $k$th state of the system, and $t_0 + \Delta t$ as the $k +1$th state of the system:
+
+\begin{align*}
+V_c(k + 1) = V_c(k) - \frac{V_c(k)}{RC} \Delta t + \frac{i(k)}{C} \Delta t
+\end{align*}
+
+This formula can easilly be plotted and simulated in a computer.
 \end{document}

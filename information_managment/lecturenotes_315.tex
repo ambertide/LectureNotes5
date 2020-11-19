@@ -16,7 +16,9 @@
 \newcommand{\missing}{\textit{(!*)}}
 \newcommand{\unsure}{\textit{?*}}
 \newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\set}[1]{\ensuremath{\{ #1 \}}}
 \newcommand{\join}{\ensuremath{\bowtie}}
+\newcommand{\fd}[2]{$ \code{#1} \to \code{#2} $}
 \newcommand{\assign}{\ensuremath{\leftarrow}}
 \maketitle
 \chapter{Introduction - October 15, 2020}
@@ -440,4 +442,217 @@ A guidline in deciding wheter or not something is an entity or a relationship is
 
 Avoid repeating information. ER Diagrams \textit{are not} schemas, foreign keys are not needed to be shown if there is a relationship between them instead.
 
+\chapter{Database Theory for Relational Databases - November 19, 2020}
+
+\section{Features of Good Relational Design}
+
+In a database we talked about the previous section, \code{instructor(ID, name, dept\_name, salary)} and \code{department(dept\_name, building, budget)} was two different schemas in this database. If we were to combine these two schemas into a relation, there would be a repetition of information, since instructors of the same departments will write budget data more than once. It also introduces the need to use \code{null} values, (if one adds a new department with no instructors.)\\
+
+This is because, for this example, keeping two different tables is good. But in some cases, for instance \code{employee(ID, name, street, city, salary)} schema, decomposed into \code{employee1(ID, name)} and \code{employee2(name, street, city, salary)}, it might be impossible to reconstruct the original employee relation if more than one employee with the same name exists. These sorts of decompositions are called \textbf{loosy decomposition}. While a decomposition that can be reconstructed back to its original form is a \textbf{loseless composition}.\\
+
+In conclusion, for the decomposition of a relation of $R$ to $R_1$ and $R_2$, if $R_1 \join R_2 = R$ it is lossless, otherwise, lossy.
+
+\subsection{Functional Dependencies}
+
+Suppose a schema of \code{Student(SSN, SName, address, HScode, HSname, HScity, GPA, priority)} suppose that the \code{priority} is determined by the \code{GPA}. If \code{GPA> 3.8, priority = 1}, \code{3.3 < GPA <= 3.8, priority = 2} and \code{GPA <= 3.3, priority = 3}. It can be concluded that \textit{two tuples with the same GPA have the same priority}.\\
+
+$\forall t, u \in \code{student}: t\code{.GPA} = u.\code{GPA} \Rightarrow t\code{.priority} = u\code{.priority}$ Then, it is said that $\code{GPA} \rightarrow \code{priority}$ (\code{priority} is functionally dependent on \code{GPA}).\\
+
+In general:
+
+\begin{multline}
+\text{if } \forall t, u \in R, t[A_1, A_2, \hdots, A_n] = u[A_1, A_2, \hdots, A_n] \\ \rightarrow t[B_1, B_2, B_m] = \\u[B_1, B_2, \hdots, B_m] \text{ then } A_1, A_2, \hdots, A_n \\\rightarrow B_1, B_2, \hdots, B_m
+\end{multline}
+
+$X \rightarrow Y$ is an assertion about a relation $R$. By convention, $X, Y, Z$ represets sets of attributes, $A, B, C$ represents sinlge attributes, and by convention $\{A, B, C\}$ may be written as $ABC$.
+
+\subsection{Rules for Functional Dependencies}
+
+\subsubsection{Splitting Right Sides of FDs}
+
+if $X \rightarrow A_1 A_2 \hdots A_n$ holds for $R$ exactly when each of $X \rightarrow A_1, X \rightarrow A_2, \hdots X \rightarrow A_n$ hold for $R$, in general:
+
+\begin{align}
+A \rightarrow BC \Rightarrow A \to B \land A \to C
+\end{align}
+
+\subsubsection{Combining Rule}
+
+The inverse of the splitting rule.
+
+\begin{align}
+A \rightarrow B \land A \Rightarrow C \Rightarrow A \to BC
+\end{align}
+
+\subsubsection{Triviality}
+
+$X \to Y$ is a nontrivial functional dependency if $Y \nsubseteq X$ otherwise, it is a trivial functional dependency. Moreover, if $X \to Y$ is a \textbf{trivial functional dependency} then $X \to X \cup Y$ and also $X \to X \cap Y$.
+
+\subsubsection{Transitivity of FDs}
+
+If $X \to Y$ and $Y \to Z$, then $X \to Z$.
+
+\subsubsection{Closure of Attributes}
+
+The set of \textbf{all} functional dependencies logically implied by $X$ is the closure of $X$, given relation, a set of FDs, a set of attributes $X$, find $Y$ suvh that $X \to Y$.\\
+
+The algorithm used for this purpose, starts with a set of attributes $X$, and a set of FDs of relation $R$. The closure $X^+$:
+
+\begin{itemize}
+\item If necessary, split the FDs of the $R$, so each FD in $R$ has a single attribute on the right.
+\item Start with the set itself.
+\item Repeat until there is no change. If $X \to Y$ and $X$ is in the set, then add $Y$ to the set.
+\end{itemize}
+
+For instance, given FDs $A \to B$ and $B \to D$, closure of $A$ evolves as:
+
+\begin{itemize}
+\item $A^+ = \set{A}$
+\item $A^+ = \set{A, B}$
+\item $A^+ = \set{A, B, D}$
+\end{itemize}
+
+\subsection{Keys of Relations}
+
+$K$ is a \textbf{superkey} if they functionally determnie all other attributes. In other words, if $K^+ = X$ where $X$ is all attributes of $R$, then $K$ is a \textbf{superkey}.\\
+
+Consider in scheme \code{Customers(name, addr, drinksLiked, manf, favDrink} if $\code{name} \to \code{addr, favDrink}$ and $\code{drinksLiked} \to \code{manf}$, here $\set{\code{name, drinksLiked}}$ is the superkey since its closure is all the attributes of the relation and also since its closure is all attrbiutes.\\
+
+A key is a superkey if none of its strict subsets is also a superkey. Also consider that all of the supersets of a superkey is a superkey itself.\\
+
+\subsection{Projecting Functional Dependencies}
+
+\textbf{Normalization} refeers to the process where one breaks a relatino schema into two or more schemas, imagine a relation $R$ of attributes $ABCD$, with FDs $AB \to C, C \to D$ and $D \to A$. If one decomposes $R$ into $ABC, AD$ not only will $AB \to C$ will hold, but also $C \to A$.\\
+
+Start with given FDs and find all \textit{nontrivial} FDs that follow from the given FDs, then restrict to those FDs that involve only attributes of the projected schema.\\
+
+With inputs of two relationships $R, R_1$ where $R_1$ is decomposed from $R$, a set of FDs that hold in $R$.
+
+\begin{enumerate}
+\item Let $T$ be the eventual output set of FDs, initally, it is empty.
+\item For each set of attributes $X$ that is a subset of atrributes of $R_1$, compute $X^+$
+\item Add to $T$ all nontrivial FDs $X \to A$ such that $A \in X^+$ and an attribute of $R_1$.
+\item However, drop from $T$, $XY \to A$ whenever we discover $X \to A$, because $XY \to A$ follows from $X \to A$ in any projection.
+\item Finally use these FDs.
+\end{enumerate}
+
+There are a few tricks here, one does not need to compute the empty set an its closure, and if $X^+$ determines all attributes, then so does its supersets.\\
+
+\subsubsection{Example}
+
+For instance to $R(ABCD)$ FDs $A \to B, B \to C, C \to D$ project onto $R_1(ACD)$, we start from singletons and move onto biggers subsets. 
+
+\begin{itemize}
+\item $A^+ = ABCD$, thus $A \to C$ and $A \to D$ holds in $R_1$, note that $A \to B$ is true in $R$ but makes no sense in $R_1$. Since $A^+$ includes all attributes of $R_1$, there is no need to consider the supersets of $A$. 
+\item $C^+ = CD$, thus $C \to D$ holds in $R_1$.
+\item $D^+ = D$ is trivial, and yields no nontrivial FDs.
+\end{itemize}
+
+Thus, FDs for $R_1$ are $A \to C$ and $C \to D$, and of course, $A \to D$ from the transitivity rule.\\
+
+[So \textit{that} is why they thought us predicate logic in Discrete Structures...]
+
+\section{Anomalies}
+
+Problems that arise in databases due to poor design are called \textbf{anomalies}.
+
+\begin{description}
+\item[Redundancy] Repeated information in several tuples.
+\item[Update Anomalies] When a change in one ypule leaves the same inforamtion unchanged in another tuple.
+\item[Deletion Anomalies] Losing information when deleting.
+\end{description}
+
+Consider for the schema \code{Customers(name, addr, drinksLiked, manf, favDrink}, if a customer likes more than one drink, the \code{favDrink} and \code{addr} will repeat unncesserilly.\\
+
+Moreover, this bad design is also open to update and deletion anomalies. Consider, if a customer changes their address, what if the programmer does not remember updating all tuples containing them; or if no one likes coke, one loses track of the fact that Coca-Cola manufactures Coke.
+
+\section{Boyce-Codd Normal Form}
+
+The goal of decomposition is to replace a relation (that exhibits some anomalies) with several relations that do not exhibit anomalies.\\
+
+The condition under which the anomalies discussed can be guranteed not to exist is called Boyce-Codd Normal Form, or BCNF.\\
+
+We say $R$ is in BCNF if whenever $X \to Y$ is a nontrivial FD that holds in $R$, $X$ is a superkey.\\
+
+In \code{Customers(name, addr, drinksLiked, manf, favDrink}, FD's are $\code{name} \to \code{addr favDrink}, \code{drinksLiked} \to \code{manf}$. Since \code{name} is not a superkey but appears in a FD, it violates BCNF.\\
+
+Now consider \code{Customers(name, manf, manfAddr)}, FDs are $\code{name} \to \code{manf}$ and $\code{manf} \to \code{manfAddr}$, here the second FD violates BCNF.\\
+
+We can replace an $R$ that is not in BCNF with two schemas:
+
+\begin{enumerate}
+\item $R_1 = X^+$
+\item $R_2 = R -(X^+ - X)$
+\end{enumerate}
+
+And then projecting $R$'s FDs onto $R_1$, $R_2$.\\
+
+\subsubsection{Example}
+
+For instance, in \code{Customers(name, addr, drinksLiked, manf, favDrink}, and \fd{name}{addr}, \fd{name}{favDrink} and \fd{drinksLiked}{manf}.
+
+\newcommand{\customersm}{\code{Customers(name, addr, drinksLiked, manf, favDrink)}}
+\newcommand{\customerso}{\code{Customers1(name, addr, favDrink)}}
+\newcommand{\customerst}{\code{Customers2(name, drinksLiked, manf)}}
+
+\begin{itemize}
+\item Pick BCNF violation \fd{name}{addr}
+\item Close the left side: $\set{\code{name}}^+ = \set{\code{name}, \code{addr}, \code{favDrink}}$
+\item This yields two decomposed relations \code{Customers1(name, addr, favDrink)} and \code{Customers2(name, drinksLiked, manf)}.
+\end{itemize}
+
+Now, check if \code{Customers1} and \code{Customers2} is in BCNF.
+
+\begin{itemize}
+\item If we get the closures for Customers1, $\code{name}^+ = \set{\code{name}, \code{addr}, \code{favDrink}}$, $\code{addr}^+ = \set{\code{addr}}$, $\code{favDrink}^+ = \set{\code{favDrink}}$. Only relevant FD (nontrivial ones) is \fd{name}{addr} and \fd{name}{favDrink}, which is in BCNF since \code{name} is a superkey.
+
+\item But, Customer2, \customerso \textbf{does} violate VCNF, since the only nontrivial fd is \fd{drinksLiked}{manf} but \code{drinksLiked} is not a superkey by itself.
+\end{itemize}
+
+We decompose Customers2 to \code{Customers2(drinksLiked, manf)} and \code{Customers4(name, drinksLiked)}. The resulting decomposition of \customerst is:
+
+\begin{itemize}
+\item \code{Customers1(\emph{name}, addr, favDrink}, which telss us about customers
+\item \code{Customers3(\emph{drinksLiked}, manf)} which tells us about drinks.
+\code{Customers4(\emph{name}, \emph{drinksLiked})} which tells us about the relationship between customers and the drinks they like.
+\end{itemize}
+
+\section{3\textsuperscript{rd} Normal Form}
+
+There is a possibly, when, decomposing a relation, because not all FDs are carried onto all decomposed relations, it is possible that, although no relations violate their own FDs, the database as a whole may violate one of the original FDs.\\
+
+The 3\textsuperscript{rd} Normal Form (3NF) modifies BCNF to fix this issue. An attribute is called \textbf{prime} if it is a member of any key. $X \to A$ violates 3NF if and only if $X$ is not a superkey, and also $A$ is not a prime.\\
+
+There are two important properties of a decomposition:
+
+\begin{enumerate}
+\item \textbf{Lossless Join} it should be possible to project the orignal relations onto the decomposed schema, and then rebuild them.
+\item \textbf{Dependency Preservation} It should be possible to check in the projected relations wheter all FDs hold.
+\end{enumerate}
+
+BCNF does not preserve dependencies all the time, 3NF is a weaker normal form that allows some redunancy but also gurantees dependency preservation. It also gurantees lossless join.\\
+
+In 3NF, the need for null values may arise from time to time, and there is also a problem of repetition of information.
+
+\subsubsection{3NF Synthesis Algorithm}
+
+There is a need for \textbf{minimal basis} for FD, a minimal basis  for FDs are:
+
+\begin{enumerate}
+\item Right sides are single attributes.
+\item No FDs can be removed.
+\item No attribute can be removed from a left side.
+\end{enumerate}
+
+To get a minimal basis:
+
+\begin{enumerate}
+\item Split right sides.
+\item Repeatedly try to remove an FD and see if the remaining FDs are equivalent to the original.
+\item Repeatedly try to remove an attribute from a left side and see if the resulting FDs are equivalent to the original.
+\end{enumerate}
+
+Then, we can create schemas by giving one relation for each FD in the minimal basis. Schema is the union of the left and right sides. And also, if none of them are a key, also the key for a relation.\\
+
+In a relation $R=ABCD$, FDs are $A \to B$ and $A \to C$, and then $AB$ and $AC$ relations are decomposed from FDs, plus $AD$ for a key.
 \end{document}

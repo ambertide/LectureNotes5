@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  12 NOV 2020 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  19 NOV 2020 15:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -556,13 +556,13 @@ e
 (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 21.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
 
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 21.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
 
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -577,143 +577,128 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ]
 Chapter 1.
 
-Underfull \hbox (badness 1769) in paragraph at lines 29--30
+Underfull \hbox (badness 1769) in paragraph at lines 31--32
 []\OT1/cmr/m/n/10.95 Database sys-tems must be per-sis-tent,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--63
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
 
  []
 
 [3]
-Underfull \hbox (badness 1406) in paragraph at lines 68--69
+Underfull \hbox (badness 1406) in paragraph at lines 70--71
 \OT1/cmr/m/n/10.95 A con-cep-tial schema is cer-tainly nicer to
  []
 
 
-Underfull \hbox (badness 1412) in paragraph at lines 68--69
+Underfull \hbox (badness 1412) in paragraph at lines 70--71
 \OT1/cmr/m/n/10.95 use than a phys-i-cal scheme. Op-er-a-tions
  []
 
 
-Underfull \hbox (badness 1466) in paragraph at lines 74--75
+Underfull \hbox (badness 1466) in paragraph at lines 76--77
 \OT1/cmr/m/n/10.95 If users can be given their own ex-ter-nal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
 
 
-Overfull \hbox (28.6626pt too wide) in paragraph at lines 94--95
+Overfull \hbox (28.6626pt too wide) in paragraph at lines 96--97
 [][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (22.09253pt too wide) in paragraph at lines 97--98
+Overfull \hbox (22.09253pt too wide) in paragraph at lines 99--100
 [][][][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--115
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 120--121
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
 
-Underfull \hbox (badness 3919) in paragraph at lines 134--135
+Underfull \hbox (badness 3919) in paragraph at lines 136--137
 \OT1/cmr/m/n/10.95 These con-straints en-codes \OT1/cmr/m/it/10.95 busi-ness ru
 les\OT1/cmr/m/n/10.95 .
  []
 
 
-Overfull \hbox (8.9524pt too wide) in paragraph at lines 141--142
+Overfull \hbox (8.9524pt too wide) in paragraph at lines 143--144
 [][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (74.65308pt too wide) in paragraph at lines 146--147
+Overfull \hbox (74.65308pt too wide) in paragraph at lines 148--149
 [][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (8.9524pt too wide) in paragraph at lines 148--149
+Overfull \hbox (8.9524pt too wide) in paragraph at lines 150--151
 [][][][][][][][][][][] 
  []
 
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 1
-49.
+51.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 149.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 151.
  [5] [6
 
 ]
 Chapter 2.
 
-Underfull \hbox (badness 5622) in paragraph at lines 178--178
+Underfull \hbox (badness 5622) in paragraph at lines 180--180
 []\OT1/cmr/bx/n/14.4 Structure of Re-la-tional
  []
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 189--190
+Underfull \hbox (badness 1990) in paragraph at lines 191--192
 \OT1/cmr/m/n/10.95 of the database. \OT1/cmtt/m/n/10.95 instructor(ID, name,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--192
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
 []\OT1/cmr/m/n/10.95 Using com-mon at-tributes in re-la-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--199
+Underfull \hbox (badness 10000) in paragraph at lines 201--201
 []\OT1/cmr/bx/n/14.4 Relational Query Lan-
  []
 
 [7
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 209--210
-
- []
-
-
-Underfull \hbox (badness 1436) in paragraph at lines 211--212
-[]\OT1/cmr/m/n/10.95 For in-stance, $\OML/cmm/m/it/10.95 ^^[[]\OT1/cmr/m/n/10.9
-5 (\OML/cmm/m/it/10.95 r\OT1/cmr/m/n/10.95 )$ would se-lect
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 211--212
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
-[]\OT1/cmr/m/n/10.95 On the Ta-ble 2.1[],
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
-\OML/cmm/m/it/10.95 ^^[[]$ \OT1/cmr/m/n/10.95 would re-turn
+Underfull \hbox (badness 1436) in paragraph at lines 213--214
+[]\OT1/cmr/m/n/10.95 For in-stance, $\OML/cmm/m/it/10.95 ^^[[]\OT1/cmr/m/n/10.9
+5 (\OML/cmm/m/it/10.95 r\OT1/cmr/m/n/10.95 )$ would se-lect
  []
 
 
@@ -723,38 +708,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 213--214
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 215--216
-
+[]\OT1/cmr/m/n/10.95 On the Ta-ble 2.1[],
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 217--218
-\OT1/cmr/m/n/10.95 schema \OT1/cmtt/m/n/10.95 department(dept[]name, building,
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
+\OML/cmm/m/it/10.95 ^^[[]$ \OT1/cmr/m/n/10.95 would re-turn
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
+
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 217--218
+
+ []
+
+
+Underfull \hbox (badness 4144) in paragraph at lines 219--220
+\OT1/cmr/m/n/10.95 schema \OT1/cmtt/m/n/10.95 department(dept[]name, building,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
 \OT1/cmtt/m/n/10.95 budget)\OT1/cmr/m/n/10.95 , $\OML/cmm/m/it/10.95 ^^[[]\OT1/
 cmr/m/n/10.95 ([])$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--218
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
 
  []
 
 
-Underfull \hbox (badness 2600) in paragraph at lines 221--222
+Underfull \hbox (badness 2600) in paragraph at lines 223--224
 \OT1/cmr/m/n/10.95 An unary op-er-a-tion that re-turns its ar-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
 \OT1/cmr/m/n/10.95 gu-ment re-la-tion with cer-tain at-tributes
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
  []
 
 
@@ -763,41 +758,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 223--224
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 \OT1/cmr/m/n/10.95 Composes two re-la-tions to-gether to a
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 \OT1/cmr/m/n/10.95 sin-gle prod-uct, $[] \OMS/cmsy/m/n/10.95 ^^B []$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 \OT1/cmr/m/n/10.95 re-la-tion, where \OT1/cmtt/m/n/10.95 instructor(id, name,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 \OT1/cmtt/m/n/10.95 dept[]name, salary) \OT1/cmr/m/n/10.95 and \OT1/cmtt/m/n/10
 .95 teaches(id,
  []
 
 
-Underfull \hbox (badness 6741) in paragraph at lines 235--236
+Underfull \hbox (badness 6741) in paragraph at lines 237--238
 \OT1/cmtt/m/n/10.95 course[]id, year \OT1/cmr/m/n/10.95 re-sults in the re-la-t
 ion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 \OT1/cmtt/m/n/10.95 instructor$\OMS/cmsy/m/n/10.95 ^^B$\OT1/cmtt/m/n/10.95 teac
 hes(instructor.id
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
-
  []
 
 
@@ -811,82 +806,87 @@ Underfull \hbox (badness 10000) in paragraph at lines 239--240
  []
 
 
-Overfull \hbox (7.92233pt too wide) detected at line 247
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
+
+ []
+
+
+Overfull \hbox (7.92233pt too wide) detected at line 249
 \OML/cmm/m/it/10.95 ^^[[]\OT1/cmr/m/n/10.95 ([] \OMS/cmsy/m/n/10.95 ^^B []\OT1/
 cmr/m/n/10.95 )\OML/cmm/m/it/10.95 :
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 249--250
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--254
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
 \OT1/cmr/m/n/10.95 ([])$ is equiv-a-lent to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--254
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
 \OML/cmm/m/it/10.95 ^^[[]\OT1/cmr/m/n/10.95 ([] \OMS/cmsy/m/n/10.95 ^^B
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 257--258
+Underfull \hbox (badness 1515) in paragraph at lines 259--260
 \OT1/cmr/m/n/10.95 The union op-er-a-tion $\OML/cmm/m/it/10.95 r \OMS/cmsy/m/n/
 10.95 [ \OML/cmm/m/it/10.95 s$ \OT1/cmr/m/n/10.95 com-bines two
  []
 
 
-Underfull \hbox (badness 2521) in paragraph at lines 257--258
+Underfull \hbox (badness 2521) in paragraph at lines 259--260
 \OT1/cmr/m/n/10.95 (num-ber of at-tributes) and the at-tribute
  []
 
 
-Underfull \hbox (badness 1852) in paragraph at lines 257--258
+Underfull \hbox (badness 1852) in paragraph at lines 259--260
 \OT1/cmr/m/n/10.95 do-mains are com-pat-i-ble. (Same in-dexed
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--258
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
 []\OT1/cmr/m/n/10.95 The ex-pres-sion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
 \OML/cmm/m/it/10.95 ^^Y[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^[[]\OT1/cmr/
 m/n/10.95 (\OML/cmm/m/it/10.95 section\OT1/cmr/m/n/10.95 )$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
 \OT1/cmr/m/n/10.95 on the re-la-tion \OT1/cmtt/m/n/10.95 section \OT1/cmr/m/n/1
 0.95 with schema
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
 \OT1/cmtt/m/n/10.95 section(course[]id, sec[]id, semester,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
 \OT1/cmtt/m/n/10.95 year, building, room, number,
  []
 
 
-Underfull \hbox (badness 5147) in paragraph at lines 259--260
+Underfull \hbox (badness 5147) in paragraph at lines 261--262
 \OT1/cmtt/m/n/10.95 time[]slot[]id) \OT1/cmr/m/n/10.95 wil se-lect \OT1/cmtt/m/
 n/10.95 course[]id \OT1/cmr/m/n/10.95 row
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--272
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
 
  []
 
@@ -895,84 +895,69 @@ Underfull \hbox (badness 10000) in paragraph at lines 271--272
 ]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--299
+Underfull \hbox (badness 10000) in paragraph at lines 301--301
 []\OT1/cmr/bx/n/14.4 Entity Re-la-tion-ship
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 
  []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 331--332
+Underfull \hbox (badness 1048) in paragraph at lines 333--334
 []\OT1/cmr/m/n/10.95 Entity sets are rep-re-sented in a sim-i-lar
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 331--332
+Underfull \hbox (badness 1675) in paragraph at lines 333--334
 \OT1/cmr/m/n/10.95 fash-ion to UML class di-a-grams, with its
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 331--332
+Underfull \hbox (badness 1052) in paragraph at lines 333--334
 \OT1/cmr/m/n/10.95 In the al-ter-na-tive no-ta-tion, they are rep-
  []
 
 
-Underfull \hbox (badness 1418) in paragraph at lines 331--332
+Underfull \hbox (badness 1418) in paragraph at lines 333--334
 \OT1/cmr/m/n/10.95 re-sented as rect-an-gles, with its at-tributes
  []
 
 
-Underfull \hbox (badness 1838) in paragraph at lines 331--332
+Underfull \hbox (badness 1838) in paragraph at lines 333--334
 \OT1/cmr/m/n/10.95 al-ter-na-tive no-ta-tion is shown in the pic-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 \OT1/cmr/m/n/10.95 https://texample.net/tikz/examples/er-
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 335--336
+Underfull \hbox (badness 1259) in paragraph at lines 337--338
 \OT1/cmr/m/n/10.95 Attributes can be grouped as sim-ple and
  []
 
 
-Underfull \hbox (badness 2564) in paragraph at lines 335--336
+Underfull \hbox (badness 2564) in paragraph at lines 337--338
 \OT1/cmr/m/n/10.95 com-pos-ite at-tributes, com-pos-ite at-tributes
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--336
+Underfull \hbox (badness 10000) in paragraph at lines 337--338
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 341--342
-
- []
-
-
-Underfull \hbox (badness 1635) in paragraph at lines 343--344
-[]\OT1/cmr/m/n/10.95 Relationship sets have \OT1/cmr/bx/n/10.95 De-gree\OT1/cmr
-/m/n/10.95 s, bi-nary
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 343--344
 
  []
 
 
-Underfull \hbox (badness 1472) in paragraph at lines 345--346
-\OT1/cmr/m/n/10.95 the num-ber of en-ti-ties con-nected in each
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 345--346
-\OT1/cmr/m/n/10.95 en-tity set by a re-la-tion-ship, a one-to-one
+Underfull \hbox (badness 1635) in paragraph at lines 345--346
+[]\OT1/cmr/m/n/10.95 Relationship sets have \OT1/cmr/bx/n/10.95 De-gree\OT1/cmr
+/m/n/10.95 s, bi-nary
  []
 
 
@@ -981,14 +966,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 345--346
  []
 
 
-Underfull \hbox (badness 3679) in paragraph at lines 349--350
-\OT1/cmr/bx/n/10.95 par-tial par-tic-i-pa-tion \OT1/cmr/m/n/10.95 means that so
-me
+Underfull \hbox (badness 1472) in paragraph at lines 347--348
+\OT1/cmr/m/n/10.95 the num-ber of en-ti-ties con-nected in each
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 349--350
+Underfull \hbox (badness 1248) in paragraph at lines 347--348
+\OT1/cmr/m/n/10.95 en-tity set by a re-la-tion-ship, a one-to-one
+ []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--348
+
+ []
+
+
+Underfull \hbox (badness 3679) in paragraph at lines 351--352
+\OT1/cmr/bx/n/10.95 par-tial par-tic-i-pa-tion \OT1/cmr/m/n/10.95 means that so
+me
  []
 
 
@@ -997,13 +992,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 351--352
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 361--362
-\OT1/cmr/m/n/10.95 the pri-mary key for a re-la-tion-ship set is
+Underfull \hbox (badness 10000) in paragraph at lines 353--354
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 361--362
-
+Underfull \hbox (badness 1371) in paragraph at lines 363--364
+\OT1/cmr/m/n/10.95 the pri-mary key for a re-la-tion-ship set is
  []
 
 
@@ -1011,19 +1006,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 363--364
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--366
+
+ []
+
 [12]
-Underfull \hbox (badness 1122) in paragraph at lines 387--388
+Underfull \hbox (badness 1122) in paragraph at lines 389--390
 \OT1/cmr/m/n/10.95 is de-pen-dent on an-other en-tity, called its
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 387--388
-
- []
-
-
-Underfull \hbox (badness 1838) in paragraph at lines 389--390
-[]\OT1/cmr/m/n/10.95 In ER di-a-grams, a weak en-tity set is
  []
 
 
@@ -1032,22 +1022,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 389--390
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--407
+Underfull \hbox (badness 1838) in paragraph at lines 391--392
+[]\OT1/cmr/m/n/10.95 In ER di-a-grams, a weak en-tity set is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 391--392
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--411
+Underfull \hbox (badness 10000) in paragraph at lines 408--409
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--414
+Underfull \hbox (badness 10000) in paragraph at lines 412--413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 419--420
+Underfull \hbox (badness 10000) in paragraph at lines 415--416
 
  []
 
@@ -1056,39 +1051,361 @@ Underfull \hbox (badness 10000) in paragraph at lines 421--422
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 423--424
+
+ []
+
 [13] [14
 
-] (./lecturenotes_315.aux) ) 
+]
+Chapter 4.
+
+Underfull \hbox (badness 1281) in paragraph at lines 447--447
+[]\OT1/cmr/bx/n/14.4 Features of Good Re-la-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+\OT1/cmtt/m/n/10.95 salary) \OT1/cmr/m/n/10.95 and \OT1/cmtt/m/n/10.95 departme
+nt(dept[]name,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+\OT1/cmtt/m/n/10.95 building, budget) \OT1/cmr/m/n/10.95 was two dif-fer-ent
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+
+ []
+
+
+Underfull \hbox (badness 3668) in paragraph at lines 451--452
+\OT1/cmr/m/n/10.95 for in-stance \OT1/cmtt/m/n/10.95 employee(ID, name, street,
+
+ []
+
+
+Underfull \hbox (badness 4913) in paragraph at lines 451--452
+\OT1/cmtt/m/n/10.95 city, salary) \OT1/cmr/m/n/10.95 schema, de-com-posed into
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
+
+ []
+
+
+Underfull \vbox (badness 3668) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
+\OT1/cmtt/m/n/10.95 address, HScode, HSname, HScity, GPA,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
+\OT1/cmtt/m/n/10.95 = 1\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 3.3 < GPA <= 3.
+8, priority = 2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
+
+ []
+
+
+Overfull \hbox (21.83783pt too wide) detected at line 465
+ []$[]  []\OMS/cmsy/m/n/10.95 8\OML/cmm/m/it/10.95 t; u \OMS/cmsy/m/n/10.95 2 \
+OML/cmm/m/it/10.95 R; t\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 A[]; A[]; [] ; A
+[]\OT1/cmr/m/n/10.95 ] = \OML/cmm/m/it/10.95 u\OT1/cmr/m/n/10.95 [\OML/cmm/m/it
+/10.95 A[]; A[]; [] ; A[]\OT1/cmr/m/n/10.95 ]$ 
+ []
+
+[15
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 497--498
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 517--518
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--520
+[]\OT1/cmr/m/n/10.95 Consider in scheme \OT1/cmtt/m/n/10.95 Customers(name,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--520
+\OT1/cmtt/m/n/10.95 addr, drinksLiked, manf, favDrink \OT1/cmr/m/n/10.95 if
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 521--522
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 525--526
+
+ []
+
+
+Overfull \hbox (27.04553pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 16 \OT1/cmr/m/sl/10.95 CHAPTER 4.  DATABASE THEORY FOR RELAT
+IONAL DATABASES - NOVEMBER 19, 2020
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 527--528
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 539--540
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 551--552
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 562--563
+[]\OT1/cmr/m/n/10.95 Losing in-for-ma-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 565--566
+\OT1/cmtt/m/n/10.95 addr, drinksLiked, manf, favDrink\OT1/cmr/m/n/10.95 , if
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 565--566
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 571--572
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 573--574
+
+ []
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 575--576
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 577--578
+\OT1/cmtt/m/n/10.95 manf, favDrink\OT1/cmr/m/n/10.95 , FD's are $[] \OMS/cmsy/m
+/n/10.95 !
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 577--578
+[]\OML/cmm/m/it/10.95 ; [] \OMS/cmsy/m/n/10.95 ! []$\OT1/cmr/m/n/10.95 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 577--578
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 579--580
+[]\OT1/cmr/m/n/10.95 Now con-sider \OT1/cmtt/m/n/10.95 Customers(name, manf,
+ []
+
+
+Underfull \hbox (badness 1831) in paragraph at lines 579--580
+\OT1/cmtt/m/n/10.95 manfAddr)\OT1/cmr/m/n/10.95 , FDs are $[] \OMS/cmsy/m/n/10.
+95 ! []$ \OT1/cmr/m/n/10.95 and
+ []
+
+
+Underfull \hbox (badness 1590) in paragraph at lines 579--580
+[] \OMS/cmsy/m/n/10.95 ! []$\OT1/cmr/m/n/10.95 , here the sec-ond FD
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 579--580
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 588--589
+
+ []
+
+
+Underfull \hbox (badness 5217) in paragraph at lines 592--593
+\OT1/cmr/m/n/10.95 For in-stance, in \OT1/cmtt/m/n/10.95 Customers(name, addr,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 600--601
+[]\OT1/cmr/m/n/10.95 Close the left side: $\OMS/cmsy/m/n/10.95 f[]g[] \OT1/cmr/
+m/n/10.95 =
+ []
+
+
+Underfull \hbox (badness 2237) in paragraph at lines 601--602
+[]\OT1/cmr/m/n/10.95 This yields two de-com-posed re-la-tions
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 601--602
+\OT1/cmtt/m/n/10.95 Customers1(name, addr, favDrink)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 601--602
+\OT1/cmr/m/n/10.95 and \OT1/cmtt/m/n/10.95 Customers2(name, drinksLiked,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 607--608
+[][] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f[]\OML/cmm/m/it/10.95 ; []; []\O
+MS/cmsy/m/n/10.95 g$\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 7963) in paragraph at lines 607--608
+[][] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f[]g$\OT1/cmr/m/n/10.95 , $[][] =
+
+ []
+
+
+Underfull \hbox (badness 3209) in paragraph at lines 607--608
+\OT1/cmr/m/n/10.95 triv-ial ones) is $[] \OMS/cmsy/m/n/10.95 ! []$ \OT1/cmr/m/n
+/10.95 and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 609--610
+[]\OT1/cmr/m/n/10.95 But, Cus-tomer2, \OT1/cmtt/m/n/10.95 Customers1(name,
+ []
+
+
+Underfull \hbox (badness 6978) in paragraph at lines 609--610
+\OT1/cmtt/m/n/10.95 addr, favDrink)\OT1/cmr/bx/n/10.95 does \OT1/cmr/m/n/10.95 
+vi-o-late VCNF,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 609--610
+\OT1/cmr/m/n/10.95 since the only non-triv-ial fd is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
+[]\OT1/cmr/m/n/10.95 We de-com-pose Cus-tomers2 to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
+\OT1/cmtt/m/n/10.95 Customers2(drinksLiked, manf) \OT1/cmr/m/n/10.95 and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
+\OT1/cmtt/m/n/10.95 Customers4(name, drinksLiked)\OT1/cmr/m/n/10.95 . The
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 615--616
+[]\OT1/cmtt/m/n/10.95 Customers1(\OT1/cmtt/m/it/10.95 name\OT1/cmtt/m/n/10.95 ,
+ addr, favDrink\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 622--623
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 624--625
+
+ []
+
+
+Overfull \hbox (27.04553pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 18 \OT1/cmr/m/sl/10.95 CHAPTER 4.  DATABASE THEORY FOR RELAT
+IONAL DATABASES - NOVEMBER 19, 2020
+ []
+
+[18]
+Underfull \hbox (badness 1092) in paragraph at lines 633--634
+\OT1/cmr/m/n/10.95 al-lows some re-dunancy but also gu-ran-tees
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 633--634
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--656
+
+ []
+
+[19] (./lecturenotes_315.aux) ) 
 Here is how much of TeX's memory you used:
- 15970 strings out of 480906
- 302914 string characters out of 5908268
+ 15990 strings out of 480906
+ 303148 string characters out of 5908268
  727356 words of memory out of 5000000
- 31292 multiletter control sequences out of 15000+600000
- 545257 words of font info for 67 fonts, out of 8000000 for 9000
+ 31310 multiletter control sequences out of 15000+600000
+ 548386 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,12n,67p,595b,1251s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips
-/cm-super/cm-super-ts1.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr17.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl
-10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
-pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
-fb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
-b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-</usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on lecturenotes_315.pdf (14 pages, 230731 bytes).
+ 60i,12n,67p,600b,1251s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dv
+ips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr17.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msl10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sl8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
+.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
+pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
+fb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb
+></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
+.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.p
+fb>
+Output written on lecturenotes_315.pdf (19 pages, 268028 bytes).
 PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
+ 151 PDF objects out of 1000 (max. 8388607)
+ 108 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

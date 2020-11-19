@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  13 NOV 2020 10:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  19 NOV 2020 12:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -836,7 +836,7 @@ Chapter 2.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--237
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
  []
 
@@ -853,7 +853,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 236--237
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
-Underfull \hbox (badness 10000) in paragraph at lines 283--284
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
 
@@ -868,12 +868,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 283--284
 \realshift=\dimen336
 \realshift=\dimen337
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--349
+Underfull \hbox (badness 10000) in paragraph at lines 349--350
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
 
  []
 
@@ -899,12 +899,12 @@ D) - NOVEMBER 12, 2020
 ]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 421--422
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 472--473
+Underfull \hbox (badness 10000) in paragraph at lines 473--474
 
  []
 
@@ -942,7 +942,7 @@ Chapter 5.
 Underfull \vbox (badness 5578) has occurred while \output is active []
 
  [19]
-Underfull \hbox (badness 10000) in paragraph at lines 609--610
+Underfull \hbox (badness 10000) in paragraph at lines 610--611
 
  []
 
@@ -950,7 +950,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 609--610
 \realshift=\dimen358
 \realshift=\dimen359
 
-Underfull \hbox (badness 10000) in paragraph at lines 639--640
+Underfull \hbox (badness 10000) in paragraph at lines 640--641
 
  []
 
@@ -960,7 +960,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 639--640
 \realshift=\dimen362
 \absvshift=\dimen363
 
-Underfull \hbox (badness 10000) in paragraph at lines 664--665
+Underfull \hbox (badness 10000) in paragraph at lines 665--666
 
  []
 
@@ -972,7 +972,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 664--665
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [21]
-Underfull \hbox (badness 10000) in paragraph at lines 688--689
+Underfull \hbox (badness 10000) in paragraph at lines 689--690
 
  []
 
@@ -983,12 +983,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 688--689
 \realshift=\dimen372
 \absvshift=\dimen373
 
-Underfull \hbox (badness 10000) in paragraph at lines 715--716
+Underfull \hbox (badness 10000) in paragraph at lines 716--717
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 717--718
+Underfull \hbox (badness 10000) in paragraph at lines 718--719
 
  []
 
@@ -999,17 +999,51 @@ Underfull \hbox (badness 10000) in paragraph at lines 717--718
 Underfull \vbox (badness 2435) has occurred while \output is active []
 
  [22]
-Underfull \hbox (badness 10000) in paragraph at lines 728--729
+Underfull \hbox (badness 10000) in paragraph at lines 729--730
 
  []
 
 \realshift=\dimen377
-[23] (./lecturenotes.aux) ) 
+[23] [24
+
+]
+Chapter 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 756--757
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 758--759
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 760--761
+
+ []
+
+\realshift=\dimen378
+\realshift=\dimen379
+\absvshift=\dimen380
+\absvshift=\dimen381
+[25]
+\realshift=\dimen382
+\absvshift=\dimen383
+ [26]
+Underfull \hbox (badness 10000) in paragraph at lines 845--846
+
+ []
+
+\realshift=\dimen384
+\realshift=\dimen385
+\absvshift=\dimen386
+[27] (./lecturenotes.aux) ) 
 Here is how much of TeX's memory you used:
- 44710 strings out of 480906
- 1237372 string characters out of 5908268
- 1653367 words of memory out of 5000000
- 59821 multiletter control sequences out of 15000+600000
+ 45174 strings out of 480906
+ 1252533 string characters out of 5908268
+ 1652956 words of memory out of 5000000
+ 60285 multiletter control sequences out of 15000+600000
  547410 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,18n,98p,729b,2099s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1030,10 +1064,10 @@ r8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
 fb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
 b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 >
-Output written on lecturenotes.pdf (23 pages, 233962 bytes).
+Output written on lecturenotes.pdf (27 pages, 249699 bytes).
 PDF statistics:
- 148 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
+ 161 PDF objects out of 1000 (max. 8388607)
+ 113 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  19 words of extra memory for PDF output out of 10000 (max. 10000000)
 

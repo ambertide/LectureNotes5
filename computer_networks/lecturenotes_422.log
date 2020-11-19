@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  10 NOV 2020 16:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  17 NOV 2020 14:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -916,12 +916,135 @@ Underfull \hbox (badness 10000) in paragraph at lines 341--342
 
  []
 
-[19] (./lecturenotes_422.aux) ) 
+[19]
+Overfull \hbox (44.3751pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 20 \OT1/cmr/m/sl/10.95 CHAPTER 4.  WIRELESS LANS: WIFI & BLU
+ETOOTH - NOVEMBER 10, 2020
+ []
+
+[20
+
+]
+Chapter 5.
+
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 360--361
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 362--363
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 376--377
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 380--381
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
+
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 401--402
+
+ []
+
+<atmcard.jpeg, id=89, 246.6816pt x 164.5347pt>
+File: atmcard.jpeg Graphic file (type jpg)
+<use atmcard.jpeg>
+Package pdftex.def Info: atmcard.jpeg  used on input line 409.
+(pdftex.def)             Requested size: 246.68098pt x 164.53427pt.
+[23 <./atmcard.jpeg>] [24
+
+]
+Chapter 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 429--430
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 433--434
+
+ []
+
+[25]
+! Undefined control sequence.
+l.481 ...s a special bit sequence that, when \code
+                                                  {and}ed with an IP address...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.481 ...}ed with an IP address, returns the \code
+                                                  {netid}, this way, we can ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[26] (./lecturenotes_422.aux) ) 
 Here is how much of TeX's memory you used:
- 23754 strings out of 480906
- 609938 string characters out of 5908268
+ 23761 strings out of 480906
+ 610033 string characters out of 5908268
  1005083 words of memory out of 5000000
- 38977 multiletter control sequences out of 15000+600000
+ 38982 multiletter control sequences out of 15000+600000
  545105 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,12n,101p,733b,2273s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -941,10 +1064,10 @@ m/cmsy8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmti10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mti8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm10
 95.pfb>
-Output written on lecturenotes_422.pdf (19 pages, 187143 bytes).
+Output written on lecturenotes_422.pdf (26 pages, 332038 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 150 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
