@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  13 NOV 2020 16:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  27 NOV 2020 16:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -195,7 +195,11 @@ File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count269
 \l__pdf_internal_box=\box49
 )
-(./lecturenotes.aux)
+(./lecturenotes.aux
+
+LaTeX Warning: Label `tab:jtype' multiply defined.
+
+)
 \openout1 = `lecturenotes.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -213,8 +217,7 @@ LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 \c@lstlisting=\count270
-
-(/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count271
 \scratchdimen=\dimen164
@@ -844,44 +847,264 @@ Underfull \hbox (badness 10000) in paragraph at lines 668--669
  []
 
 
+Underfull \hbox (badness 1005) in paragraph at lines 674--675
+\OT1/cmr/m/n/10.95 Procedures that call other pro-ce-dures, for
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 674--675
+
+ []
+
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 6
+80.
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 680.
+
+Overfull \hbox (15.52246pt too wide) in paragraph at lines 681--682
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 706--707
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 708--709
+
+ []
+
+
+Underfull \hbox (badness 1728) in paragraph at lines 710--711
+\OT1/cmr/m/n/10.95 stored how-ever, since in cer-tain re-cur-sive
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 710--711
+
+ []
+
+
 Overfull \hbox (68.10823pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/10.95 16 \OT1/cmr/m/sl/10.95 CHAPTER 4.  INSTRUCTIONS: LANGUAGE OF
  THE COMPUTER (CONT`D) - NOVEMBER 13, 2020
  []
 
-[16
+[16]
+Chapter 5.
 
-] (./lecturenotes.aux) ) 
+Underfull \hbox (badness 10000) in paragraph at lines 721--722
+
+ []
+
+
+Overfull \hbox (4.63141pt too wide) in paragraph at lines 728--735
+[][] 
+ []
+
+
+Underfull \vbox (badness 1014) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 758--759
+
+ []
+
+[17
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 782--783
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 784--785
+
+ []
+
+
+Overfull \hbox (68.10823pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 18 \OT1/cmr/m/sl/10.95 CHAPTER 5.  INSTRUCTIONS: LANGUAGE OF
+ THE COMPUTER (CONT`D) - NOVEMBER 20, 2020
+ []
+
+[18]
+Chapter 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 854--855
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 856--857
+
+ []
+
+
+Overfull \hbox (2.38232pt too wide) in paragraph at lines 862--863
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (2.38232pt too wide) in paragraph at lines 873--874
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19
+
+]
+Underfull \hbox (badness 1320) in paragraph at lines 908--909
+\OT1/cmr/m/n/10.95 in-struc-tions have a one-to-one re-la-tion-ship
+ []
+
+
+Underfull \hbox (badness 2644) in paragraph at lines 908--909
+\OT1/cmr/bx/n/10.95 tions \OT1/cmr/m/n/10.95 are in-struc-tions that do not hav
+e
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 908--909
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 910--911
+
+ []
+
+
+Underfull \hbox (badness 6364) in paragraph at lines 921--922
+[]\OT1/cmr/m/n/10.95 Data al-lo-cated for
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 922--923
+[]\OT1/cmr/m/n/10.95 Instructions and
+ []
+
+
+Underfull \hbox (badness 2359) in paragraph at lines 922--923
+\OT1/cmr/m/n/10.95 data words that de-pend on ab-so-lute
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 933--934
+
+ []
+
+
+Overfull \hbox (68.10823pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 20 \OT1/cmr/m/sl/10.95 CHAPTER 6.  INSTRUCTIONS: LANGUAGE OF
+ THE COMPUTER (CONT`D) - NOVEMBER 27, 2020
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 951--952
+
+ []
+
+
+Overfull \hbox (148.28983pt too wide) in paragraph at lines 954--965
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 994--995
+
+ []
+
+
+Underfull \hbox (badness 2591) in paragraph at lines 996--997
+[]\OT1/cmr/m/n/10.95 First loop trans-for-ma-tion is \OT1/cmr/bx/n/10.95 loop u
+n-
+ []
+
+
+Overfull \hbox (74.65308pt too wide) in paragraph at lines 1018--1020
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 1383) in paragraph at lines 1023--1024
+[]\OT1/cmr/m/n/10.95 Another trans-for-ma-tion is \OT1/cmr/bx/n/10.95 loop fu-s
+ion\OT1/cmr/m/n/10.95 ,
+ []
+
+[21]
+Underfull \hbox (badness 2486) in paragraph at lines 1043--1044
+[]\OT1/cmr/m/n/10.95 Another trans-for-ma-tion is \OT1/cmr/bx/n/10.95 loop tili
+ng\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1047--1048
+
+ []
+
+
+Underfull \hbox (badness 3058) in paragraph at lines 1049--1050
+[]\OT1/cmr/m/n/10.95 This how-ever, in-creases the code size.
+ []
+
+
+Underfull \hbox (badness 3343) in paragraph at lines 1052--1053
+\OT1/cmr/m/n/10.95 rep-re-sen-ta-tion, al-go-rithm, pro-ce-dures and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1052--1053
+
+ []
+
+
+Overfull \hbox (68.10823pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 22 \OT1/cmr/m/sl/10.95 CHAPTER 6.  INSTRUCTIONS: LANGUAGE OF
+ THE COMPUTER (CONT`D) - NOVEMBER 27, 2020
+ []
+
+[22] (./lecturenotes.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5479 strings out of 480906
- 70738 string characters out of 5908268
- 525112 words of memory out of 5000000
- 21018 multiletter control sequences out of 15000+600000
+ 5558 strings out of 480906
+ 71545 string characters out of 5908268
+ 529162 words of memory out of 5000000
+ 21094 multiletter control sequences out of 15000+600000
  545564 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,12n,53p,595b,1476s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-
-super/cm-super-ts1.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr17.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10
-.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
-fb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
-b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb>
-</usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></
-usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on lecturenotes.pdf (16 pages, 236307 bytes).
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
+ocal/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
+exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
+ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texli
+ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
+e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive
+/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/
+2020/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/20
+20/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2020
+/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on lecturenotes.pdf (22 pages, 257233 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
+ 145 PDF objects out of 1000 (max. 8388607)
+ 102 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

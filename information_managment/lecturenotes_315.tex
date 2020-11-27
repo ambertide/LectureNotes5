@@ -655,4 +655,213 @@ To get a minimal basis:
 Then, we can create schemas by giving one relation for each FD in the minimal basis. Schema is the union of the left and right sides. And also, if none of them are a key, also the key for a relation.\\
 
 In a relation $R=ABCD$, FDs are $A \to B$ and $A \to C$, and then $AB$ and $AC$ relations are decomposed from FDs, plus $AD$ for a key.
+
+\chapter{Design Theory for Relational Databases (Cont`d) - November 16, 2020}
+
+\newcommand{\C}[1]{\code{#1}}
+\newcommand{\ApplyExample}{\C{Apply(SSN, cName, hobby)}}
+Imagine a system with the relation \C{Apply(SSN, cName, hobby)}, we have no Functional dependencies for this relation, the only key is the all attributes of the relation. The relation is in the BCNF.\\
+
+Is this a good design to hold student collage applications? Imagine a database such as:
+\begin{table}[h]
+    \begin{tabular}{lll}
+		SSN & cName & Hobby\\
+        \toprule
+        123 & IYTE & tennis\\
+        123 & IYTE & swimming\\
+        123 & EGE & tennis\\
+        123 & EGE & swimming\\
+        \bottomrule
+    \end{tabular}
+    \caption{Instructors.}
+    \label{tab:inst}
+\end{table}
+
+Sweet Jesus, this is terrifying, look at this monstrosity, if a student with 4 hobbies applies to 5 collages, that would create 20 tuples alone! This is a terrible design.
+
+\section{Multivalued Dependency}
+
+\begin{description}
+\item[a Multivalued Dependency] (MVD) on $R$, denoted $X \to \to Y$ says that if two tuples of $R$ agree on all attributes of $X$, then their components in $Y$ may be swapped and the result will be two tuples that are also in the relation.
+\end{description}
+
+\newcommand{\mvn}{\ensuremath{\to\to}}
+For instance, $\C{SSN} \mvn \C{cName}$, we swap collage names wherever the \C{SSN} of th e student is the same, and the resulting tuples will also be in the relationship.\\
+
+For instance in \C{Customers(name, addr, phones, drinksLiked)}, here \C{phones} and \C{drinksLiked} are independent, which will create redundant tuples, we can just say $\C{name} \mvn \C{phones}$ and $\C {name} \mvn \C{drinksLiked}$.
+
+\subsubsection{Every FD is an MVD}
+
+Keep in mind that every Functional Dependency is a Multivalued Dependency as well. If $X \to Y$, then by definition $X \mvn Y$, since swapping $Y$s between two tuples that agree on $X$ doesn't change the tuples.
+
+\subsubsection{Complementation}
+
+If $X \mvn Y$, and $Z$ is all the other attributes $X \mvn Z$.\\
+
+For instance, in the \ApplyExample, since $\C{SSN} \mvn \C{cName}$, automatically $\C{SSN} \mvn \C{hobby}$. [Since swapping \C{cName} values is equal to swapping \C{hobby} values in reverse.]
+
+\subsubsection{Splitting Doesn't Hold}
+
+Like the FDs, left side of an MVD cannot be generally split. \textbf{Unlike} FDs, the right side cannot be split either. If $A \mvn CD$, \textit{does not necessarily mean} $A \mvn C$ and $A \mvn D$.
+
+\section{the Fourth Normal Form}
+
+The Separation of independent facts is what 4NF is about. The redundancy that comes from MVNs cannot be fixed with BCNF. 4NF treats MVDs as FDs while decomposition.\\
+
+A relation is in 4NF if: whenever $X \mvn Y$ is a nontrivial MVD, then $X$ is a superkey. Nontrivial MVD means that:
+
+\begin{enumerate}
+\item Y is not a subset of X.
+\item X and Y are not, together, all the attributes.
+\end{enumerate}
+
+Superkeys are still determined by FDs only.\\
+
+\subsubsection{Connection to BCNF.}
+
+Since every FD is an MVD, if $R$ is in 4NF it is certainly BCNF, but R could be in BCNF and not in 4NF.\\
+
+If $X \mvn Y$ is a 4NF violation for relation $R$, we can decompose $R$ using the same technique for BCNF.
+
+\subsubsection{Algorithm.}
+
+Until all relations are in 4NF:
+
+\begin{itemize}
+\item Pick any $R'$ with nontrivial $X \mvn Y$ that violates 4NF.
+\item Decompose $R'$ into $R_1(X, Y) and R_2(X, \text{rest})$.
+\item Compute FDs and MVDs for $R_1$ and $R_2$.
+\item Compute keys for $R_1$ and $R_2$. 
+\end{itemize}
+
+\subsubsection{Example}
+
+\newcommand{\mvd}{\mvn}
+
+In the \ApplyExample, MVDs are:
+
+\begin{enumerate}
+\item $\C{SSN} \mvd \C{cName} $
+\item $\C{SSN} \mvd \C{hobby}$
+\end{enumerate}
+
+The key is $\set{\C{SSN}, \C{cName}, \C{hobby}}$ and all dependencies violate 4NF.\\
+
+The MVN (1) and (2) violates 4NF because $\C{SSN}$ is not a superkey.\\
+
+Decompose using $\C{SSN} \mvd \C{cName}$:
+
+\begin{enumerate}
+\item \C{Apply1(\emph{SSN}, \emph{cName)}}, no MVDs or FDs, and in 4NF.
+\item \C{Apply2(\emph{SSN}, \emph{hobby})}, no MVDs or FDs, and in 4NF.
+\end{enumerate}
+
+\chapter{SQL - November 26, 2020}
+
+This chapter includes an overview of the \textbf{Structured Query Language}, SQL. More specifically, the dialect of SQL used in the Oracle Database Systems.\\
+
+Most (if not all) SQL statements can be among all dialects, and even when one-to-one compatibility is unavailable
+
+\section{Statements}
+\subsection{Select Statement}
+Used to guery tables:
+\begin{lstlisting}
+SELECT * FROM dept;
+SELECT deptno, loc FROM dept;
+SELECT ename, sal, sal+300 FROM emp;
+\end{lstlisting}
+
+Here, \C{SELECT} is used to query the table denoted by \C{FROM}, \C{SELECT} statement is followed by the column names (seğerated by commas) that are wished to be retrieved.\\
+
+Using the \C{*} sign will select all the columns.
+
+Observe that by using arithmetic operations, we are able to view manipulated data as well. Keep in mind that \C{sal+300} \textbf{does not} change the table itself.
+
+\subsubsection{Operator Precedence}
+
+Operator precedence follows normal precedence rules, parenthesis maybe used to clarify precedence when need be.
+
+\subsubsection{Null Values}
+
+\C{NULL} values in are values that do not exist, they are not zero. They may also create problems in arithmetic operations, returning \C{NULL} themselves.
+
+\subsubsection{Column Aliases}
+
+\begin{lstlisting}
+SELECT ename as name FROM emp;
+SELECT ename "Name" FROM emp;
+\end{lstlisting}
+
+\C{AS} keyword is optional, an alias may follow the column name itself. But without double quotations, the entire word will be capitalised.
+
+\subsubsection{Duplicate Rows}
+
+
+\begin{lstlisting}
+SELECT deptno FROM emp;
+SELECT DISTINCT deptno FROM emp;
+\end{lstlisting}
+
+By default, queries will display the duplicate rows also. The, \C{DISTINCT} keyword can be used to get rid of these.
+
+\subsubsection{Limiting Rows}
+
+\begin{lstlisting}
+SELECT ename, job, deptno FROM emp WHERE job='CLERK';
+SELECT ename, job, deptno FROM emp WHERE sal<=comm;
+\end{lstlisting}
+
+The \C{WHERE} clause is an optional clause that be used to filter rows. Observe that the \C{WHERE} clause can also be used with comparison operator. Do keep in mind that \C{NULL} values return \C{NULL} here too.
+
+\begin{lstlisting}
+SELECT ename, job, deptno FROM emp WHERE sal BETWEEN 1000 and 2000;
+SELECT ename FROM emp WHERE mgr IN(7902, 7566, 7788);
+SELECT ename FROM emp WHERE ename LIKE '_A%';
+SELECT  ename, mgr FROM empt WHERE mgr IS NULL
+\end{lstlisting}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ll}
+		& Function\\
+        \toprule
+        \C{BETWEEN ... AND} & Return True values between two values.\\
+        \C{IN(LIST)} & Return True if values in a list.\\
+        \C{LIKE} & Pattern matching, \% denotes zero or many, \_ denotes one character.\\
+        \C{IS NULL} & Returns True if value is \C{NULL}\\
+        \bottomrule
+    \end{tabular}
+    \caption{Other Comparison Operators}
+    \label{tab:inst}
+\end{table}
+
+Pattern matching characters can be combined, in the example above, names of the employees whose name start with a single character, than an M, and then one or more characters will return.\\
+
+Furthermore, logical operators \C{AND}, \C{OR} and \C{NOT} is defined in SQL.
+
+
+
+\subsubsection{Character Strings and Dates}
+
+Character strings and date values are represented via single quotation marks! They are case sensitive. Column names, clauses, table names are \textbf{not} case sensitive.\\
+
+Date format is DD-MM-YYYY by default.
+
+\subsubsection{ORDER BY Clause}
+
+The order of rows returned in a query result is undefined, \C{ORDER BY} clause, alongside the \C{ASC} (default) and \C{DESC} keywords can be used to order the rows of a query result.
+
+\begin{lstlisting}
+SELECT ename, job, deptno FROM emp ORDER BY hiredate DESC;
+SELECT ename, job, deptno, sal*12 annsal FROM emp ORDER BY annsal;
+\end{lstlisting}
+
+As can be seen in the second example, column aliases can be used to order clauses as well.\\
+
+\begin{lstlisting}
+SELECT ename, job, deptno FROM emp ORDER BY deptno, sal DESC;
+\end{lstlisting}
+
+Multiple columns can be sorted, the order of \C{ORDER BY} list is the order of the sort, the first option is sorted first, and if they are equal, \textbf{then} the second column is used, and so forth. One can also sort by a column that is not in the \C{SELECT} list.
+
 \end{document}

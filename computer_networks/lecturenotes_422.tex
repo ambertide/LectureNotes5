@@ -495,4 +495,136 @@ The first address in a block is normally not assigned to any device. It is used 
 \subsection{Subnets}
 
 Subnets are used to divide up the IP to different sized ranges. For instance, an IP network of 17.12.14.0/26 can be divided into a range of /27 and two ranges of /28.
+
+\chapter{Logical Addressing (Cont`d) - November 24, 2020}
+
+\section{NATs}
+
+Since there is a limited number of IP addresses, Local IP ranges are provided in the standard. Within a network, a NAT router (or software) swaps the headers of incoming and outgoing packages accordingly.\\
+
+NAT routes give private ports to the internal local IP addresses.\\
+
+\newcommand{\C}[1]{\texttt{#1}}
+
+\begin{table}
+\begin{tabular}{lll}
+\toprule
+Start & End & Size \\
+\midrule
+\C{10.0.0.0} A & \C{10.255.255.255}  & 24 Bits \\
+\C{172.16.0.0} & \C{172.31.255.255}& 20 Bits \\ 
+\C{192.168.0.0} & 192.168.255.255 & 16 Bits \\
+\bottomrule
+\end{tabular}
+\caption{Local Ranges}
+\end{table}
+
+The NAT system can also be used by ISPs to serve more IPs.
+
+\section{IPv6}
+
+IPv6 is 128-bit addressing system that is the new standard, still not accepted by many ISPs, it was created in response to the shrinking pool of IPv4 addresses. They are originally writting in Hexadecimal, such as \C{FDEC:0074:0000:0000:0000:B0FF:0000:FFF0}, abbreviated as \C{FDEC:74:0:0:0:B0FF:0:FFF0}, or in the most abbreviated form \C{FDEC:74::B0FF:0:FFF0}.\\
+ 
+IPv6 has type prefixes at the start, they denote different sorts of networks.
+
+\begin{table}
+\begin{tabular}{ll}
+\toprule
+& Type\\
+\midrule
+\C{010} & Provider-Based Unicast Address\\
+\C{100} & Geographic-based Unicast Addresses\\
+\C{1111 1110 11} & Site Local \\
+\C{1111 1110 10} & Link Local \\ 
+\bottomrule
+\end{tabular}
+\caption{IPv6 prefixes}
+\end{table}
+
+Here the provider based unicast addresses are addresses given to a provider, geographic based unicast addresses are ones given to geographic entities, Site Local and Link Local can be given to companies. Multicast addresses are given to a group of computers.\\
+
+\subsection{Reserved Addresses}
+
+
+\begin{table}[httb]
+\begin{tabular}{ll}
+\toprule
+Description & Fraction \\
+\midrule
+All zeros & Unspecified, used by computers unaware of their IP addresses.\\
+Last bit 1, otherwise zero & Loopback\\
+Compatible and Mapped & Used for transition from IPv4 \\
+\bottomrule
+\end{tabular}
+\caption{Reserved Addresses}
+\end{table}
+
+\chapter{Network Layer: Internet Protocol - November 24, 2020}
+
+When sending a package locally, within the same network, the data link layer is sufficient to send the data between computers.\\
+
+But once we need to send data between routers, bigger networks, we need to add a network layer on top of the Data Link layer. Network Layer is able to find the Host-to-Host path.\\
+
+In the earlier days of the internet, networks were unable to talk with each other. Even today, certain protocols such as SMP only works in the data link layer.\\
+
+The network layer contains a routing table to understand where to send and how to send data.
+
+\begin{figure}[httb]
+\centering
+\includegraphics[scale=0.5]{routingtable.png}
+\caption{A Routing Table at a computer}
+\end{figure}
+
+Communication at the network layer in the internet is connectionless, that is, data is send before establishing a connection.
+
+\section{IPv4}
+
+IPv4 is the format used in the network layer, its packages are called \textbf{datagram}s with an adjustable header length, Service bits (which denote the sevice), a field denoting the protocol, and many other fields, and of course, most importantly, source and destination IP.\\
+
+IPv4 also includes a \textit{time to live} field, that denotes how many hops will go before a router discards a package, used to stop loops from occurring. It also includes a checksum for the header.
+
+The IPv4's header is between 20 to 60 bytes. While the whole package can be $2^{16} - 1$ bytes long.\\
+
+The service type also includes a precedence field to denote the precedence of the package, this was never used in practice, however.
+
+\begin{table}
+\begin{tabular}{ll}
+\toprule
+& Type\\
+\midrule
+\C{0000} & Normal\\
+\C{0001} & Minimize cost\\
+\C{0010} & Maximize reliability \\
+\C{0100} & Maximize throughput \\
+\C{1000} & Minimize delay\\ 
+\bottomrule
+\end{tabular}
+\caption{IPv4 Service Field Values \& Meanings}
+\end{table}
+
+Certain services \textit{require} certain service field values.\\
+
+When sending a small datagram in an ethernet frame, we may have to pad it, since a minimal package is 20 bytes long while ethernet requires a bigger package for minimum.
+
+MTU, the Maximum Transfer Unit, is used to denote the largest transferable package side for a network. According to the MTU value, package might be fragmented, however, the Do Not Fragment flag might be set in the datagram to denote to the network \textbf{not} to fragment a package, in which case the package will be dropped, and the sender will be notified. The fragment offset flag may be set to denote which fragment this is, or how many more fragments there is, etc. etc.
+
+There are some other options here, one can set which routers will be used for instance.
+
+\section{IPv6}
+
+IPv6 born as the IPv4 pool shrinked, the IPv6 has a bigger header field, space for extensions, resource allocation, authentication and encryption.\\
+
+Because the first 40 bytes are always the same, the devices working with IPv6 datagrams have easier time compared to IPv4.\\
+
+IPv6 added priorites for congestion controlled traffic. If the traffic gets congested, depending on the priority of the traffic. If the source can adapt itself to the traffic, it is called congestion-controlled traffic, if not it is called noncongestion-controlled, congestion-controlled traffic goes from 0 to 7, and noncongestion goes from 8 to 15, higher the number, more prioritised should be the package.
+
+\section{Transition from IPv4 to IPv6}
+
+\begin{description}
+\item[Dual Stack] Systems that support IPv4 and IPv6 simultaneously.
+\item[Tunnelling Strategy] IPv6 host \textit{tunnels through} the IPv4 region, the IPv6 datagram is embed inside the IPv4 datagram.
+\item[Header Transition] an IPv6 package's headers can be modified into an IPv4 package if the IPv6 source wants to reach an IPv4 region.
+\end{description}
+
+
 \end{document}

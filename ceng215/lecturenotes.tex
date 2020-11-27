@@ -864,7 +864,7 @@ i(t) &= \frac{V_c}{R} + C \sdif{V_c}{t}\\
 \sdif{V_c}{t} &= - \frac{V_c}{RC} + \frac{i(t)}{C}
 \end{align*}
 
-Now using the eulers method to get rid of the derviative:
+Now using the Euler's method to get rid of the derivative:
 
 \begin{align*}
 \sdif{V_c(t)}{t} \approx \frac{V_c(t + \Delta t) - V_c(t)}{\Delta t}
@@ -882,5 +882,189 @@ Now, if we defined $t_0$ as the $k$th state of the system, and $t_0 + \Delta t$ 
 V_c(k + 1) = V_c(k) - \frac{V_c(k)}{RC} \Delta t + \frac{i(k)}{C} \Delta t
 \end{align*}
 
-This formula can easilly be plotted and simulated in a computer.
+This formula can easily be plotted and simulated in a computer.
+
+\chapter{First Order Systems (Cont`d) - November 26, 2020}
+
+In general, the $v$, voltage of an RC circuit tends to be of the form $v=Ae^{-\frac{t}{RC}}$.
+
+\begin{circuitikz}[american]
+\draw (0,0)
+	to [C=$C$, v=$V_C$] (0, -3)
+	to [short] (3, -3);
+\draw(0,0)
+	to [short, i_=$i$] (3,0)
+	to [R=$R$, v=$V_R$] (3, -3);
+\end{circuitikz}
+
+In the above diagram, using the KVL, we find that $-V_C + V_R = 0$, where $V_R = R \cdot i$ and where normally $i = C \sdif{V_C}{t}$, however since the current enters the capacitor through its negative side, it is instead $i = -C \sdif{V_C}{t}$.  After substituting the values in the KVL and taking the derivate of both sides with respect to time, results in:
+
+\begin{align*}
+R \sdif{i}{t} + \frac{1}{C}i = 0
+R\sdif{i}{t} = -\frac{1}{C}i
+\end{align*}
+
+Hence here, $f(x) = f'(x)$, we can see that $i(t) = Ae^{st}$ (where $s$ is the decaying factor).
+
+\begin{align*}
+i(t) &= Ae^{st}
+\sdif{i}{t} = Ase^{st}
+\end{align*}
+
+And hence, when substituted in the equation: 
+
+\begin{align*}
+R \cdot Ase^{st} + \frac{1}{C}Ae^{st} = 0\\
+Ae^{st} \left(sR + \frac{1}{C} \right) = 0
+\end{align*}
+
+Here, either $Ae^{st} = 0$, which would imply $i = 0$, and hence is not a solution we are looking for, or:
+
+\begin{align*}
+sR + \frac{1}{C} = 0\\
+s = -\frac{1}{RC}
+\end{align*}
+
+And henceforth:
+
+\begin{equation}
+i = Ae^{-\frac{t}{RC}}
+\end{equation}
+
+Since  the voltage of the capacitor, $V_0$, and the $i(0)$ at $t= 0$ for this circuit is:
+
+\begin{equation}
+i(0) = \frac{V_0}{R}
+\end{equation}
+
+If we equate this to the equation we found at $t=0$:
+
+\begin{align*}
+i(0) = \frac{V_0}{R} = Ae^{-\frac{0}{RC}} = A\\
+A = \frac{V_0}{R}
+\end{align*}
+
+and hence:
+
+\begin{equation}
+i(t) = \frac{V_0}{R}e^{-\frac{t}{RC}}
+\end{equation}
+
+Where $RC$ is called the \textbf{time constant}, $\tau$. As the $\tau$ increases, time it will take for the signal to decay will increase as well.\\
+
+\begin{equation}
+S + \frac{1}{RC} = 0
+\end{equation}
+
+Is called the characteristic equation of this system. In general, for any first order system, there a will be solution of type.\\
+
+\begin{equation}
+x = Ae^{-\frac{t}{\tau}}
+\end{equation}
+
+The area before the $t = 5 \tau$ ($t < 5 \tau$)is called the transient response, the area after ($t > 5 \tau$) is called the steady state response, and it is accepted that at this point the output is zero.
+
+
+\subsubsection{Step Response}
+
+\begin{circuitikz}[american]
+\draw (0, 0)
+	to [open, v=$V_i$] (0, -3);
+\draw (0, 0)
+	to [R = $R$, *-] (3, 0)
+	to [short, -*] (5,0)
+	to [open, v=$V_C$] (5, -3);
+\draw (3, 0)
+	to [C=$C$, v=$V_0$] (3, -3);
+\draw(0, -3)
+	to [short, *-*] (5, -3);
+\end{circuitikz}
+
+Initially, $V_C(0) = V_0$ and $V_i = V \cdot u(t)$ where $u(t) = 1$ for $t \geq 0$ and $u(t) = 0$ for $t < 0$. Using KVL on the left side:
+
+\begin{equation}
+\frac{V_C -V_i}{R} + C \sdif{V_C}{t}
+\end{equation}
+
+Here, rather than solving the equation, we know two things, one is that $V_C(0) = V_0$ but also, we know that $V_C(\infty) = V$ and $V_C = V + (V_0 - V)e^{-\frac{t}{RC}}$\\
+
+In general, for $V_i, V_f$ for initial and final voltage respectively:
+
+\begin{equation}
+V_C = V_i e^{-\frac{t}{RC}} + V_f \left(1 - e^{-\frac{t}{RC}} \right)
+\end{equation}
+
+\subsubsection{Analysis of RL}
+
+\begin{circuitikz}[american]
+\draw (0, 0)
+	to [open, v=$V_i$] (0, -3);
+\draw (0, 0)
+	to [R = $R$, i_=$i_L$, *-] (3, 0)
+	to [short, -*] (5,0)
+	to [open, v=$V_L$] (5, -3);
+\draw (3, 0)
+	to [L=$L$] (3, -3);
+\draw(0, -3)
+	to [short, *-*] (5, -3);
+\end{circuitikz}
+
+Using KVL
+
+\begin{align*}
+-V_i + i_L \cdot R + L \sdif{i}{t} = 0 
+\end{align*}
+
+Here, using Laplace transforms (\S Appendix A), we can transform this equation to:
+
+\begin{align*}
+- \frac{V}{s} + I_L(s) \cdot R + L\left(SI_L(s) - i_L(0)\right) = 0\\
+s \cdot I_L \left(R + SL \right) = V\\
+I_L(s) = \frac{V}{s(R + SL)}
+\end{align*}
+
+Using partial fractions:
+
+\begin{align*}
+I_L(s) = \frac{V}{s(R + SL)}\\
+&= \frac{A}{s} + \frac{B}{R + SL}\\
+&s \left( AL + B \right) + AR = V\\
+A = \frac{V}{R} & B = - \frac{VL}{R}
+\end{align*}
+
+where we accepted $AL + B = 0$
+
+\begin{align*}
+I_L(s) = \frac{\frac{V}{R}}{s} - \frac{\frac{VL}{R}}{R + SL}\\
+= \frac{\frac{V}{R}}{S} - \frac{\frac{V}{R}}{\frac{R}{L} + S}
+\end{align*}
+
+Using reverse Laplace transforms:
+
+\begin{equation}
+i_L(t) = \frac{V}{R} - \frac{V}{R} e^{-\frac{R}{L}t}
+\end{equation}
+
+\appendix
+
+\chapter{Laplace Transforms}
+
+\subsubsection{General Laplace Transform Formula}
+
+\begin{equation}
+F(s) = \int_0^\infty f(t)e^{-st}\text{d}t
+\end{equation}
+
+\subsubsection{Table of Common Formulas}
+
+\begin{align}
+Au(t) &\to \frac{A}{s}\\
+f'(t) &\to sF(s) - f(0)\\
+e^{-at} &\to \frac{1}{s + a}\\
+f''(t) &\to s^2F(s) - sf(0) - f'(0)\\
+\sin(a t) &\to \frac{a}{s^2 + a^2}\\
+\cos(a t) &\to \frac{s}{s^2 + a^2}\\
+atu(t) &\to \frac{A}{s^2} 
+\end{align}
+
 \end{document}

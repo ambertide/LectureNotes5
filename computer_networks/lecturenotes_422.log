@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  17 NOV 2020 14:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  24 NOV 2020 14:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1021,31 +1021,138 @@ Underfull \hbox (badness 10000) in paragraph at lines 433--434
  []
 
 [25]
-! Undefined control sequence.
-l.481 ...s a special bit sequence that, when \code
-                                                  {and}ed with an IP address...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Underfull \hbox (badness 10000) in paragraph at lines 485--486
 
-! Undefined control sequence.
-l.481 ...}ed with an IP address, returns the \code
-                                                  {netid}, this way, we can ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+ []
 
-[26] (./lecturenotes_422.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 489--490
+
+ []
+
+[26] [27] [28
+
+]
+Chapter 7.
+
+Underfull \hbox (badness 10000) in paragraph at lines 503--504
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 505--506
+
+ []
+
+
+Overfull \hbox (87.63821pt too wide) in paragraph at lines 526--527
+\OT1/cmtt/m/n/10.95 FDEC:0074:0000:0000:0000:B0FF:0000:FFF0\OT1/cmr/m/n/10.95 ,
+ ab-bre-vi-ated as \OT1/cmtt/m/n/10.95 FDEC:74:0:0:0:B0FF:0:FFF0\OT1/cmr/m/n/10
+.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 526--527
+
+ []
+
+
+Overfull \hbox (8.43457pt too wide) in paragraph at lines 544--545
+[]\OT1/cmr/m/n/10.95 Here the provider based uni-cast ad-dresses are ad-dresses
+ given to a provider,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 544--545
+
+ []
+
+[29]
+Overfull \hbox (85.33206pt too wide) in paragraph at lines 550--559
+[][] 
+ []
+
+
+Overfull \hbox (20.498pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 30 \OT1/cmr/m/sl/10.95 CHAPTER 7.  LOGICAL ADDRESSING (CONT`
+D) - NOVEMBER 24, 2020
+ []
+
+[30]
+Chapter 8.
+
+Underfull \hbox (badness 10000) in paragraph at lines 564--565
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 566--567
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 568--569
+
+ []
+
+<routingtable.png, id=116, 725.71124pt x 131.49126pt>
+File: routingtable.png Graphic file (type png)
+<use routingtable.png>
+Package pdftex.def Info: routingtable.png  used on input line 574.
+(pdftex.def)             Requested size: 362.85474pt x 65.74545pt.
+
+Overfull \hbox (2.85474pt too wide) in paragraph at lines 574--575
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 582--583
+
+ []
+
+
+Underfull \vbox (badness 6542) has occurred while \output is active []
+
+ [31
+
+ <./routingtable.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 586--587
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 605--606
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 615--616
+
+ []
+
+
+Overfull \hbox (69.31674pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 32 \OT1/cmr/m/sl/10.95 CHAPTER 8.  NETWORK LAYER: INTERNET P
+ROTOCOL - NOVEMBER 24, 2020
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 617--618
+
+ []
+
+[33] (./lecturenotes_422.aux) ) 
 Here is how much of TeX's memory you used:
- 23761 strings out of 480906
- 610033 string characters out of 5908268
+ 23770 strings out of 480906
+ 610176 string characters out of 5908268
  1005083 words of memory out of 5000000
- 38982 multiletter control sequences out of 15000+600000
- 545105 words of font info for 65 fonts, out of 8000000 for 9000
+ 38988 multiletter control sequences out of 15000+600000
+ 545273 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,12n,101p,733b,2273s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dv
@@ -1062,12 +1169,13 @@ nts/cm/cmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
 cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmti10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mti8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm10
-95.pfb>
-Output written on lecturenotes_422.pdf (26 pages, 332038 bytes).
+mti8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+t10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm109
+5.pfb>
+Output written on lecturenotes_422.pdf (33 pages, 372131 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 105 compressed objects within 2 object streams
+ 179 PDF objects out of 1000 (max. 8388607)
+ 124 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

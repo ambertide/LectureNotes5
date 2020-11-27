@@ -667,4 +667,390 @@ leaf_example:
 
 If we haven't used the saved register \Rs{0}, then we didn't needed to save and restore it at all.\\
 
+(From November 20, 2020)
+
+\subsubsection{Nested Procedures}
+
+Procedures that call other procedures, for nested call, caller needs to save its return address, and any arguements and temporaries needed after the call to the stack, and restore them from the stack after the call.\\
+
+Consider the C code:
+
+\begin{lstlisting}[language=C]
+int fact (int n) {
+	if (n < 1) return 1;
+	else return n * fact(n - 1);
+}
+\end{lstlisting}
+
+This is a very simple (and well-know, recursive) factorial algorithm, with the argument \C{n} being stored in \Ra{0} and result in \Rv{0}, this can be compiled to the following MIPS assembly code:
+
+\begin{lstlisting}
+fact:
+	slti $t0, $a0, 1
+	beq $t0, $zero, L1
+	addi $v0, $zero, 1
+	jr $ra	# and return
+L1:
+	addi $sp, $sp, -8
+	sw $ra, 4($sp)
+	sw $a0, 0($sp)
+	addi $a0, $a0, -1
+	jal fact
+	lw $a0, 0($sp)
+	lw $ra, 4($sp)
+	addi $sp, $sp, 8
+	mul $v0, $a0, $v0
+	jr  $ra
+\end{lstlisting}
+
+Here, in the recursive part, we need to store the return address and the \Ra{0} in the stack to recover them later. We recover these values after the recursive call \C{jal fact}.\\
+
+This is because, of course, if the values of \Ra{0} gets lost, then we will have significant problems, the code will not work correctly, and we do need to overwrite \Ra{0}, since the function we are calling, the function we are already in, expects its input value in \Ra{0}.\\
+
+Original \Ra{0} may not be always have to stored however, since in certain recursive function we may not need to use the previous inputs, it is fine to overwrite them then.\\
+
+Keep in mind there is a certain point that may arise if one uses the stack too much, if the stack size exceeds that of the memory, a stack overflow will occur.
+
+[A similar problem occured in eraly Sinclair ZX80 computers, the screen memory was shared with the RAM, and if your program consumed too much memory, the display would literally shrink. It was reportedly not amusing to use Sinclair ZX 80 due to this reason, well, one of the reasons.]
+
+
+\chapter{Instructions: Language of the Computer (Cont`d) - November 20, 2020}
+
+\section{Representing Instructions}
+
+Kept as a series of high and low electronic signals (binary) and represented as numbers. MIPS instructions are 32 bits long.\\
+
+We had already gone over the I-Type and R-Type instructions extensivly. It should be noted that I-Type instructions also include the branching instructions, which does make sense, since they require two registers to compare and an address to jump to.
+
+\subsubsection{J-Type Instructions}
+
+\begin{table}[httb]
+\begin{tabular}{@{}lll@{}}
+Part & Length & Explanation\\
+\toprule
+\code{op} & 6 Bits & OP-Code\\
+\code{pseudo-address} & 26 Bits & Shortened address\\
+\bottomrule
+\end{tabular}
+\caption{The structure of J-Type Instructions}
+\label{tab:jtype}
+\end{table}
+
+J-Type instructions are reserved for \C{j} and \C{jal} unconditional jump instructions. Observe that the Address can be any unsigned number up to $2^{28}$, compare to I-Type's $2^{16}$
+
+\section{Addressing Modes}
+
+There are different sorts of addressing modes used in MIPS.
+
+\subsection{Immediate Addressing}
+
+The operand is a constant withing the instruction itself. This is used in I-Type instructions with a constant, such as in \C{addi}. This value is a 16-bit value.
+
+\subsubsection{32-Bit Immediate Operands}
+
+But, let us say we want to load a very big 32-bit number such as 4000000, this is done via the \C{lui rt, constant} instruction, which sets the first 16 bits (upper part) of the register \C{rt} to the \C{constant} and sets the remaining part to the zero.
+
+\begin{lstlisting}
+lui $s0, 61
+ori $s0, $s0, 2304
+\end{lstlisting}
+
+We \textbf{load} the upper 16 bits of the value to the first 16 bits of the \Rs{0} register using the Load Upper Immediate instruction, and then, we use the Logical Or Immediate operation to simply mask the remaining lower 16 bits (but signed, so can be negative) of the value to the register.\\
+
+\subsection{Register Addressing}
+
+Register addressing simply refeers to putting the number of the register to the register fields of the I-Type and R-Type instructions.
+
+\subsection{Base Addressing}
+
+The operand is at the memory location whose address is the sum of a register and a constant in the instruction, such as in, do realise that the offset might be negative as well:
+
+\begin{lstlisting}
+lw $t0, 1200($t1)
+\end{lstlisting}
+
+Which loads an integer from the 1200 bytes after the address at \Rt{1}. (\C{1200 + [\Rt{1}]}).
+
+\subsection{PC-Relative Addressing}
+
+The branch address is the sum of the PC and a constant in the instruction. \C{PC + offset x 4}
+
+\begin{lstlisting}
+beq rs, rt, L1
+\end{lstlisting}
+
+This is a relative addressing mode, this way, the amount of memory usable by the program increases substentially.\\
+
+The multiplication by four part refeers to the fact that an instruction occupies four bytes (32-bits) in the memory.\\
+
+\subsection{Pseudo-direct Addressing}
+
+The jump address is the 26 bits of the instruction concatenated (after being multiplied by four) with the upper bits of the PC.
+
+\begin{lstlisting}
+j L1
+\end{lstlisting}
+
+Here the 26 bits represent the 28 lower bits of the address (it will be multiplied by the four, or shifted by two) and are concanated with the upper four bits of the program counter.
+
+For instance, the following MIPS assembler instructions,
+
+\begin{lstlisting}
+Loop: sll $t1, $s3, 2
+	add $t1, $t1, $s6
+	lw $t0, 0($t1)
+	bne $t0, $s5, Exit
+	addi $s3, $s3, 1
+	j Loop
+Exit: ...
+\end{lstlisting}
+
+Compiles to these machine instructions:
+
+\begin{table}[ht]
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+80000 & 0 & 0 & 19 & 9 & 2 & 0\\
+\hline
+80004 & 0 & 9 & 22 & 9 & 0 & 32\\
+\hline
+80008 & 35 & 9 & 8 & \multicolumn{3}{c|}{0}\\
+\hline
+80012 & 5 & 8 & 21 & \multicolumn{3}{c|}{2}\\
+\hline
+80016 & 8 & 19 & 19 & \multicolumn{3}{c|}{1}\\
+\hline
+80020 & 2 & \multicolumn{5}{c|}{20000}\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Branching Far Away}
+
+If the branching target is too far to encode with 16-bit offset, assembler rewrites the code:
+\begin{lstlisting}
+beq $s0, $s1, L1
+\end{lstlisting}
+
+Becomes:
+
+\begin{lstlisting}
+bne $s0, $s1, L2
+j L1
+L2:
+	...
+\end{lstlisting}
+
+\chapter{Instructions: Language of the Computer (Cont`d) - November 27, 2020}
+
+\section{Byte \& Halfword Operations}
+
+
+\begin{lstlisting}
+lb rt, offset(rs)
+lh rt, offset(rs)
+\end{lstlisting}
+
+For loading and storing bytes and halfwords, \C{lb}, \C{lh}, \C{lbu}, \C{lhu}; \C{sb} and \C{sh} can be used to get a single byte/halfword from the memory.\\
+
+\C{lb} and \C{lh} sign extends the value to 32 bits in \C{rt}, their unsigned counterparts \C{lbu}, \C{lhu} on the other hand, zero-extends the value to 32 bits.\\
+ 
+For instance, if we have \C{F0} in the memory, \C{lb} would load \C{FFFFFFF0}, but \C{lbu} would load \C{000000F0}.
+
+
+\begin{lstlisting}[language=C]
+void strcpy (char x[], char y[]) {
+	int i;
+	i = 0;
+	while ((x[i]=y[i])!='\0')
+		i += 1;
+}
+\end{lstlisting}
+
+Assuming the addresses in \C{x, y} is in \Ra{0} and \Ra{1}. \C{i} in \Rs{0}.
+
+\begin{lstlisting}
+void strcpy (char x[], char y[]) {
+	int i;
+	i = 0;
+	while ((x[i]=y[i])!='\0')
+		i += 1;
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+strcpy:
+	addi $sp, $sp, -4
+	sw $s0, 0($sp)
+	add $s0, $zero, $zero
+L1: 
+	add $t1, $s0, $a1
+	lbu $t2, 0($t1)
+	add $t3, $s0, $a0
+	sb $t2, 0($t3)
+	beq $t2, $zero, L2
+	addi $s0, $s0, 1
+	j L1
+L2:
+	lw $s0, 0($sp)
+	addi $sp, $sp, 4
+	jr $ra
+\end{lstlisting}
+
+\section{Translation and Starting a Program}
+
+\subsection{Compiler}
+
+Compiler transforms higher level programming languages into assembly language program, a symbolic form of what the machine understands. [Some Compilers translate directly to machine code too.]
+
+\subsection{Assembler}
+
+Assembler converts Assembly instructions to machine code. Most of the time, machine instructions have a one-to-one relationship with machine instructions. \textbf{Pseudoinstructions} are instructions that do not have implementations, but simplify translation and programming (in Assembly) For instance \C{blt} pseudoinstruction assembles into a \C{slt} and \C{bne} instruction.\\
+
+The \C{\$at} register is used as the assembler temporary to write this pseudoinstructions.\\
+
+Assembler turns the program into an Object file that includes machine language instructions, data, and information needed to place instructions properly in memory.
+
+\subsection{Object File}
+
+The object file includes:
+
+\begin{description}
+\item[Object File Header] The size and position of the other pieces of the object file.
+\item[Text Segment] The machine language code.
+\item[Static Data Segment] Data allocated for the life of the program.
+\item[Relocation information] Instructions and data words that depend on absolute addresses.
+\item[Symbol Table] Global definitions and external references (labels)
+\item[Debug Information] Associates machine instructions with C source files. [In \C{gcc}, you can enable this via the \C{-g3} switch.]
+\end{description}
+
+\subsection{Linker}
+
+Places code and data modules symbolically in memory. Determines the addresses of data and instruction labels (by using relocation info) patches the internal and external references and produces executable file.
+
+\subsection{Memory Layout}
+
+In MIPS architecture, on top of the reserved segment sits the text segment, pointed to by the program counter, on top of which sits the \textbf{static data}, pointed by the \C{\$gp}, on top of which sits the \textbf{dynamic data}, the heap. and on top sits the stack, pointed by the \C{\$sp}.\\
+
+Text segment and data segment sits in the object file, stack and dynamic data provided by the system itself. [In MS-DOS MASM x86, you actually had to tell the system the size of the stack you  wished.] Keep in mind that the stack grows \textit{downwards}, towards the dynamic data segment.
+
+\subsection{Loader}
+
+This is the part of the computer that actually copies the instructions and date from the executable file into memory. Copies the parameters to the main program, initializes the machine registers and sets the stack pointer to the first free locations, jumps to the start up routine that copies the parameters into the argument registers and calls the main routine.
+
+\subsection{Dynamic Linking}
+
+With Static linking, the library routines become part of the executable, loads all routines in the library even if not used, dynamically linked libraries (DLLs) are linked during execution.
+
+\section{Compiler Optimization}
+
+Many compilers do not just generate assembler code, in the background, certain optimizations are done to speed up code.
+
+\subsubsection{gcc Optimization Levels}
+
+\C{gcc}, the de facto standard GNU/Linux compiler provides six different optimization levels.\\
+
+\begin{table}[ht]
+\begin{tabular}{lll}
+Switch & Optimization Level\\
+\toprule
+\C{-O0} & Optimize for compile time (default)\\
+\C{-O1}, \C{-O} & first level of optimization size and execution time.\\
+\C{-O2} & Second level of optimization size and execution time.\\
+\C{-O3} & Third level of optimization for code size and execution time.\\
+\C{-Os} & Optimize for code size\\
+\C{-Ofast} & Optimizes even more than \C{-O3} but math is not IEEE compliant.\\
+\bottomrule
+\end{tabular}
+
+\caption{Different optimization levels of GNU C Compiler.}
+\label{tab:gccoptimization}
+\end{table}
+
+As can be seen in Table \ref{tab:gccoptimization}, there are different levels of optimization in \C{gcc}, these may increase the compilation time and memory usage, but in general will decrease the execution time. \C{-Ofast} allows for fast mathematical operations, but it is not completely IEEE compliant.
+
+\subsection{Compiler Optimizations}
+
+Here are certain optimizations performed by the compiler.
+
+\subsubsection{Register Allocation}
+
+Given a block of code, the compiler wants to choose assignments of variables to register to minimize the total number of required registers.
+
+\begin{lstlisting}[language=C]
+w = a + b;
+x = c + w;
+y = c + d;
+\end{lstlisting}
+
+Here the naive register allocation would result in assigning seven registers for the seven variables, but this is not actually necessary, there is a better way.
+
+\subsubsection{Dead Code Elimination}
+
+Code that will never be executed can be safely removed from the program.
+
+\subsubsection{Loop Transformations}
+
+For the processors, loops come with overhead, therefore, the compilers try to limit them.\\
+
+First loop transformation is \textbf{loop unrolling.}
+
+\begin{lstlisting}[language=C]
+for (i = 0; i < N; i++) {
+	a[i] = b[i] * c[i];
+}
+\end{lstlisting}
+
+If the \C{N = 4}, then it can be unrolled four times.
+
+\begin{lstlisting}[language=C]
+a[0] = b[0] * c[0];
+a[1] = b[1] * c[1];
+a[2] = b[2] * c[2];
+a[3] = b[3] * c[3];
+\end{lstlisting}
+
+Or it may be unrolled "twice", reducing the times we check the condition.:
+
+\begin{lstlisting}[language=C]
+for (i = 0; i < 2; i++) {
+	a[i*2] = b[i*2] * c[i*2];
+	a[i*2 + 1] = b[i*2 + 1] * c[i*2 + 1];
+	
+}
+\end{lstlisting}
+
+Another transformation is \textbf{loop fusion}, which combines two or more loops into a single loop.
+
+\begin{lstlisting}[language=C]
+for (i = 0; i < 300; i++) {
+	a[i] = a[i] + 3;
+}
+
+for (i = 0; i < 300; i++) {
+	b[i] = b[i] + 3;
+}
+\end{lstlisting}
+
+is transferred to:
+\begin{lstlisting}[language=C]
+for (i = 0; i < 300; i++) {
+	a[i] = a[i] + 3;
+	b[i] = b[i] + 3;
+}
+\end{lstlisting}
+
+Another transformation is \textbf{loop tiling}, which breaks up a loop into a set of nested procedures that operate on a subset of data.
+
+\subsubsection{Procedure Inlining}
+
+The body of the procedure is substituted in place for the procedure call to eliminate the call overhead.\\
+
+This however, increases the code size. [CPython does not do this, it is one of the reasons it has abysmal performance compared to PyPy.]
+
+\subsection{Performance Optimization}
+While optimizing, it is pivotal to optimize at multiple levels, taking into account the data representation, algorithm, procedures and loops.\\
+
+One must also understand the system to optimize performance, how programs are compiled and executed, how modern processors and memory systems operate, how to measure program performance and identify bottlenecks, how to improve performance without destroying code modularity and generality.
+
 \end{document}
