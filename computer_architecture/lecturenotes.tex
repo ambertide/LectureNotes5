@@ -40,7 +40,7 @@
    add, mul, sub, div,
    li, addi, muli, bne, beq, j,
    \$a0, \$a1, \$a2, \$a3, \$v0, \$v1,
-   \$sp, \$ra}} % etc.
+   \$sp, \$ra, mult, multu, mfhi, mflo, HI, LO, jal, jr}} % etc.
 
 
 \lstset{language=[MISP]Assembler}
@@ -1053,4 +1053,133 @@ While optimizing, it is pivotal to optimize at multiple levels, taking into acco
 
 One must also understand the system to optimize performance, how programs are compiled and executed, how modern processors and memory systems operate, how to measure program performance and identify bottlenecks, how to improve performance without destroying code modularity and generality.
 
+\chapter{Arithmetic Operations - December 4, 2020}
+
+\section{Representing Numbers}
+
+Using 32 bits, it is possible to represents unsigned numbers between zero and $2^{32} - 1$, for signed numbers, this number is $2^{31} - 1$\\
+
+\subsection{Unsigned Integers}
+While representing unsigned numbers of $n - 1$ numbers, the value of a number $x$ can easily be calculated via:
+
+\begin{equation}
+x = \sum_{k= 0}^{n - 1} x_k 2^k
+\end{equation}
+
+Where $x_k$ represents the digits of the number, and is  either one or zero.\\
+
+And $n$ bit unsigned integer can represent values between zero and $2^n - 1$
+
+\subsection{Signed Integers}
+
+The two's complement system is used in the signed integers, where the least significant bit is the sign bit, one for negative and zero for positive numbers. The value of a number $x$ of $n$ bits length can be calculated using:
+
+\begin{equation}
+x = -x_{m -1} 2^{n-1} + \sum_{k = 0}^{n - 2}x_{k}2^k
+\end{equation}
+
+In practice, one can convert a twos complement to a normal number by inverting its bits and adding one and multiplying via -1.\\
+
+A number signed number $x$ of $n$ bits long can represent any number between $2^{n - 1}$ to $2^{n - 1} - 1$.
+
+\section{Arithmetic Operations}
+
+Processors can perform many arithmetic operations.
+
+\subsection{Integer Addition}
+
+Integer additions use a carry, and when adding two numbers of the same sign, an overflow may occur. If two negative numbers are being added, if the first bit ends up zero, (or one if both are positive) the overflow is said to have occurred. 
+
+\subsection{Integer Subtraction}
+
+This is the same as adding the negation of the second number to the first number, subtracting a positive number from a negative operand is said to have resulted in an overflow if the result sign is zero. (Or reverse in the reverse case).
+
+\begin{table}
+\begin{tabular}{lccc}
+Operation & Left & Right & Result\\
+\toprule
+Addition & \code{+} & \code{+} & \code{-}\\
+Addition & \code{-} & \code{-} & \code{+}\\
+Subtraction & \C{-} & \C{+} & \C{+}\\
+Subtraction & \C{+} & \C{-} & \C{-}\\
+\bottomrule
+\end{tabular}
+\caption{Overflow conditions for subtraction and addition}
+\end{table}
+
+\subsection{Dealign with Overflows}
+
+The \code{addu}, \code{addiu} and \C{subu} ignores overflows and do not cause exceptions, on the other hand \C{add}, \C{addi} and \C{sub} cause an exception, when an overflow occurs, the PC is saved in the \C{EPC} register, predefined handler address is jumped and \C{mfc0} instruction can retrieve \C{EPC} value to return after corrective action. 
+
+\subsection{Multiplication}
+
+One can just place a copy of the multiplicand in the proper place if the multiplier digit is 1, or zero if the multiplier digit is zero.\\
+
+The \textit{proper place} can be calculated using the shift operations. The multiplication operation uses shift and sum operations to achieve its goal in the hardware level.\\
+
+As one can see, there is redundancy in the multiplication, half of the bits are spent for zeros, three steps per bit is used. And also the least significant bit is updated only once.\\
+
+An improved version of the multiplication hardware performs steps in parallel, executing two steps per bit.
+
+\subsubsection{Signed Multiplication}
+
+Signed multiplication acts as if the numbers are positive, and remembers the original signs, converting to the appropriate sign in the end.
+
+\subsubsection{Multiplication in MIPS}
+
+MIPS provides two 32-bit registers for product, \C{HI} and \C{LO}.
+
+\begin{lstlisting}
+mult rs, rt
+multu rs, rt
+mfhi rd
+mflo rd
+\end{lstlisting}
+
+\C{mult} and \C{multu} multiply \C{rs} and \C{rd} and stored the 64-bit product in \C{LO} and \C{HI}, the special move instructions \C{mfhi} (move from \C{LO}) and \C{mflo}, (move from \C{HI}) can be used to get the values in these special registers.\\
+
+The simpler \C{mul rd, rs, rt} places the least significant 32 bits of product to \C{rd} register.
+
+\subsection{Divison}
+
+$n$ bit operands yield $n$ bit quotient and remainder. It checks for divisor to be smaller than the divident bits, one bit in quotient, subtract otherwise 0 bit in quotient bring down next dividend bit. This is called the \textbf{long divison} approach.\\
+
+Signed division divide using absolute values and then adjust signs as needed.\\
+
+Similar to multiplication, MIPS divison is done with a \C{div} instruction that uses \C{HI} and \C{LO}.\\
+
+Keep in mind that shift operations are significantly better.
+
+\section{Floating Point}
+
+Floating point is [used to represent] numbers with fractions, reals. It can be written in scientific notation, or normalized notation. Normalized notation is number in scientific notation that has no leading 0s.\\
+
+The floating point takes the following form:
+
+\begin{table}
+\begin{tabular}{lll}
+Field & 64-Bit & 32-Bit\\
+\toprule
+Sign & 1 Bit & 1 Bit\\
+Exponent & 11 Bits & 8 Bits\\
+Fraction & 52 Bits & 23 Bits\\
+\bottomrule
+\end{tabular}
+\caption{Fields of single and double-precision floating point numerals.}
+\end{table}
+
+
+Where the whole number $x$ is:
+
+\begin{equation}
+x = (-1)^s \cdot (1 + F) \cdot 2^{E - B}
+\end{equation}
+
+Where $B$ is the bias. Significant is normalized, that is, it always has a leading pre-binary-point 1 bit, so no need to represent it explicitly, exponent ($E$) is the actual representation plus a bias ($B$).\\
+
+The bias of a single precision floating point number is 127.\\
+
+[Other than double precision (64 bits) and single precision (32 bits), there is also extended precision (40 bits) and also extended double precision (80 bits)]\\
+
+[Early computers and chipsets actually had dedicated Floating Point coprocessors. Intel x86 even had something called an x87, a subset of x86 working with the Intel 8087 Floating Point Coprocessors. Nowadays, x87 is a proper part of x86.]
 \end{document}

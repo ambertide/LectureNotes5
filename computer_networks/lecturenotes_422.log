@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  24 NOV 2020 14:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  1 DEC 2020 14:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1146,7 +1146,104 @@ Underfull \hbox (badness 10000) in paragraph at lines 617--618
 
  []
 
-[33] (./lecturenotes_422.aux) ) 
+[33]
+Overfull \hbox (69.31674pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 34 \OT1/cmr/m/sl/10.95 CHAPTER 8.  NETWORK LAYER: INTERNET P
+ROTOCOL - NOVEMBER 24, 2020
+ []
+
+[34
+
+]
+Chapter 9.
+
+Underfull \hbox (badness 10000) in paragraph at lines 632--633
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 634--635
+
+ []
+
+
+Overfull \hbox (9.36702pt too wide) in paragraph at lines 647--656
+[][] 
+ []
+
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 664--665
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 680--681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 682--683
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--689
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 690--691
+
+ []
+
+
+Overfull \hbox (18.82617pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 36 \OT1/cmr/m/sl/10.95 CHAPTER 9.  PROCESS-TO-PROCESS DELIVE
+RY - DECEMBER 1, 2020
+ []
+
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 696--697
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 698--699
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 715--716
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 717--718
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 727--728
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 729--730
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 731--732
+
+ []
+
+[37]
+Overfull \hbox (18.82617pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 38 \OT1/cmr/m/sl/10.95 CHAPTER 9.  PROCESS-TO-PROCESS DELIVE
+RY - DECEMBER 1, 2020
+ []
+
+[38] (./lecturenotes_422.aux) ) 
 Here is how much of TeX's memory you used:
  23770 strings out of 480906
  610176 string characters out of 5908268
@@ -1172,10 +1269,10 @@ cmti10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mti8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 t10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm109
 5.pfb>
-Output written on lecturenotes_422.pdf (33 pages, 372131 bytes).
+Output written on lecturenotes_422.pdf (38 pages, 378374 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 124 compressed objects within 2 object streams
+ 197 PDF objects out of 1000 (max. 8388607)
+ 137 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -627,4 +627,108 @@ IPv6 added priorites for congestion controlled traffic. If the traffic gets cong
 \end{description}
 
 
+\chapter{Process-to-Process Delivery - December 1, 2020}
+
+Most prominent process-to-process delivery protocols are UDP and TCP, with a newly emerging protocol of SCTP.\\
+
+The transport layer is responsible for Process to Process delivery, delivery of a packet, part of a message, from one process to another. Two processes communicate in a client/server relationship.\\
+
+Process to Process is the third main type of delivery covered in this course, Node to Node (Data link layer), Host to Host (Network layer), and now, Process to Process.
+
+\section{Client-Server Model}
+
+The server program has a dedicated port on its host computer. The client, on the other hand, may be assigned a random port, called a \textbf{Ephemeral Port}.
+
+\section{IANA}
+
+IANA assigns port numbers to new applications, the ranges are defined as follows:
+
+\begin{table}
+\begin{tabular}{lll}
+\toprule
+& Name & Explanation \\
+\midrule
+0-1023 & Well-Known & Registered and controlled by IANA. \\
+1024-49,151 & Registered & Registered but not controlled by IANA. \\ 
+49,152 - 65,535 & Dynamic & Ephemeral ports independent from IANA. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Socket Address}
+
+Socket address is the combined IP and port number
+
+\section{Features of Transport Control}
+
+Transport control allows demuxing and muxing.\\
+
+\subsubsection{Connectionless Service}
+
+A connectionless service is created when a package is sent without controlling if the destination is open or not. (Without a connection being established.)
+
+\subsubsection{Error Control}
+
+There is no error control between transport, network and datalink layers. (In general).
+
+\section{Protocols of the Transport Layer}
+
+Running on top of the IP protocol. There are three.
+
+\subsection{User Datagram Protocol (UDP)}
+
+The user datagram has a simple package format, being independent of each other, the header is eight bytes long, with two bytes each for a source port number, destination port number, total length and checksum, followed by the actual data payload.\\
+
+UDP package length is equal to the data length of the IP package it is sent in.\\
+
+UDP Packages form queues in both the receiver and transmitter end. Flow control and error control is not provided by UDP, custom software must be used to provide these features.
+
+\subsection{Transport Control Protocol (TCP)}
+
+TCP is by far the most popular transfer protocol. It uses \textit{stream delivery}, just like writing to a file. It is also a connection aware service.\\
+
+Buffers are sometimes used between bytes, data that is sent but not confirmed to be received may stay around or a while, to send it again.\\
+
+\subsubsection{TCP Segments}
+
+TCP packages are send as segments, they provide flow control and error control. Segments are enumerated by TCP, the numbering starts with a randomly generated number. (This enhances security)
+
+A segment's header consists of a 16 bits of each source and destination port address, 32 bits each sequence number and acknowledgment number, acknowledgment number defines the byte number receiver is expecting to receive.\\
+
+The header further has six flags in the control field. These control the state of the connection. \\
+
+\begin{table}
+\begin{tabular}{ll}
+\toprule
+Name & Explanation \\
+\midrule
+SYN & Synchronise sequence numbers.\\
+FIN & Close connection.\\
+RST & Reset the connection.\\
+PSH & Pushes the data without a package is filled.\\
+ACK & Denotes that a package is an acknowledgment.\\
+URG & Denotes that the package is urgent, prioritise in queue.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Denial of Service (DOS) attacks are done by trying to establish many SYN connections on a target server.\\
+
+TCP uses a three-way handshaking to establish connection.\\
+
+Half-close refers to when a side closes down its TCP connection prior to the other side.
+
+\subsubsection{Sliding Window}
+
+Sliding windows refers to the number of packages a TCP connection will last if no acknowledgment is send from the other size. Window size is calculated by the minimum of receiver and network congestion.
+
+\subsection{Stream Control Transmission Protocol (SCTP)}
+
+SCTP allows for multiple streams of data to be opened between two processes. These streams are called \textit{association}s.\\
+
+SCTP supports multihoming, allows for multiple IP addresses to be used for receiving and sending data.\\
+
+Data chunks are identified by three items: TSN, SI and SSN.\\
+
+SCTP uses four-way handshaking, which mitigates DOS attacks.
 \end{document}

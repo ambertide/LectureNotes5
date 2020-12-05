@@ -5,10 +5,12 @@
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{array}
 \usepackage{amssymb}
 \usepackage{listings}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{multirow}
 \author{Ege Özkan}
 \title{CENG315 \\ \large{Information Managment Lecture Notes}}
 \begin{document}
@@ -21,6 +23,16 @@
 \newcommand{\fd}[2]{$ \code{#1} \to \code{#2} $}
 \newcommand{\assign}{\ensuremath{\leftarrow}}
 \maketitle
+
+\frontmatter
+
+\tableofcontents
+
+\section*{Editor's Note}
+
+Within the book, there are some instances where a text is presented within square brackets. These are the Editor's Commentary, these may be thoughts that popped into my mind while taking notes, additional information or clarifications. Now, nothing in the book is guaranteed to be correct, but most of it is at least information I transcribed from an expert, so Editor`s Notes are extra likely to be wrong, enjoy.
+
+\mainmatter
 \chapter{Introduction - October 15, 2020}
 
 \section{Databases and Database Systems}
@@ -135,7 +147,7 @@ A \textbf{constraint} describes the allowable states that fields can have in a t
 
 These constraints encodes \textit{business rules}. They can detect bad data entry and can enfore the \textit{rules} of the organization. They may apply to tables, individual records or the entire database.
 
-\subsection{Tavle Specification in SQL}
+\subsection{Table Specification in SQL}
 
 \begin{lstlisting}[caption={the SQL specification of the STUDENT table},label={lst:student}]
 create table STUDENT (
@@ -161,6 +173,8 @@ In Listing \ref{lst:student} we can see constraints and fields. The action speci
 \item[Set default] causes the foreign key values to be set to their default value.
 \item[No action] causes query to be rejectd if there exists and effected value with the foreign key.
 \end{description}
+
+\part{Theoretical Foundations \& Database Design}
 
 \chapter{Relational Algebra - October 22, 2020}
 
@@ -756,9 +770,11 @@ Decompose using $\C{SSN} \mvd \C{cName}$:
 \item \C{Apply2(\emph{SSN}, \emph{hobby})}, no MVDs or FDs, and in 4NF.
 \end{enumerate}
 
+\part{Structured Query Language}
+
 \chapter{SQL - November 26, 2020}
 
-This chapter includes an overview of the \textbf{Structured Query Language}, SQL. More specifically, the dialect of SQL used in the Oracle Database Systems.\\
+This chapter is the start of an overview of the \textbf{Structured Query Language}, SQL. [A declarative language, semi-standardised in ISO/IEC 9075] More specifically, the dialect of SQL used in the Oracle Database Systems.\\
 
 Most (if not all) SQL statements can be among all dialects, and even when one-to-one compatibility is unavailable
 
@@ -807,22 +823,39 @@ By default, queries will display the duplicate rows also. The, \C{DISTINCT} keyw
 \subsubsection{Limiting Rows}
 
 \begin{lstlisting}
-SELECT ename, job, deptno FROM emp WHERE job='CLERK';
-SELECT ename, job, deptno FROM emp WHERE sal<=comm;
+SELECT ename, job, deptno 
+FROM emp 
+WHERE job='CLERK';
+
+SELECT ename, job, deptno 
+FROM emp
+WHERE sal<=comm;
 \end{lstlisting}
 
 The \C{WHERE} clause is an optional clause that be used to filter rows. Observe that the \C{WHERE} clause can also be used with comparison operator. Do keep in mind that \C{NULL} values return \C{NULL} here too.
 
 \begin{lstlisting}
-SELECT ename, job, deptno FROM emp WHERE sal BETWEEN 1000 and 2000;
-SELECT ename FROM emp WHERE mgr IN(7902, 7566, 7788);
-SELECT ename FROM emp WHERE ename LIKE '_A%';
-SELECT  ename, mgr FROM empt WHERE mgr IS NULL
+SELECT ename, job,
+	deptno FROM emp WHERE
+	sal BETWEEN 1000 and 2000;
+SELECT ename FROM
+	emp WHERE mgr
+	IN(7902, 7566, 7788);
+SELECT ename FROM
+	emp WHERE ename
+	LIKE '_A%';
+SELECT  ename, mgr
+	FROM empt WHERE
+	mgr IS NULL
 \end{lstlisting}
+
+\newcolumntype{L}[1]{%
+  >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}%
+}
 
 \begin{table}[h]
     \centering
-    \begin{tabular}{ll}
+    \begin{tabular}{L{3cm} L{3cm}}
 		& Function\\
         \toprule
         \C{BETWEEN ... AND} & Return True values between two values.\\
@@ -852,16 +885,327 @@ Date format is DD-MM-YYYY by default.
 The order of rows returned in a query result is undefined, \C{ORDER BY} clause, alongside the \C{ASC} (default) and \C{DESC} keywords can be used to order the rows of a query result.
 
 \begin{lstlisting}
-SELECT ename, job, deptno FROM emp ORDER BY hiredate DESC;
-SELECT ename, job, deptno, sal*12 annsal FROM emp ORDER BY annsal;
+SELECT ename, job,
+	deptno FROM emp
+	ORDER BY hiredate DESC;
+SELECT ename, job, deptno,
+	sal*12 annsal
+	FROM emp ORDER BY annsal;
 \end{lstlisting}
 
 As can be seen in the second example, column aliases can be used to order clauses as well.\\
 
 \begin{lstlisting}
-SELECT ename, job, deptno FROM emp ORDER BY deptno, sal DESC;
+SELECT ename, job, deptno
+FROM emp 
+ORDER BY deptno, sal DESC;
 \end{lstlisting}
 
 Multiple columns can be sorted, the order of \C{ORDER BY} list is the order of the sort, the first option is sorted first, and if they are equal, \textbf{then} the second column is used, and so forth. One can also sort by a column that is not in the \C{SELECT} list.
 
+\chapter{SQL (Cont`d) - December 3, 2020}
+
+\section{Single Row Functions}
+
+\subsubsection{Case Conversion Functions}
+
+Consider
+\begin{lstlisting}
+SELECT ename, job,
+FROM emp
+WHERE ename = 'blake';
+\end{lstlisting}
+
+However, this will return nothing, since all of the employee names are in capital letters, we can use \C{UPPER} to account for this.
+
+\begin{lstlisting}
+SELECT ename, job,
+FROM emp
+WHERE ename = UPPER('blake');
+\end{lstlisting}
+
+There are other functions of this sort, such as \C{CONCAT(str, str)}, \C{LENGTH(str)}, \C{SUBSTR(str, start, stop)} that can be used for numerous purposes.
+
+\subsubsection{Arithmetic Operators with Dates}
+
+\begin{lstlisting}
+SELECT ename, 
+	(SYSDATE - hiredate)
+	/7 WEEKS,
+FROM emp;
+\end{lstlisting}
+
+As you we can see, the arithmetic operations work with date types.
+
+\section{Multiple Tables}
+
+So far, we only worked on a single table at a time, however, queries can be run on multiple tables, easily.
+
+\subsection{Join}
+
+\begin{lstlisting}
+SELECT 	table1.column, table2.colum
+FROM	table1, tabl2
+WHERE	table1.column1 = table2.column2;
+\end{lstlisting}
+
+Column names are prefixed with the table name.
+
+\subsubsection{Equijoin}
+
+\begin{lstlisting}
+SELECT 	emp.empno, emp.ename, emp.deptno
+		dept.deptno, dept.loc
+FROM	emp, dept
+WHERE	emp.deptno=dept.deptno
+\end{lstlisting}
+
+\subsubsection{Joining More Than Two Tables}
+
+If we have \C{employee(\emph{person-name}, street, city)}, \C{works(\emph{person-name}, company-name, salary)}, \C{company(\emph{company-name}, city)} and \C{managers(\emph{person-name}, manager-name)}. If we wish to find the names of all employees who live in the same city as the company for which they work.
+
+\begin{lstlisting}
+SELECT 	e.person-name
+FROM	employee e, works w, company c
+WHERE	e.person-name = w.person-name
+		AND w.company.name = 
+			c.company-name
+		AND e.city = c.city
+\end{lstlisting}
+
+Here we joined three tables to achieve our task! [Observe that the aliases can be used in the \C{FROM tab}]. [I also like how we can use aliases \textit{before} we declare them, this means SQL as a language necessitates a two-pass compiler at least! (Like most languages, honestly, except C, but hey, that's C for ya.)]
+
+\subsubsection{Non-Equijoins}
+
+Joins do not need equalities to work. Non-Equijoins are joins that do not rise from equalities.
+
+\begin{lstlisting}
+SELECT 	e.name, e.sal, s.grade
+FROM	emp e, salgrade s
+WHERE	e.sal
+BETWEEN s.losal AND s.hisal
+\end{lstlisting}
+
+\subsubsection{Outer Joins}
+
+If a row does not satisfy a join condition, the row will not appear in the query results. One can use the outer join to also see rows that do not usually meet the join condition.
+
+\begin{lstlisting}
+SELECT 	table1.column, table2.column
+FROM	table1, table2
+WHERE	table1.column(+) = table2.column;
+\end{lstlisting}
+
+The side with the \textit{missing information} is given the outer join [unary postfix] operator \C{(+)}. [The fact that it is unary and postfix is not related, but you do not get the chance to see a unary postfix operator a lot of times, I \textit{had} to point it out.]
+
+\subsubsection{Self Joins}
+
+Joining a table to itself is called a self join. In the \C{EMP} table, each employer has a manager, but managers are also employees! (So they are in the same table)
+
+\begin{lstlisting}
+SELECT 	worker.ename 
+		||' works for '
+		||manager.ename
+FROM	emp worker, emp manager
+WHERE	worker.mgr, manager.empno;
+\end{lstlisting}
+
+
+\section{Group Functions}
+
+Group functions operate on sets of rows to give one result per group. Such as the maximum value of a field in a table\\
+
+Group functions include \C{AVG}, \C{COUNT}, \C{MAX}, \C{MIN}, \C{STDDEV} all group functions except \C{COUNT(*)} ignore \C{NULL} values. Group functions are used as \C{function\_name(column\_name)}.
+
+They include:
+
+\begin{table}
+\begin{tabular}{ll}
+& Meaning\\
+\toprule
+\C{AVG} & Average\\
+\C{MIN} & Minimum\\
+\C{MAX} & Maximum\\
+\C{COUNT} & Number of rows\\
+\C{NVL} & Include \C{NULL} values\\
+\C{SUM} & Sum of Numbers\\
+\bottomrule
+\end{tabular}
+\caption{Some group functions.}
+\label{tab:groupfunctions}
+\end{table}
+
+\C{COUNT}, when written without a column name, also includes the \C{NULL} values. \C{COUNT} can also be used with the \C{DISTINCT} keyword, such as \C{SELECT COUNT(DISTINCT colname)}, in this form, only the \textit{unique} rows shall be counted.\\
+
+The \C{NVL(column\_name, assume)} function can be used to interpret \C{NULL} values as the \C{assume}, thus forcing group functions to include \C{NULL}.
+
+\subsection{Creating Groups of Data}
+
+Sometimes, a table may be needed to be divided into smaller groups. Perhaps we want to divide employees by their groups, then we want to get the average salary for each department.
+
+\begin{lstlisting}
+SELECT	col, groupf(col)
+FROM	table
+[WHERE	condition]
+[GROUP BY	col]
+[ORDER BY	col];
+\end{lstlisting}
+
+For instance, using this syntax our example can be calculated via:
+
+\begin{lstlisting}
+SELECT	deptno, AVG(sal)
+FROM	emp
+GROUP BY	deptno
+\end{lstlisting}
+
+Remember, any column not inside a group function in the \C{SELECT} clause, \textbf{must} appear inside the \C{GROUP BY} clause. \textit{However}, the column in the \C{GROUP BY} clause does not need to appear inside the \C{SELECT} clause, (albeit the results would lack meaning).
+
+\subsubsection{Grouping by More Than One Column}
+
+If we wish to sum salaries in the \C{EMP} table, for each job, grouped by their department, we can do this as follows:
+
+\begin{lstlisting}
+SELECT	deptno, job, sum(sal)
+FROM	emp,
+GROUP BY	deptno, job;
+\end{lstlisting}
+
+Order does matter here.
+
+\subsubsection{Excluding Group Results}
+
+The \C{HAVING} clause, places following the \C{GROUP BY} clause can be used to restrict the results to certain results meeting a condition.
+
+\begin{lstlisting}
+SELECT	deptno, max(sal)
+FROM	emp,
+GROUP BY	deptno
+HAVING	max(sal)>2900;
+\end{lstlisting}
+
+Will only show the those departments whose maximum salary is greater than 2900.
+
+\subsubsection{Nesting Group Functions}
+
+Group functions can be nested to a depth of two.
+
+\section{Subqueries}
+
+Suppose that we have the quert, "Who has a salary greater than Jones'", we have, in fact a subquery of "What is Jones' query", and this query's result is used in the main query.
+
+\begin{lstlisting}
+SELECT	cols
+FROM	table
+WHERE	exr (SELECT cols
+			 FROM table
+			 WHERE exr)
+\end{lstlisting}
+
+
+For instance, for our original query.
+
+\begin{lstlisting}
+SELECT	ename
+FROM	emps
+WHERE	sal >
+(SELECT sal
+FROM emps
+WHERE ename='JOHN')
+\end{lstlisting}
+
+The subquery is executed first, since its result is used in the main query. Subqueries can be \textbf{Single-Row}, \textbf{Multi-Row} and \textbf{Multi-Column}.\\
+
+\C{ANY} and \C{ALL} operator can be used to distribute a logical condition to the results of a multiple-row subqueries.
+
+\section{Manipulating Data}
+
+\subsection{Adding a Row}
+
+\C{INSERT} statement can be used to add one row at a time to a table.
+
+\begin{lstlisting}
+INSERT INTO
+	dept (deptno, dname, loc)
+VALUES
+	(50, 'DEVELOPMENT', 'DETROIT');
+\end{lstlisting}
+
+Columns are listed optionally. If all values are provided in the default order of the columns in the table, a new entity with these values will be created.
+
+\subsubsection{Inserting Rows with Null Names}
+
+In the implicit method, simply omit the column from the column list, its value will be \C{NULL}. The explicit method is to specify the \C{NULL} value with the \C{NULL} keyword.
+
+\subsubsection{Inserting Special Values}
+
+There are certain special functions that can be used to insert special values, such as \C{SYSDATE} which returns the system date.
+
+\subsubsection{Copying Rows}
+
+Instead of using the values clause, by writing a subquery selecting rows from another table, one can copy rows from another table.
+
+\subsection{Updating a Row}
+
+The \C{UPDATE} statement can be used to update a row.
+
+\begin{lstlisting}
+UPDATE emp
+SET	deptno = 20
+WHERE empno = 7782
+\end{lstlisting}
+
+If one omits the \C{WHERE} clause, \textit{all} the rows will be modified. One-to-one matching between subqueries and queries can be used to update a table as well.
+
+\subsection{Removing a Row}
+
+the \C{DELETE} statement can be used to delete rows.
+
+ \begin{lstlisting}
+DELETE FROM	department
+WHERE	dname='DEVELOPMENT';
+\end{lstlisting}
+
+Omitting the \C{WHERE} clause would delete all the rows of the table.
+
+\section{\C{COMMIT} and \C{ROLLBACK} Statements}
+
+\C{COMMIT} and \C{ROLLBACK} is used for the following purposes:
+
+\begin{itemize}
+\item Ensure data consistency.
+\item Preview data changes before making changes permanent.
+\item Group logically related operations.
+\end{itemize}
+
+Following a \textbf{Transaction}, one can \C{COMMIT} the transaction, making it permanent, or \C{ROLLBACK} back to a \textbf{savepoint} or to the last \C{COMMIT}\\
+
+Please keep in mind that \C{COMMIT} and \C{ROLLBACK} is unusable in Oracle's Web-based Database Engine, as it auto-commits statements.
+
+\subsubsection{State of the Data Before \C{COMMIT} or \C{ROLLBACK}}
+
+\begin{itemize}
+\item The previous state of the data can be recovered.
+\item The \textit{current} user can review the results of the DML operations by using the \C{SELECT} statements.
+\item Other users cannot interact with the changed rows, they are \textit{locked}.
+\item Other users cannot see the changes, yet.
+\end{itemize}
+
+\subsubsection{State of the Data After \C{COMMIT}}
+
+\begin{itemize}
+\item Dta changes are made permanent.
+\item The previous state of data is permanently lost.
+\item All users can see the results.
+\item Locks are released.
+\item Savepoints are erased.
+\end{itemize}
+
+\subsubsection{State of the Data After \C{ROLLBACK}}
+
+\begin{itemize}
+\item All pending changes are discarded, data changes are undone.
+\item The previous state of the data is restored.
+\item Locks on affected rows are released.
+\end{itemize}
 \end{document}

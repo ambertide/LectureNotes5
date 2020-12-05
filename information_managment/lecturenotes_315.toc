@@ -1,0 +1,120 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Introduction - October 15, 2020}{1}%
+\contentsline {section}{\numberline {1.1}Databases and Database Systems}{1}%
+\contentsline {subsection}{\numberline {1.1.1}Record Storage}{1}%
+\contentsline {subsubsection}{Storing database records in text files}{1}%
+\contentsline {subsection}{\numberline {1.1.2}Data Models and Schema}{1}%
+\contentsline {subsubsection}{File-system v. Relational}{1}%
+\contentsline {subsubsection}{Physical Data Independence}{2}%
+\contentsline {subsubsection}{Logical Data Independence}{2}%
+\contentsline {section}{\numberline {1.2}Relational Databases}{2}%
+\contentsline {subsection}{\numberline {1.2.1}Tables}{2}%
+\contentsline {subsubsection}{Null Values}{2}%
+\contentsline {subsection}{\numberline {1.2.2}Superkeys and Keys}{2}%
+\contentsline {subsubsection}{Primary Keys}{3}%
+\contentsline {subsubsection}{Foreign Keys}{3}%
+\contentsline {subsubsection}{Foreign Keys and Referential Integrity}{3}%
+\contentsline {subsection}{\numberline {1.2.3}Constraints}{3}%
+\contentsline {subsubsection}{Integrity constraints}{3}%
+\contentsline {subsection}{\numberline {1.2.4}Table Specification in SQL}{3}%
+\contentsline {part}{I\hspace {1em}Theoretical Foundations \& Database Design}{5}%
+\contentsline {chapter}{\numberline {2}Relational Algebra - October 22, 2020}{7}%
+\contentsline {section}{\numberline {2.1}Structure of Relational Databases}{7}%
+\contentsline {subsection}{\numberline {2.1.1}Attributes}{7}%
+\contentsline {subsection}{\numberline {2.1.2}Schema vs Instance}{7}%
+\contentsline {subsection}{\numberline {2.1.3}Keys}{7}%
+\contentsline {section}{\numberline {2.2}Relational Query Languages}{7}%
+\contentsline {section}{\numberline {2.3}Operations of Relational Algebra}{8}%
+\contentsline {subsection}{\numberline {2.3.1}Select Operation}{8}%
+\contentsline {subsection}{\numberline {2.3.2}Project Operation}{8}%
+\contentsline {subsection}{\numberline {2.3.3}Composition of Relational Operations}{8}%
+\contentsline {subsection}{\numberline {2.3.4}Cartesian Product Operation}{8}%
+\contentsline {subsection}{\numberline {2.3.5}Join Operation}{8}%
+\contentsline {subsection}{\numberline {2.3.6}Union Operation}{9}%
+\contentsline {subsection}{\numberline {2.3.7}Set Intersection Operation}{9}%
+\contentsline {subsection}{\numberline {2.3.8}Set Difference Operation}{9}%
+\contentsline {subsection}{\numberline {2.3.9}Rename Operation}{9}%
+\contentsline {subsection}{\numberline {2.3.10}Assignment Operation}{9}%
+\contentsline {subsection}{\numberline {2.3.11}Equivalent Queries}{9}%
+\contentsline {subsubsection}{Alternative Notation}{9}%
+\contentsline {chapter}{\numberline {3}Database Design - November 12, 2020}{11}%
+\contentsline {section}{\numberline {3.1}Design Phases}{11}%
+\contentsline {section}{\numberline {3.2}Entity Relationship Model}{11}%
+\contentsline {subsubsection}{Complex Attributes}{11}%
+\contentsline {subsubsection}{Relationship Sets}{12}%
+\contentsline {subsubsection}{Primary Key for Entity Sets}{12}%
+\contentsline {subsubsection}{Primary Key for Relationship Sets}{12}%
+\contentsline {subsubsection}{Weak Entity Sets}{12}%
+\contentsline {section}{\numberline {3.3}Reducing ER Diagrams to Relational Schemas}{13}%
+\contentsline {subsection}{\numberline {3.3.1}Representing entity sets}{13}%
+\contentsline {subsection}{\numberline {3.3.2}Specialization}{13}%
+\contentsline {subsubsection}{Completeness Constraint}{14}%
+\contentsline {section}{\numberline {3.4}Design Problems}{14}%
+\contentsline {subsubsection}{Entities vs Attributes}{14}%
+\contentsline {subsubsection}{Entities vs Relationship}{14}%
+\contentsline {subsubsection}{Redunantant Atttributes}{14}%
+\contentsline {chapter}{\numberline {4}Database Theory for Relational Databases - November 19, 2020}{15}%
+\contentsline {section}{\numberline {4.1}Features of Good Relational Design}{15}%
+\contentsline {subsection}{\numberline {4.1.1}Functional Dependencies}{15}%
+\contentsline {subsection}{\numberline {4.1.2}Rules for Functional Dependencies}{16}%
+\contentsline {subsubsection}{Splitting Right Sides of FDs}{16}%
+\contentsline {subsubsection}{Combining Rule}{16}%
+\contentsline {subsubsection}{Triviality}{16}%
+\contentsline {subsubsection}{Transitivity of FDs}{16}%
+\contentsline {subsubsection}{Closure of Attributes}{16}%
+\contentsline {subsection}{\numberline {4.1.3}Keys of Relations}{16}%
+\contentsline {subsection}{\numberline {4.1.4}Projecting Functional Dependencies}{16}%
+\contentsline {subsubsection}{Example}{17}%
+\contentsline {section}{\numberline {4.2}Anomalies}{17}%
+\contentsline {section}{\numberline {4.3}Boyce-Codd Normal Form}{17}%
+\contentsline {subsubsection}{Example}{18}%
+\contentsline {section}{\numberline {4.4}3\textsuperscript {rd} Normal Form}{18}%
+\contentsline {subsubsection}{3NF Synthesis Algorithm}{19}%
+\contentsline {chapter}{\numberline {5}Design Theory for Relational Databases (Cont`d) - November 16, 2020}{21}%
+\contentsline {section}{\numberline {5.1}Multivalued Dependency}{21}%
+\contentsline {subsubsection}{Every FD is an MVD}{21}%
+\contentsline {subsubsection}{Complementation}{21}%
+\contentsline {subsubsection}{Splitting Doesn't Hold}{22}%
+\contentsline {section}{\numberline {5.2}the Fourth Normal Form}{22}%
+\contentsline {subsubsection}{Connection to BCNF.}{22}%
+\contentsline {subsubsection}{Algorithm.}{22}%
+\contentsline {subsubsection}{Example}{22}%
+\contentsline {part}{II\hspace {1em}Structured Query Language}{23}%
+\contentsline {chapter}{\numberline {6}SQL - November 26, 2020}{25}%
+\contentsline {section}{\numberline {6.1}Statements}{25}%
+\contentsline {subsection}{\numberline {6.1.1}Select Statement}{25}%
+\contentsline {subsubsection}{Operator Precedence}{25}%
+\contentsline {subsubsection}{Null Values}{25}%
+\contentsline {subsubsection}{Column Aliases}{25}%
+\contentsline {subsubsection}{Duplicate Rows}{25}%
+\contentsline {subsubsection}{Limiting Rows}{25}%
+\contentsline {subsubsection}{Character Strings and Dates}{26}%
+\contentsline {subsubsection}{ORDER BY Clause}{26}%
+\contentsline {chapter}{\numberline {7}SQL (Cont`d) - December 3, 2020}{27}%
+\contentsline {section}{\numberline {7.1}Single Row Functions}{27}%
+\contentsline {subsubsection}{Case Conversion Functions}{27}%
+\contentsline {subsubsection}{Arithmetic Operators with Dates}{27}%
+\contentsline {section}{\numberline {7.2}Multiple Tables}{27}%
+\contentsline {subsection}{\numberline {7.2.1}Join}{27}%
+\contentsline {subsubsection}{Equijoin}{27}%
+\contentsline {subsubsection}{Joining More Than Two Tables}{27}%
+\contentsline {subsubsection}{Non-Equijoins}{28}%
+\contentsline {subsubsection}{Outer Joins}{28}%
+\contentsline {subsubsection}{Self Joins}{28}%
+\contentsline {section}{\numberline {7.3}Group Functions}{28}%
+\contentsline {subsection}{\numberline {7.3.1}Creating Groups of Data}{29}%
+\contentsline {subsubsection}{Grouping by More Than One Column}{29}%
+\contentsline {subsubsection}{Excluding Group Results}{29}%
+\contentsline {subsubsection}{Nesting Group Functions}{29}%
+\contentsline {section}{\numberline {7.4}Subqueries}{29}%
+\contentsline {section}{\numberline {7.5}Manipulating Data}{30}%
+\contentsline {subsection}{\numberline {7.5.1}Adding a Row}{30}%
+\contentsline {subsubsection}{Inserting Rows with Null Names}{30}%
+\contentsline {subsubsection}{Inserting Special Values}{30}%
+\contentsline {subsubsection}{Copying Rows}{30}%
+\contentsline {subsection}{\numberline {7.5.2}Updating a Row}{30}%
+\contentsline {subsection}{\numberline {7.5.3}Removing a Row}{30}%
+\contentsline {section}{\numberline {7.6}\texttt {COMMIT} and \texttt {ROLLBACK} Statements}{30}%
+\contentsline {subsubsection}{State of the Data Before \texttt {COMMIT} or \texttt {ROLLBACK}}{30}%
+\contentsline {subsubsection}{State of the Data After \texttt {COMMIT}}{31}%
+\contentsline {subsubsection}{State of the Data After \texttt {ROLLBACK}}{31}%

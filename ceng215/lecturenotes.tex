@@ -7,6 +7,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{caption}
+\usepackage{booktabs}
 \usepackage{subcaption}
 \usepackage{pgfplots}
 \usepackage{graphicx}
@@ -1045,6 +1046,94 @@ Using reverse Laplace transforms:
 i_L(t) = \frac{V}{R} - \frac{V}{R} e^{-\frac{R}{L}t}
 \end{equation}
 
+\chapter{2\textsuperscript{nd} Degree Circuits -  December 3, 2020}
+
+\section{Undriven RLC Circuit}
+
+\begin{circuitikz}[american]
+\draw (0, 0)
+	to [C=$C$] (0, 3)
+	to [R=$R$, i_=$i$] (3, 3)
+	to [L=$L$] (3, 0)
+	to [short] (0,0);
+\end{circuitikz}
+
+
+\begin{equation}
+i'' + \frac{R}{L} i' + \frac{1}{LC} i = 0
+\end{equation}
+
+If one writes down $i = Ae^{st}$, we can write the following:
+
+\begin{equation}
+A\left(s^2 + \frac{R}{L}s + \frac{1}{LC}\right) =0
+\end{equation}
+
+Without $A$ this equation is called \textbf{the Characteristic Equation}, and is also written as:
+
+\begin{align}
+s^2 + 2 \alpha s + \omega_0^2 = 0
+\end{align}
+
+Where
+
+\begin{align}
+\alpha &\equiv \frac{R}{2L}\\
+\omega_0 &\equiv \frac{1}{\sqrt{LC}}
+\end{align}
+
+Where the roots of the equation is:
+
+\begin{align}
+s_1 &= - \alpha + \sqrt{\alpha^2 - \omega_0^2}\\
+s_2 = - \alpha - \sqrt{\alpha^2 - \omega_0^2}
+\end{align}
+
+And hence:
+
+\begin{equation}
+i(t) = A_1e^{s_1t} + A_2e^{s_2t}
+\end{equation}
+
+Where, the relation of $\alpha$ and $\omega$ affect the nature of the circuits behaviour.
+
+
+\begin{table}[httb]
+\begin{tabular}{ll}
+& Circuit Behaviour\\
+\toprule
+$\alpha < \omega_0$ & Under-damped Dynamics\\
+$\alpha = \omega_0$ & Critically-damped Dynamics\\
+$\alpha > \omega_0$ & Over-damped Dynamics\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This behaviour arises from the very nature of the exponential function, simply put, when $\alpha < \omega_0$, the euler's identity comes into effect. Turning the equation into \textit{some} sort of $\gamma e^{c{\sqrt{\omega_0^2 - \alpha^2}}jt}$ where $\gamma$ is just a real value, and $j^2 = -1$, hence this circuit will show sinusoidal behaviour. \\
+
+Furthermore, $\omega_0$ is called the \textbf{natural frequency}, and $\alpha$ is the \textbf{damping constant}.
+
+\section{Driven RLC Circuit}
+
+\begin{circuitikz}[american]
+\draw (0, 3)
+	to [R=$R$] (3, 3)
+	to [L=$L$, i_=$i$] (6, 3)
+	to [C=$C$] (6, 0)
+	to [short] (0,0);
+\draw (0, 3)
+	to [V=$V_i$] (0, 0);
+\draw (3, 0) node[ground]{};
+\end{circuitikz}
+
+\begin{equation}
+V_c'' + \frac{R}{L}V_c' + \frac{1}{LC}V_c = \frac{1}{LC} V_i
+\end{equation}
+
+
+\begin{equation}
+i = C \sdif{V_c(t)}{t}
+\end{equation}
 \appendix
 
 \chapter{Laplace Transforms}
@@ -1066,5 +1155,6 @@ f''(t) &\to s^2F(s) - sf(0) - f'(0)\\
 \cos(a t) &\to \frac{s}{s^2 + a^2}\\
 atu(t) &\to \frac{A}{s^2} 
 \end{align}
+
 
 \end{document}

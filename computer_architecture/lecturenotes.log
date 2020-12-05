@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  27 NOV 2020 16:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  4 DEC 2020 16:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1070,19 +1070,143 @@ Overfull \hbox (68.10823pt too wide) has occurred while \output is active
  THE COMPUTER (CONT`D) - NOVEMBER 27, 2020
  []
 
-[22] (./lecturenotes.aux)
+[22]
+Chapter 7.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1061
+
+ []
+
+
+Underfull \hbox (badness 2486) in paragraph at lines 1069--1070
+[]\OT1/cmr/m/n/10.95 Where $\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 rep-re-
+sents the dig-its of the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1069--1070
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1081--1082
+
+ []
+
+[23
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1116--1117
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1118--1119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1120--1121
+
+ []
+
+
+Underfull \vbox (badness 1092) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1675) in paragraph at lines 1139--1140
+\OT1/cmr/m/n/10.95 stored the 64-bit prod-uct in \OT1/cmtt/m/n/10.95 LO \OT1/cm
+r/m/n/10.95 and \OT1/cmtt/m/n/10.95 HI\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 1577) in paragraph at lines 1139--1140
+\OT1/cmr/m/n/10.95 the spe-cial move in-struc-tions \OT1/cmtt/m/n/10.95 mfhi \O
+T1/cmr/m/n/10.95 (move
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1139--1140
+
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 1141--1142
+[]\OT1/cmr/m/n/10.95 The sim-pler \OT1/cmtt/m/n/10.95 mul rd, rs, rt \OT1/cmr/m
+/n/10.95 places the
+ []
+
+
+Underfull \hbox (badness 1655) in paragraph at lines 1145--1146
+$\OML/cmm/m/it/10.95 n$ \OT1/cmr/m/n/10.95 bit operands yield $\OML/cmm/m/it/10
+.95 n$ \OT1/cmr/m/n/10.95 bit quo-tient and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1148
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1149--1150
+
+ []
+
+
+Underfull \hbox (badness 1009) in paragraph at lines 1155--1156
+\OT1/cmr/m/n/10.95 sci-en-tific no-ta-tion, or nor-mal-ized no-ta-tion.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1155--1156
+
+ []
+
+[24]
+Underfull \hbox (badness 1194) in paragraph at lines 1178--1179
+\OT1/cmr/m/n/10.95 mal-ized, that is, it al-ways has a lead-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1178--1179
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1180--1181
+
+ []
+
+
+Underfull \hbox (badness 2875) in paragraph at lines 1182--1183
+[]\OT1/cmr/m/n/10.95 [Other than dou-ble pre-ci-sion (64 bits)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1182--1183
+
+ []
+
+[25
+
+] (./lecturenotes.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5558 strings out of 480906
- 71545 string characters out of 5908268
- 529162 words of memory out of 5000000
- 21094 multiletter control sequences out of 15000+600000
+ 5568 strings out of 480906
+ 71633 string characters out of 5908268
+ 529322 words of memory out of 5000000
+ 21104 multiletter control sequences out of 15000+600000
  545564 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,12n,53p,595b,1476s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,12n,53p,595b,1484s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
@@ -1096,15 +1220,16 @@ al/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
 exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
 ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texli
 ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
-e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive
-/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/
-2020/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/20
-20/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2020
-/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on lecturenotes.pdf (22 pages, 257233 bytes).
+e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
+2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2
+020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/20
+20/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2020
+/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2020/t
+exmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on lecturenotes.pdf (25 pages, 274198 bytes).
 PDF statistics:
- 145 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
+ 159 PDF objects out of 1000 (max. 8388607)
+ 112 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
