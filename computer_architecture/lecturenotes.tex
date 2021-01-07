@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{circuitikz}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{listings}
@@ -1182,4 +1183,159 @@ The bias of a single precision floating point number is 127.\\
 [Other than double precision (64 bits) and single precision (32 bits), there is also extended precision (40 bits) and also extended double precision (80 bits)]\\
 
 [Early computers and chipsets actually had dedicated Floating Point coprocessors. Intel x86 even had something called an x87, a subset of x86 working with the Intel 8087 Floating Point Coprocessors. Nowadays, x87 is a proper part of x86.]
+
+\chapter{Processor Design - December 18, 2020}
+
+The implementation of a subset of the MIPS-1 instruction set that includes \C{lw} and \C{sw} memory reference instructions, \C{add}, \C{sub}, \C{and}, \C{or} and \C{slt} arithmatic-logical instructions, as well as the \C{beq} and \C{j} control-transfer instructions.
+
+The instruction execution follows a basic format:
+
+\begin{enumerate}
+\item \textbf{Fetching} the instruction from the instruction memory, pointed by the PC.
+\item Data held in the memory is imported to the Register file.
+\item ALU may be used to calculate arithmetic results, memory addresses and comparison.
+\item Access the data memory for load/store.
+\item Write the data from ALU to register if ALU is used.
+\item Change the PC based on comparison for branch if a comparison instruction is used. Otherwise Program counter is incremented by four.
+\end{enumerate}
+
+In conclusion a basic processor implementation for a subset of MIPS includes a PC, Register file, ALU and memory. A control unit is also responsible for deciding where instructions go and what do they do using multiplexers.\\
+
+This CPU design uses Multiplexer and Adder combinational elements.\\
+
+\section{Data Path}
+
+\subsection{Instruction Fetch}
+
+Fetch the instruction from the instruction memory. Increment the PC so that it points at the next instruction, four bytes later.
+
+\subsubsection{Instruction Memory}
+
+Instruction Memory is a read-only memory takes one input and gives one output, both 32-bit. Takes the address of the instruction to read and returns the instruction at that address.
+
+\subsubsection{Program Counter}
+
+A special register that gets updated at the end of every clock cycle.
+
+\subsubsection{Adder}
+
+A simple ALU wired to always adds four to the input.
+
+\begin{circuitikz}
+\draw (0, 0) node[one bit adder] {+};
+\end{circuitikz}
+
+\subsection{R-Format Instruction}
+
+These instructions need a register file and an ALU, it reads from two registers, performs an arithmetic logical operation on the contents of the register, writes the result to a register.
+
+in our simplified MIPS implementation, these \C{add}, \C{sub}, \C{or}, \C{sll}
+
+\subsubsection{Register File}
+
+
+\begin{circuitikz}
+\ctikzset{multipoles/thickness=3};
+\ctikzset{multipoles/dipchip/width=3};
+\draw (0,0) node[dipchip, num pins=8, hide numbers, no topmark, external pins width=0](C){Registers};
+\node [right, font=\tiny] at (C.bpin 1) {Read Register 1};
+\node [right, font=\tiny] at (C.bpin 2) {Read Register 2};
+\node [right, font=\tiny] at (C.bpin 3) {Write Register};
+\node [right, font=\tiny] at (C.bpin 4) {Write Data};
+\node [left, font=\tiny] at (C.bpin 5) {Read Data 2};
+\node [left, font=\tiny] at (C.bpin 8) {Read Data 1};
+\draw (C.s) -- ++ (0, -0.5) node[circ, font=\tiny]{  RegWrite};
+\end{circuitikz}
+
+The above diagram summerizes how the Register File works. This file contains two outputs for data as well as one input for incoming data. The three register inputs in the left hand side tells it which registers to read or write and they take 5 bits of input. The bottom RegWrite flags is set high when there will be a write.
+
+\subsubsection{ALU}
+
+The operation to be performed by the ALU is set by the control unit through the control lines.
+\begin{table}[ht]
+\begin{tabular}{ll}
+ALU Control Lines & Function\\
+\toprule
+0000 & \C{AND}\\
+0001 & \C{OR}\\
+0010 & \C{ADD}\\
+0110 & \C{SUBTRACT}\\
+0111 & \C{SLT}\\
+1100 & \C{NOR}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsection{Load/Store Instructions}
+
+An instruction such as \C{lw \$t1, offset(\$t2)}reads register operands, computes the memory address by adding the base register to the signed offset and load/store the value from/to memory into/from register.\\
+
+Components needed for this operation is:
+
+\begin{itemize}
+\item Register File.
+\item ALU (for addition operation).
+\item Data Memory Unit
+\item Sign Extension Unit
+\end{itemize}
+
+\subsubsection{Sign Extension Unit}
+
+Sign extension replicates the most significant bit loaded into the upper sixteen bits.
+
+\subsubsection{Data Memory Unit}
+
+Data memory unit is the unit that holds the data as memory.
+
+\subsection{Branch Instructions}
+
+To execute an instruction such as \C{beq \$t1, \$t2, loop} you would have to:
+
+\begin{enumerate}
+\item Read the register values.
+\item Compare the values by subtracting and checking for zero. The ALU Has a special Zero output for this reason that is logical high when the result is zero.
+\item Calculate the target address by sign extending the displacement 
+\end{enumerate}
+
+\section{A Single Datapath}
+
+Execute all instructions in one clock-cycle, to share a datapath element between two different instruction classes, allow multiple connections to the input of an element (multiplexer and control signal to select among multiple inputs).
+
+\subsection{Control}
+
+the Control unit takes the OP-Code as its input, and proceeds to set certain control paths to their appropriate values depending on the OP-code.
+
+\chapter{Processor Design (Cont`d) - December 25, 2020}
+
+\section{Control Unit}
+
+In order for Processor to work correctly, the Control Unit must be able to set the Control Lines appropriately.
+
+In R and I type instructions, first  six bits determine the op-code. Next five bits \C{rs}, is always sent to the read section of the register file. the \C{rt} (next six bits) is always read also, except when the instruction is a load instruction. \C{rd} (the next six bits) and \C{rt} for load is he write register. Finally, the next sixteen bytes for I-Type is sign-extend and add. For arithmetic instructions, the last five bits is the function code that determines the ALU operation.\\
+
+\subsection{ALU}
+
+The ALU Control unit is the dedicated control unit for the ALU. The main control Unit sends an \C{ALUOp} signal to the ALU Control Unit, and the ALU Control unit generates the ALU Control input, which is equivalent to function code.\\
+
+The source lines of the ALU is determined via a multiplexer governed by the Main Control Unit.
+
+The \C{ALUOp} signal determines the type of the operation ALU will perform and is the output of the control unit. the ALU Control is further uses this signal to determine the value of the ALU control lines.\\
+
+\C{00} is used for add in load and store, \C{01} is subtract for \C{beq} and \C{10} is used to delegate the decision to the function field.\\
+
+\subsection{J-Type Jump Instruction}
+
+Jump uses pseudo addressing, a 26 bit address whose last two bits are omitted and whose top four bits come directly from the Program Counter.\\
+
+The Control Unit sets the Jump Control Signal to logical high in order to make sure PC is set to the pseudo-address.
+
+\chapter{Pipelining}
+
+Pipelining is a commonplace optimisation that is found in most contemporary processors. The clock cycle is normally determined by the longest delay, pipelining divides a clock cycle to multiple \textit{stages}, and tries to execute one instruction each stage thus increasing throughput.\\
+
+The general idea is to divide each instruction to different stages and then multiple instructions can be parallelised in the same cycle but in different stages\\
+
+Despite its robust nature, stalls may occur in pipelining, these issues can be solved in the hardware level, such as by \textit{forwarding}, or in software level such as by \textit{code scheduling}, which reorders code.
+
 \end{document}

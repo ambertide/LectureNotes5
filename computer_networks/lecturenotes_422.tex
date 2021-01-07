@@ -14,7 +14,7 @@
 \newcommand{\missed}{\textit{!\textsuperscript{*}}}
 \maketitle
 \chapter{Data and Signals - October 20, 2020}
-To be transmittedd, data must be transofrmed to electronic signals. Data can be \textit{analog} or it could be \textit{digital}.
+To be transmitted, data must be transformed to electronic signals. Data can be \textit{analog} or it could be \textit{digital}.
 
 \begin{description}
 \item[Analog Data] is the information that is continious. It may have a range of infinite values. They tend to be periodic.
@@ -731,4 +731,106 @@ SCTP supports multihoming, allows for multiple IP addresses to be used for recei
 Data chunks are identified by three items: TSN, SI and SSN.\\
 
 SCTP uses four-way handshaking, which mitigates DOS attacks.
+
+\chapter{Domain Name Service - December 8, 2020}
+
+DNS, or Domain Name Server is a special server that converts between domain namse and domain IPs.
+
+\section{Name Space}
+
+Either Flat or Hierarchical, IP addresses are bound to the names. Generally used Hierarchically, the names are defined in an inverted tree with dots separating them.\\
+
+FQDN is the full address, PQDN is the Partial address, where the rest of the address is completed according to the network configuration.\\
+
+Consider that hierarchical name spaces allows for multiple servers hierarchically pointing to each other. The global Root servers hold the address for the TLD domain servers like \C{.com}, \C{.edu}.\\
+
+A primary server loads all information from the disk file, the secondary server loads all information from the primary server.\\
+
+There are different domain types, Generic Domains (TLDs), country domains (ccTLD), Inverse domains, etc.\\
+
+There are two types of records, queried using UDP 53 protocol. Unless if the result is too big, in that case the TCP 53 is used.\\
+
+Registrars are commercial entities accredited by ICANN to register new DNS records.\\
+
+Dynamic Domain Name System (DDNS) can be used to update the DNS automatically.
+
+
+\chapter{Remote Logging, Mail Servers - December 15, 2020}
+
+\section{TELNET}
+
+\textbf{Remote Logging} refers to using another computer as your own, (logging into a computer). \textbf{TELNET} can be used to logging into any computer's any port. TELNET can only be used with TCP.\\
+
+In contemporary usage, TELNET has been replaced in many usages by other, more secure, technologies such as SSH, SSH can be used with encryption.\\
+
+\subsubsection{NVT Character Set}
+
+A special character set, called the NVT character set is used to convert characters automatically to make sure different sorts of computers can speak to each other.\\
+
+The First bit of the NVT character determines if the character is a control character (1) or normal (0). The control characters carry commands.\\
+
+Four special characters are also used for negotiation \C{WILL}, \C{WONT}, \C{DO}, \C{DONT} is used to determine which parts of the connection will be handled by the host versus the server.
+
+\section{Electronic Mail}
+
+E-Mail can work in  very different ways. Even without internet if both users are on the same computer, then, we only need two \textbf{User Agent}s. But if the traffic is over the internet, then we need two \textbf{Message Transfer Agent}s to facilitate  the trade of emails. Two UAs and two MTAs (one server, one client).\\
+
+In the more complicated variation, there may be a \textbf{mail server}, a dedicated machine for the receiving and sending of emails.\\
+
+The fourth and final variation of email transfer occurs with two computers connecting over two dedicated mail servers, the receiving end of it stores the messages until the receiver connects with an MAA client, and thus contains an MAA server. The MAA is used to receive messages.\\
+
+The action of sending a mail is called \textbf{pushing} messages. The action of getting messages from MAA server is called \textbf{pulling}.\\
+
+Examples of command-driven user agents are \C{mail}, \C{pine} and \C{elm}. On the other hand, GUI-based user agents are Outlook and Thunderbird.
+
+\subsubsection{The Nature of Email}
+
+An email consists of an \textbf{envelope} and \textbf{message}. The envelope consists of the addresses messages arrives from and goes to. \textbf{RFC 821} defines the envelope standard, \textbf{RFC 822} defines the message standard.\\
+
+An Email address has the structure \C{local@domain}, where \C{local} is the name of the local address of the user in the mail server at \C{domain} address.
+
+\subsubsection{MIME}
+
+MIME is the translation layer between 7-bit NVT ASCII codes and Non-ASCII codes.\\
+
+The MIME headers in the E-Mail Header section of the E-Mail message hold information about the message in the email body.
+
+\subsection{SMTP}
+
+the \textbf{Simple Mail Transfer Protocol} is used to transfer mail from the sender client to the receiver mail server. Defined in RFC 821, SMTP is used between the sender client and the sender client and the sender server and the receiving client \textit{but not} between the receiving server and the receiving client.\\
+
+The SMTP commands follow the format \C{command:keyword}. Port 25 is used for SMTP in the TCP.
+
+\subsection{POP3 \& IMAP4}
+
+The \textbf{Post Office Protocole} (POP3) and \textbf{Internet Mail Access Protocol} (IMAP4) is used in the receiving end of the connection. Between the receiving client and the server holding the emails of the receiver.\\
+
+The greatest distinction between IMAP4 and POP3 is that, with POP3, the mail is stored in the recipient computer, and is deleted from the server. In IMAP4, the mails are stored in the server.
+
+\section{File Transfer}
+
+Transferring files from one computer to another is generally done through \textbf{File Transfer Protocol} (FTP).\\
+
+FTP uses to TCP connections simultaneously, Port 20 and 21. The port 21 is used for sending commands (control connection) and 20 is used for data transfer. This way, commands can still be send during download.\\
+
+The Control Connection of the FTP uses NVT. The data connection's file type, data structure and transmission mode are defined by the client. The text mode is used to convert line ending between Unix and Windows (\C{CRLF} vs \C{LF}).
+
+\chapter{DHCP - December 15, 2020}
+
+\textbf{Dynamic Host Configuration Protocol} is responsible for assigning information to hosts. The DHCP arose from \textbf{BOOTP}, (and is backwards compatible with it).
+
+\section{BOOTP}
+
+BOOTP is a protocol used to ask for the IP Addresss, gateway information etc. As well as extra information such as where the operating system of the computer is. It uses port 67.\\
+
+\section{DHCP}
+
+DHCP is built on BOOTP. It provides the address, subnet mask, gateway, name server and many other information to the connecting computers.\\
+
+DHCP has a pool of available addresses that it can assign to hosts as they need, these addresses last for a \textit{lease time} and expires after this, though the host may renew it.
+
+\chapter{SNMP - January 5, 2020}
+
+SNMP is a simple network management protocol.
+
 \end{document}

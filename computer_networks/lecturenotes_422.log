@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  1 DEC 2020 14:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  24 DEC 2020 13:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1243,11 +1243,150 @@ Overfull \hbox (18.82617pt too wide) has occurred while \output is active
 RY - DECEMBER 1, 2020
  []
 
-[38] (./lecturenotes_422.aux) ) 
+[38]
+Chapter 10.
+
+Underfull \hbox (badness 10000) in paragraph at lines 741--742
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 743--744
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 745--746
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 747--748
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 749--750
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 751--752
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--754
+
+ []
+
+[39
+
+] [40]
+Chapter 11.
+
+Underfull \hbox (badness 10000) in paragraph at lines 762--763
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 764--765
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 768--769
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 770--771
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 776--777
+
+ []
+
+[41
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 778--779
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 780--781
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 782--783
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 788--789
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 794--795
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 800--801
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 806--807
+
+ []
+
+
+Overfull \hbox (35.78238pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 42 \OT1/cmr/m/sl/10.95 CHAPTER 11.  REMOTE LOGGING, MAIL SER
+VERS - DECEMBER 15, 2020
+ []
+
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 812--813
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 814--815
+
+ []
+
+[43]
+Overfull \hbox (35.78238pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/10.95 44 \OT1/cmr/m/sl/10.95 CHAPTER 11.  REMOTE LOGGING, MAIL SER
+VERS - DECEMBER 15, 2020
+ []
+
+[44
+
+]
+Chapter 12.
+
+Underfull \hbox (badness 10000) in paragraph at lines 824--825
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 828--829
+
+ []
+
+[45] (./lecturenotes_422.aux) ) 
 Here is how much of TeX's memory you used:
  23770 strings out of 480906
  610176 string characters out of 5908268
- 1005083 words of memory out of 5000000
+ 1005082 words of memory out of 5000000
  38988 multiletter control sequences out of 15000+600000
  545273 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1269,10 +1408,10 @@ cmti10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mti8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 t10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm109
 5.pfb>
-Output written on lecturenotes_422.pdf (38 pages, 378374 bytes).
+Output written on lecturenotes_422.pdf (45 pages, 391506 bytes).
 PDF statistics:
- 197 PDF objects out of 1000 (max. 8388607)
- 137 compressed objects within 2 object streams
+ 219 PDF objects out of 1000 (max. 8388607)
+ 152 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

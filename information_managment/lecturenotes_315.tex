@@ -966,11 +966,13 @@ If we have \C{employee(\emph{person-name}, street, city)}, \C{works(\emph{person
 
 \begin{lstlisting}
 SELECT 	e.person-name
-FROM	employee e, works w, company c
-WHERE	e.person-name = w.person-name
-		AND w.company.name = 
-			c.company-name
-		AND e.city = c.city
+FROM	employee e, 
+		works w, company c
+WHERE	e.person-name 
+		= w.person-name
+	AND w.company.name = 
+		c.company-name
+	AND e.city = c.city
 \end{lstlisting}
 
 Here we joined three tables to achieve our task! [Observe that the aliases can be used in the \C{FROM tab}]. [I also like how we can use aliases \textit{before} we declare them, this means SQL as a language necessitates a two-pass compiler at least! (Like most languages, honestly, except C, but hey, that's C for ya.)]
@@ -1208,4 +1210,300 @@ Please keep in mind that \C{COMMIT} and \C{ROLLBACK} is unusable in Oracle's Web
 \item The previous state of the data is restored.
 \item Locks on affected rows are released.
 \end{itemize}
+
+\chapter{SQL (Cont`d) - December 17, 2020}
+
+\section{Table Creation and Modification}
+
+\C{CREATE TABLE} and \C{ALTER TABLE} statements can be used to create new tables and modify existing tables respectively.
+
+\subsection{Table Creation}
+
+The \C{CREATE TABLE} statement can be used to create a table in SQL.
+
+\begin{lstlisting}
+CREATE TABLE tableName
+	(colName colType(colSize),
+	colName2 colType(colSize),
+	...
+	);
+\end{lstlisting}
+
+\subsubsection{Data Types in Oracle SQL}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l L{6cm}}
+		Data Type & Description\\
+        \toprule
+        \C{VARCHAR2(size)} & Variable-length character data\\
+        \C{CHAR(size)} & Fixed-length character data\\
+        \C{NUMBER(p, s)} & Variable length numeric data\\
+        \C{DATA} & Data and time values.\\
+        \C{LONG} & variable-length character data up to 2GBs\\
+        \C{CLOB} & Single-byte character data up to 4 gigabytes.\\
+        \C{RAW}, \C{LONG RAW} & Raw binary data\\
+        \C{BLOB} & Binary data up to 4 gigabytes\\
+        \C{BFILE} & Binary data stored in an external file; up to 4GBs.\\
+        \bottomrule
+    \end{tabular}
+    \caption{Data types in Oracle SQL, different SQL Dialects support different types.}
+    \label{tab:datatypes}
+\end{table}
+
+\subsubsection{\C{CREATE TABLE} with a Subquery}
+
+Using the \C{AS} keyword, \C{CREATE TABLE} can be used with a subquery. [Similar to piping output in Unix systems.], when getting data from another table this way, the constraints are preserved.
+
+\subsection{Table Modification}
+
+\C{ALTER TABLE} statement can be used in conjunction with the \C{ADD} and \C{MODIFY} keywords to add new columns or modify existing columns of a table.\\
+
+The table modification can update the type of an existing column.
+
+\section{Constraints}
+
+During table creations, SQL can be used to add constraints to certain columns or tables. \textbf{Column-level constraints} are written after a column type/size in the table creation. Whereas, \textbf{Table-level constraints} are written after writing all the columns, the table-level constraints follow the \C{CONSTRAINT} keyword and may refer to multiple columns.
+
+\subsubsection{the \C{NOT NULL} Constraint}
+
+Ensures that \C{NULL} values are not permitted for the column. It \textit{cannot} be defined at the table level. [In fact, this behaviour is shared when checking for equalities. \C{NULL} does not equal to any value including another \C{NULL}, similar to the behaviour of \C{NaN} in IEEE 754.]
+
+\subsubsection{the \C{UNIQUE KEY} Constraint}
+
+Ensures that the column cannot hold the two (or more)  copies of the same value. Two values holding \C{NULL} \textit{can} be inserted. The \C{UNIQUE KEY} constraint can be defined at either the table level or the column level.
+
+\subsubsection{the \C{PRIMARY KEY} Constraint}
+
+This constraint acts both as a \C{NOT NULL} constraint and a \C{UNIQUE KEY} constraint. The values inserted at this column must be unique \textit{and} must not be \C{NULL}.
+
+
+\subsubsection{the \C{FOREIGN KEY} Constraint}
+
+The \C{FOREIGN KEY} constraint is used for columns that hold the values of a primary key of another table. It is sometimes refereed to as the Referential Integrity Constraint.\\
+
+When a column is defined to be a \C{FOREIGN KEY}, the values it hold \textit{must} exist in the primary key of another table.\\
+
+It has a unique syntax, and is used in conjunction with the \C{REFERENCES}.
+
+\begin{lstlisting}
+FOREIGN KEY (nativeCol)
+REFERENCES foreignTable (foreignCol);
+\end{lstlisting}
+
+If followed by the \C{ON DELETE CASCADE}, should the row containing the primary key in the parent table is deleted, the records it references in the child table is deleted as well. It should be noted that, if not followed by this keyword, it won't be possible to delete the records whose referenced by other tables in the parent table. (\S\C{ORA-02292}).
+
+\subsubsection{the \C{CHECK} Constraint}
+
+Defines a condition that each row must satisfy.
+
+\subsection{Constraint Modification}
+
+Constraints may be added, or dropped; enable or disabled to a table using the \C{ALTER TABLE} constraint. If used in conjunction with the \C{ADD CONSTRAINT} keyword, it adds a constraint; if instead used with the \C{DROP CONSTRAINT} keyword, it drops a constraint instead.\\
+
+\subsubsection{the \C{CASCADE} Constraint}
+
+Using the \C{CASCADE} keyword following a \C{DROP CONSTRAINT} of a \C{PRIMARY KEY}, it also drops the \C{FOREIGN KEY} constraints associated with this column.\\
+
+Attempting to drop a primary key constraint with foreign key constraints put on it from other tables without \C{CASCADE} will result in an error (\S \C{ORA-02273})\\
+
+\subsubsection{Disabling and Enabling Constraints}
+
+Primary keys can be activated or disabled using \C{DISABLE} and \C{ENABLE} keywords.
+
+\subsubsection{Viewing Constraints}
+
+Constraints can be viewed from the special table \C{user\_constraints} table. The columns associated with these constraints can also be viewed from the \C{user\_cons\_columns} special table.
+
+
+\chapter{Integrity and Security in Databases - December 17, 2020}
+
+\begin{description}
+\item[Integrity] The database should not become incorrect or inconsistent to an inadvertent update (such as a typo)
+\item[Security] The database should not be able to be reached by the unauthorised people.
+\item[Constraint] The allowable states that the tables in the database may be in.
+\end{description}
+
+An \textbf{integrity constraint} encodes business rules about the organization. It can detect bad data entry, and it can enforce the rules of the organization. It may apply to an individual record, one or more table(s), or an entire database.\\
+ 
+Consider \C{STUDENT(SId, SName, GradYear, MajorId)}. An integrity constraint may be that the \C{GradYear} must at least be \C{1863}. Another rule may be that "A professor teaches at most two sections a year" \C{SECTION(SectId, CourseId, Prof, YearsOffered)}, applies to this table as a whole. A constraint such as "a student cannot take a course more than once", applies to multiple tables simultaneously.\\
+
+\C{CREATE TABLE} can only be used to specify a fraction of possible integrity constraints. Only those that apply to the individual records in a table. One needs to use \textbf{assertions} if they wish to have more complex constraints.
+
+\begin{lstlisting}
+create assertion SmallSections
+check (not exists
+	select e.SectionId
+	from ENROLL e
+	group by e.SectionId
+	having count(e.EId) > 30)
+\end{lstlisting}
+
+Here, we can see the Standard SQL specification of the integrity constraint "No section can have more than 30 students". An Assertion can denote any constraint whose violation can be expressed as a query.\\
+
+The \C{NOT EXISTS} operator returns true when a query returns no records.\\
+
+\section{Triggers}
+
+Oracle SQL \textbf{does not have} a \C{CREATE ASSERTION} statement. Instead, it has \textbf{Triggers}. A trigger specifies an action that the database system invokes automatically whenever a specified event occurs. A trigger has three essential parts:
+
+\begin{enumerate}
+\item an \textbf{Event}, the update statement that initiates the activity.
+\item a \textbf{Trigger}, the predicate that determines whether the trigger will fire.
+\item an \textbf{Action}, what happens if the trigger does fire.
+\end{enumerate}
+
+
+THe Standard SQL defines triggers as:
+
+\begin{lstlisting}
+CREATE TRIGGER trigger_name
+{BEFORE|AFTER} {INSERT|
+		DELETE|UPDATE}
+	[OF col_name] ON tablaName
+[REFERENCING <old or 
+	new values alias>]
+[FOR EACH ROW]
+[WHEN condition]
+action
+\end{lstlisting}
+
+A trigger action is bracketed by the keywords \C{BEGIN} and \C{END}. The Oracle SQL defines triggers as:
+
+\begin{lstlisting}
+CREATE [OR REPLACE] TRIGGER trigger_name
+{BEFORE|AFTER} {INSERT|DELETE|UPDATE}
+	[OF col_name] ON tableName
+[REFERENCING old as <oldrow>
+	new as <newrow>]
+[FOR EACH ROW]
+[ENABLE/DISABLE]
+[WHEN condition]
+BEGIN
+action statements
+END
+\end{lstlisting}
+
+The oracle also defines \C{:new.column-name} and \C{:old.column-name} automatically without using \C{REFERENCING as well}. Triggers in Oracle SQL can also be disabled or enabled. Enabled triggers automatically fires, disabled triggers do not.\\
+
+[It is a bit interesting that unlike other standardised languages, SQL Standard is not adhered to by its vendors. Although some variations exists in some standardised languages, the syntax deviations seen between different dialects of SQL is not seen in any other standardised language, neither in C, C++ or ADA, for instance.]
+
+\subsection{Triggers and Constraints}
+
+Both triggers and constraints can constraint data input, constraints are easier to write and less error-prone than triggers that enforce the same rules. A constraint rejects any update that violates it, when a trigger \textit{fixes} the bad update. Constraints are also less error prone, and one should prefer constraints whenever possible. But, some rules can only be conveyed properly by triggers
+
+\section{Authorisation}
+
+Constraints and triggers help keep the database from becoming accidentally corrupted. Now, we need to make sure that malicious users cannot corrupt the database intentionally or look at private data.\\
+
+SQL acts on a system of privileges. Different users can have different privileges for specific tables. A statement such as \C{grant update on ENROLL to Einstein} gives the update privileges to the user Einstein.\\
+
+\subsubsection{Roles}
+
+SQL has a concept of roles. [Similar to Unix concept of a user group] A role, is a category of users, and privileges can be granted to a role as a whole.\\
+
+For the syntactical purposes, the \C{GRANT} sees roles and users as the same. A user can be assigned multiple roles at the same time.The privileges of a user will be the union of the privileges of its roles.
+
+\subsubsection{Column Privileges}
+
+Privileges can also be assigned on a column-level, such as \C{GRANT SELECT (StudentId, Grade) on ENROLL to dean, professor}. The users with these rolls will be able to select these two columns on the \C{ENROLL} table specifically.\\
+
+Users with the \C{update, insert} and \C{delete} privileges also need to have \C{select} privileges for the fields in the \C{WHERE} clause. They do not need this privilege if their query does not contain a \C{WHERE} clause.\\
+
+\subsubsection{Granting Constraint Privileges}
+
+The \C{grant reference} privilege, grants the privilege to create constraints on a table.
+
+\subsubsection{Grant-Option Privileges}
+
+The \C{with grant option} clause, added to the end of a \C{grant} statement gives the user who is granted a privilege the privilege to grant that same privilege to other users.
+
+\subsection{Mandatory Access Control}
+
+the SQL authorisation mechanism used by SQL is called \textbf{discretionary access control}. The creator of a table has authorisation on their tables, and may give access to others at his discretion.\\
+
+A database system that uses discretionary access control depends on its users to be trustworthy. If a user is not trustworthy, the user can just copy information they have access to and release it to the public.\\
+
+Contrasting with Discretionary Access Control, Mandatory Access Control assigns privileges to data, instead of tables. Each record and user is assigned to a classification level, a user is authorised to see a record if the user's classification level is equal or higher to the data's classification level.\\
+
+This access control is predominantly used in high-security environments such as the military, and is not preferred in commercial settings.
+
+\chapter{Views - December 24, 2020}
+
+[Merry Christmas and Happy Hanukkah to any friends that may be reading this! (And Yule as well, 'suppose.) the Year is almost over, eh? I sure am happy that \textit{this} year is ending, let us hope for a better one for the next.]\\
+
+In the first lecture, three schema levels, \textbf{Physical Schemas} (files, indexes), \textbf{Conceptual Schemas} (user-neutral data) and \textbf{External Schemas} (user-specific tables).\\
+
+A \textbf{view} is essentially a named query, A user can refer to a view as if it were a table.
+
+Views are useful for:
+
+\begin{itemize}
+\item Hiding some data from some users.
+\item Making certain queries easier or more natural.
+\item Increasing the modularity of database access.
+\end{itemize}
+
+\section{Virtual Views}
+
+Virtual Views are the most often used [and historically the first] views. In this chapter, when the term view is used without any descriptive, it refers to a view.\\
+
+View data is not stored on the disk, it is a \textbf{virtual relation} based on the result set of a \C{SELECT} statement. Views are customized presentations of data in one or more tables or other views, they can be thought of  as stored queries, they derive data from other tables.\\
+
+Views in the Standard SQL and Oracle SQL can be created as follows [this paragraph is here just to pad the code example to the next column so it doesn't split and look ugly]
+
+\begin{lstlisting}
+CREATE VIEW view_name AS
+SELECT column_name(s)
+FROM table_name
+WHERE condition;
+\end{lstlisting}
+
+[View performance is comparable to normal queries in Oracle DBMS, there is no difference since they are \textit{stored queries}. (\S9673409)) In Microsoft SQL, they are actually a bit faster due to caching (referred to as \textit{indexing}) (\S439061).]\\
+
+Views can be created from two separate tables, by giving multiple tables in the \C{FROM} clause.\\
+
+
+\subsubsection{Updatable Views}
+
+A view is updatable if every record in the view has a unique corresponding record in some underlying database. In practice, this reefers to single-table view that do not involve aggregations, and multi-table views are \textit{in general} not updatable.\\
+
+This problem arises from the fact that, when deleting (for instance) the system can delete the record from any of the tables constituting the table, this ambiguity leads to DBMS not allowing deletion altogether.\\
+
+In conclusion, views that do not have one to one relationships such as due to multi-tables or aggregation functions (\S7.3).
+
+\subsubsection{Inserting to Views}
+
+When inserting new values, the constraints on the fields of the view rows must be taken into account, the said fields must be a part of the view since only then can we insert new values, (if the field is \C{NOT NULL} for instance, we need to specify its value) Therefore, just because a table is updatable does not mean it is (always) modifiable.
+
+\subsubsection{\C{DROP}}
+
+The \C{DROP VIEW} will drop the view itself, which can be done on any view whether or not it is updatable. It does not affect the underlying table.
+
+However, using the \C{DROP TABLE} on the underlying table makes the view unusable, since the Views depend on their underlying tables for reference.
+
+\subsubsection{Read Only Views}
+
+\C{WITH READ ONLY} keyword, added to the end of a view declaration makes that view not updatable irregardless of the conditions of the tables creation.
+
+\section{Materialised Views}
+
+Materialised Views are a form of controlled redundancy. They are tables containing the outputs of a view, and unlike virtual views they are stored on disk, whenever the underlying data is updated, so should the corresponding materialised views.\\
+
+In certain situations, Query Optimiser may decide to use a materialised view rather than the original table.\\
+
+Materialising \textit{frequently-accessed} views whose outputs are  \textit{expensive to recompute} is beneficial, however it is a bad idea to materialise a table if it is \textit{frequently-updated} and has a \textit{large output}. \\
+
+Rather than completely resetting the materialised view, the SQL systems generally incrementally update these views.\\
+
+\subsection{Materialized Views in Oracle}
+
+When a materialized view is defined, its refresh option can be specified. Either \C{ON COMMIT}, which refreshes one of the materialized view's fact tables commit. \C{ON DEMAND} uses a manual refresh action.\\
+
+Furthermore, the what type of refresh is done can be specified. \C{COMPLETE} (Total redefining), \C{FAST} (Incremental), \C{FORCE} (Try fast refresh, if doesn't work apply apply a \C{COMPLETE} refresh.), \C{NEVER} (Oracle Refresh Mechanisms do not apply on the table).
+
+\subsection{Why Use Materialised Views}
+
+Not only does Materialised Views has all of the benefits of the normal Views, but they also \textbf{improve query performance}, if the workload is designed correctly.
+
 \end{document}
