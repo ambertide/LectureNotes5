@@ -1330,7 +1330,7 @@ Jump uses pseudo addressing, a 26 bit address whose last two bits are omitted an
 
 The Control Unit sets the Jump Control Signal to logical high in order to make sure PC is set to the pseudo-address.
 
-\chapter{Pipelining}
+\chapter{Pipelining - January 6, 2021}
 
 Pipelining is a commonplace optimisation that is found in most contemporary processors. The clock cycle is normally determined by the longest delay, pipelining divides a clock cycle to multiple \textit{stages}, and tries to execute one instruction each stage thus increasing throughput.\\
 
@@ -1338,4 +1338,53 @@ The general idea is to divide each instruction to different stages and then mult
 
 Despite its robust nature, stalls may occur in pipelining, these issues can be solved in the hardware level, such as by \textit{forwarding}, or in software level such as by \textit{code scheduling}, which reorders code.
 
+\chapter{Memory System - January 8, 2021}
+
+From the programmer's point of view memory  is a monolithic bloc accessed via store and load commands.\\
+
+For most programs, memory access is a more significant bottleneck.\\
+
+Memory comes in many different forms, chiefly, Dynamic RAM and Static Ram, former is slower but cheaper compared to the latter.\\
+
+A memory is a sort of array with an address selection logic and readout circuitry. Its performance is generally captured by two parameters, \textit{latency} and \textit{bandwidth}.
+
+\begin{description}
+\item[Latency] the time from the issue of a memory request to the time data is available at the processor.
+\item[Bandwidth] the rate at which data can be pumped to the processor by the memory system.
+\end{description}
+
+Some memory systems are organised in banks rather than one big array.\\
+
+The selection of memory structure is a balancing act between the capacity, latency and bandwidth; as a result, contemporary technologies use a a hierarchy to ensure most of the data processor needs is residing in the faster levels.\\
+
+Top of the hierarchy is the Cache, generally an SRAM structure. Both of these components reside in the CPU itself, below the Cache sits the Main memory which is generally DRAM, and below that sits the Hard Disk. The caches themselves may also have levels, there may be multiple caches each faster than other.
+
+\subsubsection{Locality Principle}
+
+Locality Principle says that programs access a small proportion of their address space at any time.
+
+\begin{description}
+\item[Temporal Locality] Items accessed recently are likely to be accessed again soon. [Loops]
+\item[Spatial Locality] Items near those accessed recently are likely to be accessed soon. [Arrays]
+\end{description}
+
+\subsubsection{Data Locating}
+
+The data is first looked for in the upper level of the hierarchy, and travels downwards until it is reached, when it is found, the data is brought up to the CPU travelling through the hierarchy.\\
+
+When data is found it is called a \textbf{hit}, when it is not, it is called a \textbf{miss}.
+
+\subsubsection{Modern Memory Hierarchy}
+
+In modern systems, main caches and main memory is handled automatically in hardware. The disk might have a swap portion, handled automatically, and the register file cache interaction is handled on a compiler level.\\
+
+Manual memory managment is no longer used in general computing, however, development on embedded processors sometimes uses manual management by the program.\\
+
+\subsection{Cache Block}
+
+A cache block is a multiple word wide block that  holds data, the memory accesses operate on these blocks rather than individual data items.
+
+\subsubsection{Cache Mappings}
+
+Caches maybe direct mapped, N-way set associative or fully associative.
 \end{document}

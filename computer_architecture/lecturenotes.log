@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  6 JAN 2021 15:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.27)  8 JAN 2021 13:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1670,7 +1670,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 1329--1330
 
 ]
 Chapter 10.
+
+Underfull \hbox (badness 1242) in paragraph at lines 1335--1336
+\OT1/cmr/m/n/10.95 one in-struc-tion each stage thus in-creas-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1335--1336
+
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 1337--1338
+\OT1/cmr/m/n/10.95 tion to dif-fer-ent stages and then mul-ti-ple
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1337--1338
+
+ []
+
 [33
+
+] [34
+
+]
+Chapter 11.
+[35
 
 ] (./lecturenotes.aux)
 
@@ -1705,10 +1731,10 @@ ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
 texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2020/te
 xmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2020/texm
 f-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on lecturenotes.pdf (33 pages, 295848 bytes).
+Output written on lecturenotes.pdf (35 pages, 297223 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
+ 197 PDF objects out of 1000 (max. 8388607)
+ 139 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1315,6 +1315,7 @@ Primary keys can be activated or disabled using \C{DISABLE} and \C{ENABLE} keywo
 
 Constraints can be viewed from the special table \C{user\_constraints} table. The columns associated with these constraints can also be viewed from the \C{user\_cons\_columns} special table.
 
+\part{Databases}
 
 \chapter{Integrity and Security in Databases - December 17, 2020}
 
@@ -1506,4 +1507,220 @@ Furthermore, the what type of refresh is done can be specified. \C{COMPLETE} (To
 
 Not only does Materialised Views has all of the benefits of the normal Views, but they also \textbf{improve query performance}, if the workload is designed correctly.
 
+\chapter{Transactions \& Recovery - January 7, 2021}
+
+A transaction is a group of operations that behaves as a single operation, a transaction is seen as a cohesive unit from the outside but actually consists of multiple operations. \\
+
+\section{Requirements}
+
+There are certain requirements for a transactions. These are called ACID properties, and every DBMS that has transactions must guarantee these, somehow.
+
+\subsubsection{Atomicity}
+
+The transactions are \textbf{atomic}, if one operation of a transaction fails, none of the operations within a transaction will be reflected in the database.\\
+
+Either all of its operations succeed (commit) or they fail (rollback).
+
+\subsubsection{Consistency}
+
+The \textbf{consistency requirement} says that the database must be consistent in the start and end of the transaction, but may be temporarily inconsistent during execution.\\
+
+Every transaction leaves the database consistent.
+
+\subsubsection{Isolation}
+Since if another transaction is executing concurrently with a transaction it may see an inconsistent database, the \textbf{isolation requirement} says that a transaction should not be aware of other transactions.
+
+A transaction behaves as if it is the only thing running on the system.
+
+This can be trivially achieved by making transactions execute serially.
+
+\subsubsection{Durability}
+
+The \textbf{durability requirement} says that once the user has been notified that a transaction has been completed, the updates to the database by the transaction must persist even if there are software or hardware failures.
+
+Changes made by a committed transaction are guaranteed to be permanent.
+
+\section{Transaction}
+
+A transaction is initiated either by a high-level data-manipulation language such as SQL, or by a programming language such as C++ or Java.\\
+
+In SQL, the \C{BEGIN TRANSACTION} keyword starts a transaction, and a \C{COMMIT} keyword typically ends it.\\
+
+Typically, multiple transactions are allowed to run concurrently in a system allowing better transaction throughput and reducing average response time for transactions, \textit{Concurrency control schemes} are necessary to achieve isolation.
+
+\subsection{Schedules}
+
+A \textbf{schedule} is a sequence of instructions that specify the chronological order in which instructions of concurrent transactions are executed.\\
+
+A transaction that successfully completes its execution will have a commit instruction as its last statement, otherwise its last statement will be a rollback instruction.
+
+\subsubsection{Serializability \& Conflicts}
+
+A schedule is said to serialisable if it is equivalent to a serial schedule.
+
+In the simplified view of transactions consisting of only write and read instructions, any pair of instructions $(I_i, I_j)$ where both of them refer to the same variable, if both are not read statements than they are conflicting.
+
+If $I_j$ and $I_i$ are consecutive in a schedule and they do not conflict, they shall also not conflict if they are swapped, If a schedule $S$ can be transformed into a schedule $S'$ by a series of swaps of non-conflicting instructions, $S$ and $S'$ are \textbf{conflict equivalent}. If a schedule $S$ is conflict equivalent to a serial schedule, than they are \textbf{conflict serializable}.
+
+\subsubsection{Precedence Graph}
+
+A schedule with a set of instructions $T_1, T_2, ..., T_n$ A precendence graph is drawn whose nodes are transactions and whose edges arise when a conflict arise, the direction of an edge is determined from the transaction with preceding instruction.\\
+
+A schedule is conflict serialisable if and only if its precedence graph is acyclic, if it is acyclic, the serialisable order is obtained by a topological sorting of the graph, a linear order consistent with the partial\\
+
+\textbf{A schedule is correct only if it is conflict serialisable due to the isolation requirement of the ACID.}
+
+\subsubsection{Recoverable Schedules}
+Schedules must be recoverable to make sure that if transaction $A$ sees the effects of the transaction $B$, and $B$ is rolled back, then so should $A$.\\
+
+A schedule is recoverable if two transactions $T_j$ and $T_i$, and $T_j$ reads data $T_i$ wrote, then $T_i$ s commit must occur first.\\
+
+A cascading rollback occurs when rollback of one transaction triggers the rollback of another, these are undesirable since they lead to the undoing of significant amount of work, for each pair of transactions $T_i, T_j$ such that $T_j$ reads a data item previously written by $T_i$, the commit operation of $T_i$ appears before the read operation of $T_j$. This is called a \textbf{cascadeless schedule}, all cascadeless schedules are also recoverable schedules.
+
+\subsection{Transaction Management}
+
+A transaction starts by executing a \C{BEGIN TRANSACTION} operation and is terminated by a \C{COMMIT} or \C{ROLLBACK} operation, a \C{COMMIT} establishes as commit point and a \C{ROLLBACK} returns to the previous commit point.\\
+
+Transaction managment primarily deals with Recovery and Concurrency.
+
+\section{Recovery}
+
+Recovery is the restoration of the database to a correct state after a failure has occurred. It is based on \textit{redundancy}, physical redundancy is desirable, logical redundancy is not. A recovery \textit{log file} keeps the previous and after state.\\
+
+A recovery is performed each time the database system starts up, its purpose is to restore the database to a reasonable state.
+
+\subsubsection{Reasonable State}
+
+\begin{itemize}
+\item All uncompleted transactions should be rolled back.
+\item All committed transactions should have their modifications written to disk.
+\end{itemize}
+
+
+\subsection{Undo-Redo Recovery Algorithm}
+
+One of the main algorithms, Undo-Redo Algorithm assumes that all updated records for an uncompleted transaction will be in the log file.\\
+
+It \textbf{undoes} the modifications made by uncommitted transactions, and \textbf{redoes} the modifications made by committed transactions.
+
+\subsection{Checkpointing}
+
+Log file size will increase drastically with time, the recovery algorithms stops considering the logs when it reaches a checkpoint.
+
+A checkpoint is taken by forcing the contents of the main-memory buffers out to the disk and forcing a special checkpoint record out to the log, it contains all transactions that were in progress at the time the checkpoint was taken.
+
+\chapter{Concurrency - January 14, 2020}
+
+In a multi-process environment multiple transactions may occur \textit{concurrently}, this however comes with three fundamental problems.\\
+
+[Not all DBMS' allow concurrency, SQLite being the most notorious example of this, not allowing write concurrency and only allowing limited read concurrency.]
+
+\begin{description}
+\item[the Lost Update Problem:] A second transaction reads the state of the database prior to the first one writing a change and then stomps on the first one's change with its own update.
+\item[the Uncommitted Dependency Problem:] A second transaction relies on a change that has not yet been committed and is rolled back after the second transaction has begun.
+\item[the Inconsistent Analysis Problem:] An error that occurs when totals are calculated during interleaved updates.
+\end{description}
+
+\section{Conflicts}
+
+If $A$ and $B$ are concurrent transactions problems can occur if $A$ and $B$ want to read or write the same database object tuple $t$.\\
+
+A problem only arises if at least one of the transactions is a write, since two reads cannot interfere with each other.
+
+\begin{table}
+\begin{tabular}{lll}
+\toprule
+$A$ & $B$ & Problems\\
+\midrule
+Read & Write & Inconsistent Analysis\\
+Write & Read & Uncommitted Change\\
+Write & Write & Lost Update\\
+\bottomrule
+\end{tabular}
+\caption{Types of conflicts and problems they cause.}
+\label{tab:transactionconflict}
+\end{table}
+
+\section{Locking}
+
+Transactions lock a portion of the database to prevent these problems, there are two types of locks:
+
+\begin{description}
+\item[Exclusive Lock (X)] Locked by writing transaction, locks all other transactions.
+\item[Shared Lock (S)] Locked by reading transaction, disallows writes.
+\end{description}
+
+\begin{table}
+\begin{tabular}{l|l|l}
+\toprule
+& S & X\\
+\hline
+S & true & false\\ \hline
+X & false & false\\
+\bottomrule
+\end{tabular}
+\caption{Lock matrix showing the compatibility of lock types.}
+\label{tab:lockmatrix}
+\end{table}
+
+A transaction is granted a lock if and only if the requested lock is compatible with locks already on the item by other transactions, any number of transactions can hold shared locks on an item but only one can hold an exclusive lock (and if an item has an exclusive lock on it, it cannot have shared locks.)
+
+
+\subsection{Locking Protocol}
+
+Locks can be put using different protocols.
+
+\subsubsection{Two-Phase Locking Protocol}
+
+This protocol ensures conflict-serialisable schedules. It consists of two phases, the \textbf{Growing Phase}, where a transaction may obtain but may not release locks, and the \textbf{Shrinking Phase} where transaction may release but may not obtain locks.
+
+\subsection{Deadlock}
+
+The term \textbf{deadlock} refers to when two transactions acquire locks on items each other needs, making it impossible for the both to make progress.\\
+
+This situation can occur in most locking protocols, it can be solved by rolling back and releasing the locks of either one of the deadlocked transactions.
+
+\subsubsection{Starvation}
+
+If a transaction is waiting for an X-lock on an item while a sequence of other transactions are requesting S-locks on the same item, the original transaction is repeatedly rolled backed due to deadlocks.\\
+
+This is called \textbf{starvation}, and is the sign of a badly designed concurrency control manager.
+
+\subsubsection{Deadlock Prevention Strategies}
+
+\begin{description}
+\item[Wait-Die] Transaction 2 waits if it is older than 1, otherwise it is rolled back.
+\item[Wound-Wait] Transaction 2 rolls back transaction 1 if it is older.
+\item[Timeout-Based] A transaction waits for a specified amount of time for a lock, starvation may occur.
+\end{description}
+
+The oldest transactions survives and the rolled back transaction is restarted with the original timestamp.
+
+\subsubsection{Deadlock Detection}
+
+A system must use a dadlock detection and recovery schemes, \textbf{wait-for-graph} represents vertices as transactions and edges as lock waiting, when a cycle occurs in this graph, it means a deadlock has occurred.
+
+\section{Isolation}
+
+Transactions are isolated to certain \textbf{Isolation Levels}.
+
+\begin{description}
+\item[Read Uncommitted] Uncommitted records may be read.
+\item[Read committed] Only committed records can be read, but successive reads may return different values.
+\item[Repeatable Read] Ensures that a read is repeatable throughout the transaction.
+\item[Serialisable] Ensures serialisable execution.
+\end{description}
+
+As the level of isolation increases, the interference and the level of concurrency decreases.\\
+
+These levels apply to \textbf{data reading} only.
+
+Certain problems may arise in isolation.
+
+\begin{description}
+\item[Dirty Read] A transaction reads a value written by another transaction that hasn't been committed yet.
+\item[Nonrepeatable read] A transaction reads the same object twice during execution and finds different values despite not changing it.
+\item[Phantom Read] A transaction re-executes a query returning a set of roews that satisfy a search condition and finds that the set of rows satisfying the condition has changed as a result of another recently committed transaction.\end{description}
+
+As the level of isolation increases, all these problems are tackled one by one.
 \end{document}
