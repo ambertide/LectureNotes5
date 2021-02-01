@@ -1387,4 +1387,27 @@ A cache block is a multiple word wide block that  holds data, the memory accesse
 \subsubsection{Cache Mappings}
 
 Caches maybe direct mapped, N-way set associative or fully associative.
+
+\chapter{Cache Operations - January 15, 2021}
+
+When CPU needs to read data, it checks the Level 1 cache then the level 2 Cache, and so on. If the data is available, it is a \textit{cache hit}, otherwise a \textit{cache miss}.\\
+
+When CPU needs to write data, the line is written to main memory when it is written to the cache, this is called a \textit{write-through}, if the data isn't written, marked as dirty, when the cache line is replaced by a new cache line from memory, the dirty line is written to memory, this is called \textit{write-back}.\\
+
+Write through is simpler and keeps all levels consistent, but it uses more bandwith compared to write-back, which can combine multiple writes to the same block before eviction,  but it needs an extra bit in the tag store indicating the block is dirty modified.\\
+
+Question of whether or not allocating a cache block on a write miss is not straightforward, not allocating it conserves cache space, but allocating it will combine writes and is simpler despite requiring the transfer of the whole cache block.
+
+\section{Associative Caches}
+
+Associative caches are an alternative to directly mapped caches, rather than having one-to-map mapping, $n$-way associative caches, there are $n$ possible locations for the data in the cache.\\
+
+On a cache miss, there are multiple strategies, Eviction/Replacement Policy replaces any invalid block first otherwise a random, FIFO or least recently used, etc.
+
+\chapter{Cache Performance - January 22, 2021}
+
+Cache size is a consideration on cache performance, larger sized caches provide better temporal locality, but it increases latency, on the other hand a smaller cache will not be able to exploit temporal locality well.\\
+
+Likewise block size has a similar effect, except on the spatial locality when small and less temporal locality exploitation when too large, too small blocks also cause a larger tag overhead, and too large blocks cause a waste of cache space and bandwidth/energy if the spatial locality is not high.
+
 \end{document}
